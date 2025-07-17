@@ -795,3 +795,39 @@ if (typeof module !== 'undefined' && module.exports) {
         initializeRTOCalculator
     };
 } 
+
+// Force video playback on mobile devices
+function initializeMobileVideoPlayback() {
+    const heroVideo = document.getElementById('heroVideo');
+    
+    if (heroVideo) {
+        // Force play on mobile devices
+        const playVideo = () => {
+            heroVideo.play().catch(error => {
+                console.log('Video autoplay failed:', error);
+                // Try again with user interaction
+                document.addEventListener('touchstart', () => {
+                    heroVideo.play().catch(e => console.log('Video play failed:', e));
+                }, { once: true });
+            });
+        };
+        
+        // Try to play immediately
+        playVideo();
+        
+        // Also try on page load
+        window.addEventListener('load', playVideo);
+        
+        // Try on user interaction
+        document.addEventListener('touchstart', playVideo, { once: true });
+        document.addEventListener('click', playVideo, { once: true });
+        
+        // Ensure video is muted and looping
+        heroVideo.muted = true;
+        heroVideo.loop = true;
+        heroVideo.playsInline = true;
+    }
+}
+
+// Initialize mobile video playback
+initializeMobileVideoPlayback(); 
