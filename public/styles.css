@@ -323,7 +323,7 @@ p {
     justify-content: center;
     text-align: center;
     overflow: hidden;
-    background: var(--dark-bg);
+    background: transparent;
 }
 
 .hero video {
@@ -343,14 +343,16 @@ p {
     width: 100%;
     height: 100%;
     z-index: -2;
-    background: var(--dark-bg);
+    background: transparent;
 }
 
 .hero-video {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: brightness(0.9) contrast(1.1);
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
 }
 
 .hero-overlay {
@@ -359,12 +361,7 @@ p {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(
-        135deg,
-        rgba(0, 0, 0, 0.1) 0%,
-        rgba(26, 26, 26, 0.01) 50%,
-        rgba(0, 0, 0, 0.2) 100%
-    );
+    background: transparent;
     z-index: -1;
 }
 
