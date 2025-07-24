@@ -1117,6 +1117,11 @@ function initializeGalleryCarousel() {
     let autoPlayInterval;
     
     function startAutoPlay() {
+        // Clear any existing interval
+        if (autoPlayInterval) {
+            clearInterval(autoPlayInterval);
+        }
+        
         autoPlayInterval = setInterval(() => {
             if (currentSlide < totalSlides - 1) {
                 nextSlide();
@@ -1124,6 +1129,8 @@ function initializeGalleryCarousel() {
                 goToSlide(0);
             }
         }, 4000); // Change slide every 4 seconds
+        
+        console.log('Gallery auto-play started - changing slides every 4 seconds');
     }
     
     function stopAutoPlay() {
@@ -1132,8 +1139,13 @@ function initializeGalleryCarousel() {
         }
     }
     
-    // Start auto-play
+    // Start auto-play immediately
     startAutoPlay();
+    
+    // Also start auto-play after a short delay to ensure everything is loaded
+    setTimeout(() => {
+        startAutoPlay();
+    }, 1000);
     
     // Pause auto-play on hover
     galleryCarousel.addEventListener('mouseenter', stopAutoPlay);
