@@ -970,4 +970,209 @@ document.addEventListener('DOMContentLoaded', () => {
 // Re-initialize carousels if content is dynamically loaded
 if (typeof window !== 'undefined') {
     window.initializeProductCarousels = initializeProductCarousels;
+}
+
+// Gallery Carousel and Modal Functionality
+function initializeGalleryCarousel() {
+    const galleryCarousel = document.querySelector('.gallery-carousel-container');
+    const galleryModal = document.getElementById('galleryModal');
+    const modalImage = document.getElementById('galleryModalImage');
+    const modalClose = document.getElementById('galleryModalClose');
+    
+    if (!galleryCarousel) return;
+    
+    const track = galleryCarousel.querySelector('.gallery-carousel-track');
+    const slides = galleryCarousel.querySelectorAll('.gallery-carousel-slide');
+    const prevBtn = galleryCarousel.querySelector('.gallery-carousel-btn[data-direction="prev"]');
+    const nextBtn = galleryCarousel.querySelector('.gallery-carousel-btn[data-direction="next"]');
+    const indicators = galleryCarousel.querySelectorAll('.gallery-carousel-indicator');
+    
+    let currentSlide = 0;
+    const totalSlides = slides.length;
+    
+    // Initialize indicators
+    if (indicators.length > 0) {
+        indicators[0].classList.add('active');
+    }
+    
+    function updateGalleryCarousel() {
+        const slideWidth = 100;
+        const translateX = -currentSlide * slideWidth;
+        track.style.transform = `translateX(${translateX}%)`;
+        
+        // Update indicators
+        indicators.forEach((indicator, index) => {
+            indicator.classList.toggle('active', index === currentSlide);
+        });
+        
+        // Update button states
+        if (prevBtn) prevBtn.disabled = currentSlide === 0;
+        if (nextBtn) nextBtn.disabled = currentSlide === totalSlides - 1;
+    }
+    
+    function goToSlide(index) {
+        currentSlide = Math.max(0, Math.min(index, totalSlides - 1));
+        updateGalleryCarousel();
+    }
+    
+    function nextSlide() {
+        if (currentSlide < totalSlides - 1) {
+            currentSlide++;
+            updateGalleryCarousel();
+        }
+    }
+    
+    function prevSlide() {
+        if (currentSlide > 0) {
+            currentSlide--;
+            updateGalleryCarousel();
+        }
+    }
+    
+    // Event listeners for carousel
+    if (prevBtn) {
+        prevBtn.addEventListener('click', prevSlide);
+    }
+    
+    if (nextBtn) {
+        nextBtn.addEventListener('click', nextSlide);
+    }
+    
+    indicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', () => goToSlide(index));
+    });
+    
+    // Click on slides to open modal
+    slides.forEach((slide, index) => {
+        slide.addEventListener('click', () => {
+            const img = slide.querySelector('.gallery-carousel-image');
+            if (img) {
+                modalImage.src = img.src;
+                modalImage.alt = img.alt;
+                galleryModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        });
+    });
+    
+    // Modal functionality
+    function closeModal() {
+        galleryModal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+    
+    if (modalClose) {
+        modalClose.addEventListener('click', closeModal);
+    }
+    
+    // Close modal on background click
+    galleryModal.addEventListener('click', (e) => {
+        if (e.target === galleryModal) {
+            closeModal();
+        }
+    });
+    
+    // Modal navigation
+    const modalPrevBtn = galleryModal.querySelector('.gallery-modal-btn[data-direction="prev"]');
+    const modalNextBtn = galleryModal.querySelector('.gallery-modal-btn[data-direction="next"]');
+    
+    function updateModalImage() {
+        const currentSlideImg = slides[currentSlide].querySelector('.gallery-carousel-image');
+        if (currentSlideImg) {
+            modalImage.src = currentSlideImg.src;
+            modalImage.alt = currentSlideImg.alt;
+        }
+    }
+    
+    if (modalPrevBtn) {
+        modalPrevBtn.addEventListener('click', () => {
+            prevSlide();
+            updateModalImage();
+        });
+    }
+    
+    if (modalNextBtn) {
+        modalNextBtn.addEventListener('click', () => {
+            nextSlide();
+            updateModalImage();
+        });
+    }
+    
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        if (galleryModal.classList.contains('active')) {
+            if (e.key === 'Escape') {
+                closeModal();
+            } else if (e.key === 'ArrowLeft') {
+                prevSlide();
+                updateModalImage();
+            } else if (e.key === 'ArrowRight') {
+                nextSlide();
+                updateModalImage();
+            }
+        }
+    });
+    
+    // Auto-play functionality
+    let autoPlayInterval;
+    
+    function startAutoPlay() {
+        autoPlayInterval = setInterval(() => {
+            if (currentSlide < totalSlides - 1) {
+                nextSlide();
+            } else {
+                goToSlide(0);
+            }
+        }, 4000); // Change slide every 4 seconds
+    }
+    
+    function stopAutoPlay() {
+        if (autoPlayInterval) {
+            clearInterval(autoPlayInterval);
+        }
+    }
+    
+    // Start auto-play
+    startAutoPlay();
+    
+    // Pause auto-play on hover
+    galleryCarousel.addEventListener('mouseenter', stopAutoPlay);
+    galleryCarousel.addEventListener('mouseleave', startAutoPlay);
+    
+    // Touch/swipe support for mobile
+    let startX = 0;
+    let endX = 0;
+    
+    galleryCarousel.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+        stopAutoPlay();
+    });
+    
+    galleryCarousel.addEventListener('touchend', (e) => {
+        endX = e.changedTouches[0].clientX;
+        const diff = startX - endX;
+        
+        if (Math.abs(diff) > 50) { // Minimum swipe distance
+            if (diff > 0) {
+                nextSlide();
+            } else {
+                prevSlide();
+            }
+        }
+        
+        startAutoPlay();
+    });
+    
+    // Initialize
+    updateGalleryCarousel();
+}
+
+// Initialize gallery carousel when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    initializeGalleryCarousel();
+});
+
+// Re-initialize gallery carousel if content is dynamically loaded
+if (typeof window !== 'undefined') {
+    window.initializeGalleryCarousel = initializeGalleryCarousel;
 } 
