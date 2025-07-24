@@ -72,7 +72,7 @@ function initializeMobileMenu() {
         });
         
         // Close mobile menu when clicking on nav links
-        const navLinks = nav.querySelectorAll('.nav-link');
+        const navLinks = nav.querySelectorAll('.nav-link:not(.dropdown-toggle)');
         navLinks.forEach(link => {
             link.addEventListener('click', function() {
                 nav.classList.remove('active');
@@ -80,6 +80,23 @@ function initializeMobileMenu() {
                 const spans = mobileMenuToggle.querySelectorAll('span');
                 spans.forEach(span => span.classList.remove('active'));
                 body.style.overflow = 'auto';
+            });
+        });
+        
+        // Handle dropdown toggles in mobile
+        const dropdownToggles = nav.querySelectorAll('.dropdown-toggle');
+        dropdownToggles.forEach(toggle => {
+            toggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                const dropdown = this.closest('.dropdown');
+                dropdown.classList.toggle('active');
+                
+                // Close other dropdowns
+                dropdownToggles.forEach(otherToggle => {
+                    if (otherToggle !== this) {
+                        otherToggle.closest('.dropdown').classList.remove('active');
+                    }
+                });
             });
         });
         
