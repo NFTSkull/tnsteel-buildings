@@ -2500,3 +2500,186 @@ img[loading="lazy"].loaded {
         font-size: 1rem;
     }
 }
+
+/* About Us Section */
+.about-us {
+    background: var(--gray-dark);
+    color: var(--text-light);
+    padding: 5rem 0;
+}
+
+.about-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+}
+
+.about-text {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.about-description {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    color: var(--text-light);
+}
+
+.why-choose-us h3 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: var(--primary-color);
+    text-align: center;
+}
+
+.why-choose-us .features-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.why-choose-us .feature-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.why-choose-us .feature-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--primary-color);
+}
+
+.why-choose-us .feature-card h4 {
+    font-size: 1.3rem;
+    margin: 1rem 0;
+    color: var(--text-light);
+}
+
+.why-choose-us .feature-card p {
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+/* Contact Us Section */
+.contact-us {
+    background: var(--gray-dark);
+    color: var(--text-light);
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+/* Partners Section */
+.partners {
+    background: var(--gray-dark);
+    color: var(--text-light);
+    padding: 5rem 0;
+}
+
+.partners-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.partners-info h3 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: var(--primary-color);
+}
+
+.partners-info p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    color: var(--text-light);
+}
+
+.partner-benefits {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.partner-benefit {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.partner-benefit:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.partner-benefit i {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+
+.partner-benefit span {
+    font-weight: 500;
+    color: var(--text-light);
+}
+
+/* Responsive Design for New Sections */
+@media (max-width: 768px) {
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .about-description {
+        font-size: 1rem;
+    }
+    
+    .why-choose-us .features-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .why-choose-us .feature-card {
+        padding: 1.5rem;
+    }
+    
+    .contact-form {
+        padding: 1.5rem;
+        margin: 0 1rem;
+    }
+    
+    .partners-content {
+        padding: 0 1rem;
+    }
+    
+    .partner-benefits {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .partner-benefit {
+        padding: 0.75rem;
+    }
+}
