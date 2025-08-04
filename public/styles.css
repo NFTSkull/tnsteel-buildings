@@ -1576,29 +1576,49 @@ section {
     
     .building-grid {
         grid-template-columns: 1fr;
-        gap: var(--spacing-sm);
+        gap: var(--spacing-md);
         padding: 0 var(--spacing-sm);
     }
     
     .building-card {
         margin: 0;
+        border-radius: var(--radius-md);
     }
     
     .card-overlay {
-        padding: var(--spacing-sm);
+        padding: var(--spacing-md);
+        background: rgba(0, 0, 0, 0.8);
     }
     
     .card-overlay h3 {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
+        margin-bottom: var(--spacing-sm);
     }
     
     .card-overlay p {
-        font-size: 0.85rem;
+        font-size: 0.9rem;
+        line-height: 1.5;
+        margin-bottom: var(--spacing-sm);
     }
     
     .card-button {
         padding: 0.4rem 0.8rem;
         font-size: 0.8rem;
+    }
+    
+    /* About Us Mobile */
+    .about-us {
+        padding: var(--spacing-lg) 0;
+    }
+    
+    .about-content {
+        gap: var(--spacing-lg);
+    }
+    
+    .about-description {
+        font-size: 1.1rem;
+        line-height: 1.7;
+        margin-bottom: var(--spacing-sm);
     }
     
     /* Why Choose Us Mobile */
@@ -1865,15 +1885,19 @@ section {
     }
     
     .card-overlay {
-        padding: var(--spacing-xs);
+        padding: var(--spacing-sm);
+        background: rgba(0, 0, 0, 0.85);
     }
     
     .card-overlay h3 {
-        font-size: 1rem;
+        font-size: 1.1rem;
+        margin-bottom: var(--spacing-xs);
     }
     
     .card-overlay p {
-        font-size: 0.8rem;
+        font-size: 0.85rem;
+        line-height: 1.4;
+        margin-bottom: var(--spacing-xs);
     }
     
     .card-button {
@@ -1977,6 +2001,17 @@ section {
     
     .why-choose-us .feature-card p {
         font-size: 0.85rem;
+    }
+    
+    /* About Us Small Mobile */
+    .about-us {
+        padding: var(--spacing-md) 0;
+    }
+    
+    .about-description {
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: var(--spacing-sm);
     }
     
     /* Partner Tools Small Mobile */
