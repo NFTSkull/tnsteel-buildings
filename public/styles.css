@@ -394,7 +394,7 @@ section {
     font-weight: 800;
     text-align: center;
     margin-bottom: var(--spacing-md);
-    color: var(--primary-text);
+    color: var(--white);
     letter-spacing: -0.01em;
 }
 
@@ -410,6 +410,7 @@ section {
 
 .section-description {
     font-size: 1.25rem;
+    color: var(--white);
     text-align: center;
     max-width: 600px;
     margin: 0 auto var(--spacing-lg);
@@ -1137,7 +1138,7 @@ section {
 }
 
 .footer-section p {
-    color: var(--text-muted);
+    color: var(--white);
     line-height: 1.6;
     margin-bottom: var(--spacing-sm);
     font-size: 1rem;
@@ -1145,7 +1146,7 @@ section {
 
 .footer-section p i {
     margin-right: var(--spacing-sm);
-    color: var(--primary-color);
+    color: var(--accent-color);
 }
 
 .social-links {
@@ -1178,7 +1179,7 @@ section {
     text-align: center;
     padding-top: var(--spacing-lg);
     border-top: 1px solid rgba(255, 255, 255, 0.1);
-    color: var(--text-muted);
+    color: var(--white);
     font-size: 0.95rem;
 }
 
