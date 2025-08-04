@@ -468,7 +468,7 @@ section {
 
 .building-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     gap: var(--spacing-lg);
     margin-top: var(--spacing-xl);
     max-width: 1400px;
@@ -539,21 +539,20 @@ section {
 }
 
 .card-overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.6) 50%, transparent 100%);
+    position: static;
+    background: var(--white);
     padding: var(--spacing-lg);
-    color: var(--white);
+    color: var(--primary-text);
     transform: none;
     transition: all var(--transition-normal);
-    backdrop-filter: blur(10px);
+    backdrop-filter: none;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: center;
+    align-items: center;
     min-height: 120px;
     z-index: 2;
+    text-align: center;
 }
 
 .building-card:hover .card-overlay {
@@ -561,16 +560,15 @@ section {
 }
 
 .card-overlay h3 {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     font-weight: 700;
     margin-bottom: 0;
-    color: var(--white);
+    color: var(--primary-text);
     letter-spacing: -0.01em;
     text-transform: none;
     font-family: var(--font-primary);
     line-height: 1.2;
     position: relative;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .card-overlay p {
@@ -1610,11 +1608,11 @@ section {
     
     .card-overlay {
         padding: var(--spacing-md);
-        min-height: 100px;
+        min-height: 80px;
     }
     
     .card-overlay h3 {
-        font-size: 1.4rem;
+        font-size: 1.3rem;
         margin-bottom: 0;
     }
     
@@ -1931,17 +1929,15 @@ section {
     
     .card-overlay {
         padding: var(--spacing-md);
-        background: rgba(0, 0, 0, 0.85);
-        backdrop-filter: blur(10px);
-        min-height: 100px;
+        background: var(--white);
+        min-height: 80px;
     }
     
     .card-overlay h3 {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
         margin-bottom: 0;
-        font-weight: 800;
+        font-weight: 700;
         letter-spacing: -0.01em;
-        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         line-height: 1.2;
     }
     
