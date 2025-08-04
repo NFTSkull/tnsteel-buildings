@@ -488,7 +488,7 @@ section {
     box-shadow: var(--shadow-soft);
     display: flex;
     flex-direction: column;
-    min-height: 480px;
+    min-height: 320px;
     backdrop-filter: blur(10px);
     text-decoration: none;
     color: inherit;
@@ -520,9 +520,9 @@ section {
 .card-image {
     position: relative;
     overflow: hidden;
-    aspect-ratio: 16/10;
+    aspect-ratio: 4/3;
     flex-shrink: 0;
-    min-height: 280px;
+    min-height: 200px;
     z-index: 2;
 }
 
@@ -541,7 +541,7 @@ section {
 .card-overlay {
     position: static;
     background: var(--white);
-    padding: var(--spacing-lg);
+    padding: var(--spacing-md);
     color: var(--primary-text);
     transform: none;
     transition: all var(--transition-normal);
@@ -550,7 +550,7 @@ section {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 120px;
+    min-height: 80px;
     z-index: 2;
     text-align: center;
 }
@@ -560,8 +560,8 @@ section {
 }
 
 .card-overlay h3 {
-    font-size: 1.6rem;
-    font-weight: 700;
+    font-size: 1.2rem;
+    font-weight: 600;
     margin-bottom: 0;
     color: var(--primary-text);
     letter-spacing: -0.01em;
@@ -1599,20 +1599,20 @@ section {
     
     .building-card {
         margin: 0;
-        min-height: 420px;
+        min-height: 280px;
     }
     
     .card-image {
-        min-height: 240px;
+        min-height: 180px;
     }
     
     .card-overlay {
-        padding: var(--spacing-md);
-        min-height: 80px;
+        padding: var(--spacing-sm);
+        min-height: 60px;
     }
     
     .card-overlay h3 {
-        font-size: 1.3rem;
+        font-size: 1.1rem;
         margin-bottom: 0;
     }
     
@@ -1918,7 +1918,7 @@ section {
     
     .building-card {
         margin: 0 var(--spacing-sm);
-        min-height: 400px;
+        min-height: 260px;
     }
     
     /* Building Styles Small Mobile */
@@ -1928,15 +1928,15 @@ section {
     }
     
     .card-overlay {
-        padding: var(--spacing-md);
+        padding: var(--spacing-sm);
         background: var(--white);
-        min-height: 80px;
+        min-height: 60px;
     }
     
     .card-overlay h3 {
-        font-size: 1.1rem;
+        font-size: 1rem;
         margin-bottom: 0;
-        font-weight: 700;
+        font-weight: 600;
         letter-spacing: -0.01em;
         line-height: 1.2;
     }
