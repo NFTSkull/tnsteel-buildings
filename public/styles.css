@@ -336,7 +336,7 @@ p {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: brightness(0.5) contrast(1.2) !important;
+    filter: brightness(0.8) contrast(1.1) !important;
     display: block !important;
     visibility: visible !important;
     opacity: 1 !important;
@@ -348,7 +348,7 @@ p {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.3);
     z-index: 2;
 }
 
@@ -364,16 +364,18 @@ p {
 .hero-title {
     font-size: clamp(3rem, 6vw, 5rem);
     font-weight: 800;
-    color: var(--primary-text) !important;
+    color: var(--white) !important;
     margin-bottom: var(--spacing-md);
     letter-spacing: -0.02em;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 }
 
 .hero-subtitle {
     font-size: clamp(1.25rem, 2.5vw, 1.5rem);
-    color: var(--secondary-text);
+    color: var(--white);
     font-weight: 600;
     margin-bottom: var(--spacing-lg);
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
 }
 
 .hero-buttons {
@@ -2659,7 +2661,7 @@ img[loading="lazy"].loaded {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: brightness(0.5) contrast(1.2);
+    filter: brightness(0.7) contrast(1.1);
 }
 
 .product-page-hero .hero-overlay {
@@ -2668,7 +2670,7 @@ img[loading="lazy"].loaded {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.4);
     z-index: 2;
 }
 
