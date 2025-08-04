@@ -396,7 +396,7 @@ section {
     font-weight: 800;
     text-align: center;
     margin-bottom: var(--spacing-md);
-    color: var(--white);
+    color: var(--black);
     letter-spacing: -0.01em;
 }
 
@@ -412,11 +412,10 @@ section {
 
 .section-description {
     font-size: 1.25rem;
-    color: var(--white);
+    color: var(--black);
     text-align: center;
     max-width: 600px;
     margin: 0 auto var(--spacing-lg);
-    color: var(--text-muted);
     line-height: 1.7;
 }
 
@@ -475,10 +474,10 @@ section {
     bottom: 0;
     left: 0;
     right: 0;
-    background: linear-gradient(transparent, rgba(0, 0, 0, 0.85));
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
     padding: var(--spacing-lg);
     color: var(--white);
-    transform: translateY(100%);
+    transform: translateY(0);
     transition: transform var(--transition-normal);
     backdrop-filter: blur(10px);
 }
@@ -488,37 +487,40 @@ section {
 }
 
 .card-overlay h3 {
-    font-size: 1.5rem;
-    font-weight: 800;
+    font-size: 1.8rem;
+    font-weight: 700;
     margin-bottom: var(--spacing-sm);
     color: var(--white);
-    letter-spacing: -0.01em;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    letter-spacing: -0.02em;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    text-transform: uppercase;
 }
 
 .card-overlay p {
-    font-size: 1rem;
-    line-height: 1.6;
+    font-size: 0.95rem;
+    line-height: 1.5;
     margin-bottom: var(--spacing-md);
-    color: rgba(255, 255, 255, 0.9);
+    color: rgba(255, 255, 255, 0.95);
     font-weight: 400;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    letter-spacing: 0.01em;
 }
 
 .card-button {
     display: inline-flex;
     align-items: center;
-    padding: 0.75rem 1.5rem;
+    padding: 0.6rem 1.2rem;
     background: var(--accent-color);
     color: var(--white);
     text-decoration: none;
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-sm);
     font-weight: 600;
     transition: all var(--transition-normal);
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
-    box-shadow: 0 4px 15px rgba(30, 115, 190, 0.3);
+    letter-spacing: 0.8px;
+    box-shadow: 0 2px 8px rgba(30, 115, 190, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .card-button:hover {
@@ -962,7 +964,7 @@ section {
 .contact-form h3 {
     font-size: 2rem;
     margin-bottom: var(--spacing-sm);
-    color: var(--text-light);
+    color: var(--white);
     text-align: center;
     font-weight: 700;
 }
@@ -970,7 +972,7 @@ section {
 .contact-form > p {
     text-align: center;
     margin-bottom: var(--spacing-lg);
-    color: var(--text-muted);
+    color: var(--white);
     font-size: 1.1rem;
 }
 
