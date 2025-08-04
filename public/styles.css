@@ -2934,3 +2934,25 @@ img[loading="lazy"].loaded {
 .product-showcase-section .carousel-indicator:hover {
     background: var(--primary-color);
 }
+
+/* Vertical Gallery Layout for Mobile */
+@media (max-width: 768px) {
+    .product-showcase-section .carousel-track {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-md);
+    }
+    
+    .product-showcase-section .carousel-slide {
+        width: 100%;
+        aspect-ratio: 4/3;
+    }
+    
+    .product-showcase-section .carousel-controls {
+        display: none;
+    }
+    
+    .product-showcase-section .carousel-indicators {
+        display: none;
+    }
+}
