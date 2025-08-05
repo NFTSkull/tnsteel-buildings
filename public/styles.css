@@ -1505,8 +1505,8 @@ section {
         left: -100%;
         width: 100%;
         height: 100vh;
-        background: linear-gradient(135deg, rgba(0, 0, 0, 0.98) 0%, rgba(45, 45, 45, 0.98) 100%);
-        backdrop-filter: blur(30px);
+        background: linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(45, 45, 45, 0.95) 100%);
+        backdrop-filter: blur(20px);
         transition: all var(--transition-slow);
         z-index: 1000;
         display: flex;
@@ -1540,20 +1540,19 @@ section {
     }
     
     /* Mobile Menu Close Button */
-    .nav::before {
-        content: '×';
+    .mobile-menu-close {
         position: absolute;
         top: var(--spacing-lg);
         right: var(--spacing-lg);
-        width: 50px;
-        height: 50px;
+        width: 44px;
+        height: 44px;
         background: rgba(255, 255, 255, 0.1);
-        border: 2px solid rgba(255, 255, 255, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.2);
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 2rem;
+        font-size: 1.5rem;
         color: var(--white);
         cursor: pointer;
         transition: all var(--transition-normal);
@@ -1561,21 +1560,23 @@ section {
         backdrop-filter: blur(10px);
     }
     
-    .nav::before:hover {
+    .mobile-menu-close:hover {
         background: rgba(255, 255, 255, 0.2);
         border-color: var(--accent-color);
-        transform: scale(1.1);
+        transform: scale(1.05);
     }
+    
+
     
     .nav-list {
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: var(--spacing-lg);
+        gap: var(--spacing-md);
         list-style: none;
         width: 100%;
-        max-width: 400px;
-        padding: var(--spacing-xl);
+        max-width: 350px;
+        padding: var(--spacing-lg);
     }
     
     .nav-list li {
@@ -1597,22 +1598,22 @@ section {
     .nav.active .nav-list li:nth-child(5) { transition-delay: 0.5s; }
     
     .nav-link {
-        font-size: 1.4rem;
-        font-weight: 700;
+        font-size: 1.3rem;
+        font-weight: 600;
         color: var(--white);
         text-decoration: none;
-        padding: var(--spacing-xl) var(--spacing-xl);
+        padding: var(--spacing-lg) var(--spacing-xl);
         display: block;
         width: 100%;
-        border-radius: var(--radius-lg);
+        border-radius: var(--radius-md);
         transition: all var(--transition-normal);
-        border: 2px solid transparent;
+        border: 1px solid rgba(255, 255, 255, 0.1);
         text-align: center;
-        background: rgba(255, 255, 255, 0.08);
-        backdrop-filter: blur(15px);
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
         position: relative;
         overflow: hidden;
-        letter-spacing: 0.5px;
+        letter-spacing: 0.3px;
     }
     
     .nav-link::before {
@@ -1644,18 +1645,18 @@ section {
     .dropdown-toggle {
         width: 100%;
         justify-content: center;
-        padding: var(--spacing-xl) var(--spacing-xl);
-        font-size: 1.4rem;
-        font-weight: 700;
-        border-radius: var(--radius-lg);
-        border: 2px solid transparent;
+        padding: var(--spacing-lg) var(--spacing-xl);
+        font-size: 1.3rem;
+        font-weight: 600;
+        border-radius: var(--radius-md);
+        border: 1px solid rgba(255, 255, 255, 0.1);
         transition: all var(--transition-normal);
-        background: rgba(255, 255, 255, 0.08);
-        backdrop-filter: blur(15px);
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
         color: var(--white);
         position: relative;
         overflow: hidden;
-        letter-spacing: 0.5px;
+        letter-spacing: 0.3px;
     }
     
     .dropdown-toggle::before {
@@ -1682,20 +1683,20 @@ section {
     
     .dropdown-menu {
         position: static;
-        background: rgba(0, 0, 0, 0.95);
-        border: 2px solid rgba(255, 255, 255, 0.2);
-        border-radius: var(--radius-lg);
-        box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
+        background: rgba(0, 0, 0, 0.8);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-md);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
         opacity: 0;
         visibility: hidden;
-        transform: translateY(-10px);
-        margin-top: var(--spacing-md);
+        transform: translateY(-5px);
+        margin-top: var(--spacing-sm);
         min-width: auto;
         width: 100%;
-        backdrop-filter: blur(20px);
+        backdrop-filter: blur(10px);
         transition: all var(--transition-normal);
         overflow: hidden;
-        padding: var(--spacing-md);
+        padding: var(--spacing-sm);
     }
     
     .dropdown.active .dropdown-menu {
@@ -1709,18 +1710,18 @@ section {
     }
     
     .dropdown-link {
-        padding: var(--spacing-lg) var(--spacing-xl);
-        font-size: 1.2rem;
-        font-weight: 600;
+        padding: var(--spacing-md) var(--spacing-lg);
+        font-size: 1.1rem;
+        font-weight: 500;
         color: var(--white);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         transition: all var(--transition-normal);
         display: block;
         width: 100%;
         position: relative;
         overflow: hidden;
         text-align: center;
-        letter-spacing: 0.3px;
+        letter-spacing: 0.2px;
     }
     
     .dropdown-link::before {
