@@ -1524,10 +1524,37 @@ section {
         visibility: visible;
     }
     
-    /* Hide modal close button when mobile menu is active */
+    /* Hide ALL modal close buttons when mobile menu is active */
     .nav.active ~ .modal .close,
-    .nav.active ~ footer .modal .close {
+    .nav.active ~ footer .modal .close,
+    .nav.active ~ * .close,
+    .nav.active .close,
+    .nav.active + * .close {
         display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+    }
+    
+    /* Also hide any modal when mobile menu is active */
+    .nav.active ~ .modal {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+    }
+    
+    /* Nuclear option: Hide ALL elements with close class when mobile menu is active */
+    .nav.active ~ * .close,
+    .nav.active ~ * [class*="close"],
+    .nav.active ~ * [id*="close"] {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+        position: absolute !important;
+        left: -9999px !important;
+        top: -9999px !important;
     }
     
     /* Mobile Menu Close Overlay - REMOVED to eliminate duplicate close button */
@@ -1553,6 +1580,14 @@ section {
         overflow: hidden;
         font-size: 0;
         line-height: 0;
+    }
+    
+    /* Ensure mobile menu close button is always visible when nav is active */
+    .nav.active .mobile-menu-close {
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        z-index: 1002 !important;
     }
     
     .mobile-menu-close::before {
