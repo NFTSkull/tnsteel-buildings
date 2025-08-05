@@ -12,14 +12,14 @@
     --header-footer-bg: #2D2D2D;
     --primary-text: #000000;
     --secondary-text: #666666;
-    --accent-color: #1E73BE;
+    --accent-color: #2E7D32;
     --white: #FFFFFF;
     --light-gray: #F5F5F5;
     --dark-gray: #2D2D2D;
     --medium-gray: #666666;
     --black: #000000;
-    --blue: #1E73BE;
-    --blue-hover: #1565A0;
+    --blue: #2E7D32;
+    --blue-hover: #1B5E20;
     
     /* Gradients and Shadows */
     --gradient-dark: linear-gradient(135deg, #2D2D2D 0%, #1a1a1a 100%);
@@ -149,13 +149,13 @@ p {
     background: var(--accent-color);
     color: var(--white);
     border-radius: var(--radius-md);
-    box-shadow: 0 4px 20px rgba(30, 115, 190, 0.3);
+    box-shadow: 0 4px 20px rgba(46, 125, 50, 0.3);
 }
 
 .btn-primary:hover {
     background: var(--blue-hover);
     transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(30, 115, 190, 0.4);
+    box-shadow: 0 8px 30px rgba(46, 125, 50, 0.4);
 }
 
 .btn-outline {
@@ -803,14 +803,14 @@ section {
     font-size: 1.5rem;
     color: white;
     transition: all var(--transition-normal);
-    box-shadow: 0 4px 20px rgba(30, 115, 190, 0.3);
+    box-shadow: 0 4px 20px rgba(46, 125, 50, 0.3);
     position: relative;
     z-index: 2;
 }
 
 .why-choose-us .feature-card:hover .feature-icon {
     transform: scale(1.1) rotate(5deg);
-    box-shadow: 0 8px 30px rgba(30, 115, 190, 0.4);
+    box-shadow: 0 8px 30px rgba(46, 125, 50, 0.4);
 }
 
 .why-choose-us .feature-card h4 {
@@ -1645,7 +1645,7 @@ section {
         font-size: 0.85rem;
         text-transform: uppercase;
         letter-spacing: 0.5px;
-        box-shadow: 0 4px 15px rgba(30, 115, 190, 0.3);
+        box-shadow: 0 4px 15px rgba(46, 125, 50, 0.3);
     }
     
     /* About Us Mobile */
@@ -3085,7 +3085,7 @@ img[loading="lazy"].loaded {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, rgba(30, 115, 190, 0.05) 0%, rgba(45, 45, 45, 0.05) 100%);
+    background: linear-gradient(135deg, rgba(46, 125, 50, 0.05) 0%, rgba(45, 45, 45, 0.05) 100%);
     z-index: 1;
 }
 
