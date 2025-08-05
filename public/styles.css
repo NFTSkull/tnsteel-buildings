@@ -1564,10 +1564,10 @@ section {
         position: absolute;
         top: var(--spacing-md);
         right: var(--spacing-md);
-        width: 44px;
-        height: 44px;
-        background: linear-gradient(135deg, rgba(220, 38, 38, 0.95) 0%, rgba(185, 28, 28, 0.95) 100%);
-        border: 2px solid rgba(255, 255, 255, 0.4);
+        width: 48px;
+        height: 48px;
+        background: linear-gradient(135deg, rgba(220, 38, 38, 0.98) 0%, rgba(185, 28, 28, 0.98) 100%);
+        border: 2px solid rgba(255, 255, 255, 0.5);
         border-radius: 50%;
         display: flex;
         align-items: center;
@@ -1575,8 +1575,8 @@ section {
         cursor: pointer;
         transition: all var(--transition-normal);
         z-index: 1001;
-        backdrop-filter: blur(15px);
-        box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4);
+        backdrop-filter: blur(20px);
+        box-shadow: 0 8px 25px rgba(220, 38, 38, 0.5);
         overflow: hidden;
         font-size: 0;
         line-height: 0;
@@ -1603,13 +1603,14 @@ section {
     
     .mobile-menu-close span {
         position: absolute;
-        width: 20px;
-        height: 2px;
+        width: 22px;
+        height: 2.5px;
         background: var(--white);
-        border-radius: 1px;
+        border-radius: 1.5px;
         transition: all var(--transition-normal);
         z-index: 2;
         display: block;
+        box-shadow: 0 0 4px rgba(255, 255, 255, 0.3);
     }
     
     .mobile-menu-close span:first-child {
@@ -1623,8 +1624,8 @@ section {
     .mobile-menu-close:hover {
         background: linear-gradient(135deg, var(--accent-color) 0%, #B91C1C 100%);
         border-color: var(--white);
-        transform: scale(1.15);
-        box-shadow: 0 8px 25px rgba(220, 38, 38, 0.5);
+        transform: scale(1.1);
+        box-shadow: 0 12px 35px rgba(220, 38, 38, 0.6);
     }
     
     .mobile-menu-close:hover::before {
@@ -1633,7 +1634,9 @@ section {
     
     .mobile-menu-close:hover span {
         background: var(--white);
-        box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+        width: 24px;
+        height: 3px;
     }
     
 
