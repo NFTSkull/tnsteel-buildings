@@ -1646,7 +1646,7 @@ section {
         width: 100%;
         justify-content: center;
         padding: var(--spacing-lg) var(--spacing-xl);
-        font-size: 1.3rem;
+        font-size: 1.2rem;
         font-weight: 600;
         border-radius: var(--radius-md);
         border: 1px solid rgba(255, 255, 255, 0.1);
@@ -1657,6 +1657,7 @@ section {
         position: relative;
         overflow: hidden;
         letter-spacing: 0.3px;
+        white-space: nowrap;
     }
     
     .dropdown-toggle::before {
@@ -1696,7 +1697,7 @@ section {
         backdrop-filter: blur(10px);
         transition: all var(--transition-normal);
         overflow: hidden;
-        padding: var(--spacing-sm);
+        padding: var(--spacing-md);
     }
     
     .dropdown.active .dropdown-menu {
@@ -1711,7 +1712,7 @@ section {
     
     .dropdown-link {
         padding: var(--spacing-md) var(--spacing-lg);
-        font-size: 1.1rem;
+        font-size: 1rem;
         font-weight: 500;
         color: var(--white);
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -1722,6 +1723,7 @@ section {
         overflow: hidden;
         text-align: center;
         letter-spacing: 0.2px;
+        white-space: nowrap;
     }
     
     .dropdown-link::before {
@@ -1751,14 +1753,14 @@ section {
     }
     
     .dropdown-toggle i {
-        transform: rotate(90deg);
+        transform: rotate(0deg);
         transition: transform var(--transition-normal);
         margin-left: var(--spacing-sm);
         font-size: 0.9rem;
     }
     
     .dropdown.active .dropdown-toggle i {
-        transform: rotate(270deg);
+        transform: rotate(180deg);
     }
     
     .mobile-menu-toggle {
