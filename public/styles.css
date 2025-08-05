@@ -1524,9 +1524,15 @@ section {
         visibility: visible;
     }
     
+    /* Hide modal close button when mobile menu is active */
+    .nav.active ~ .modal .close,
+    .nav.active ~ footer .modal .close {
+        display: none !important;
+    }
+    
     /* Mobile Menu Close Overlay - REMOVED to eliminate duplicate close button */
     
-    /* Mobile Menu Close Button - Modern and Elegant */
+    /* Mobile Menu Close Button - Single X Only */
     .mobile-menu-close {
         position: absolute;
         top: var(--spacing-md);
@@ -1545,6 +1551,8 @@ section {
         backdrop-filter: blur(15px);
         box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4);
         overflow: hidden;
+        font-size: 0;
+        line-height: 0;
     }
     
     .mobile-menu-close::before {
@@ -1566,6 +1574,7 @@ section {
         border-radius: 1px;
         transition: all var(--transition-normal);
         z-index: 2;
+        display: block;
     }
     
     .mobile-menu-close span:first-child {
