@@ -91,7 +91,10 @@ function initializeMobileMenu() {
         dropdownToggles.forEach(toggle => {
             toggle.addEventListener('click', function(e) {
                 e.preventDefault();
+                e.stopPropagation();
                 const dropdown = this.closest('.dropdown');
+                
+                // Toggle current dropdown
                 dropdown.classList.toggle('active');
                 
                 // Close other dropdowns
@@ -100,6 +103,24 @@ function initializeMobileMenu() {
                         otherToggle.closest('.dropdown').classList.remove('active');
                     }
                 });
+                
+                // Add smooth animation
+                const dropdownMenu = dropdown.querySelector('.dropdown-menu');
+                if (dropdownMenu) {
+                    if (dropdown.classList.contains('active')) {
+                        dropdownMenu.style.display = 'block';
+                        setTimeout(() => {
+                            dropdownMenu.style.opacity = '1';
+                            dropdownMenu.style.transform = 'translateY(0)';
+                        }, 10);
+                    } else {
+                        dropdownMenu.style.opacity = '0';
+                        dropdownMenu.style.transform = 'translateY(-5px)';
+                        setTimeout(() => {
+                            dropdownMenu.style.display = 'none';
+                        }, 300);
+                    }
+                }
             });
         });
         
