@@ -347,6 +347,16 @@ p {
     opacity: 1 !important;
 }
 
+.hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.8) contrast(1.1) !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
 .hero-overlay {
     position: absolute;
     top: 0;
