@@ -124,17 +124,7 @@ function initializeMobileMenu() {
             });
         });
         
-        // Mobile menu close button
-        const mobileMenuClose = document.getElementById('mobileMenuClose');
-        if (mobileMenuClose) {
-            mobileMenuClose.addEventListener('click', function() {
-                nav.classList.remove('active');
-                mobileMenuToggle.classList.remove('active');
-                const spans = mobileMenuToggle.querySelectorAll('span');
-                spans.forEach(span => span.classList.remove('active'));
-                body.style.overflow = 'auto';
-            });
-        }
+
         
         // Close mobile menu when clicking outside
         document.addEventListener('click', function(e) {
