@@ -542,7 +542,10 @@ section {
 }
 
 .card-overlay {
-    position: static;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
     background: var(--white);
     padding: var(--spacing-md);
     color: var(--primary-text);
@@ -1918,6 +1921,10 @@ section {
     }
     
     .card-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
         padding: var(--spacing-md);
         background: var(--white);
         backdrop-filter: none;
@@ -2264,6 +2271,10 @@ section {
     }
     
     .card-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
         padding: var(--spacing-sm);
         background: var(--white);
         min-height: 80px;
