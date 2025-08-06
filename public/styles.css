@@ -553,15 +553,25 @@ section {
     min-height: 80px;
     z-index: 2;
     text-align: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 0 0 var(--radius-md) var(--radius-md);
 }
 
 .building-card:hover .card-overlay {
     transform: translateY(0);
+    background: linear-gradient(135deg, var(--white) 0%, #f8f9fa 100%);
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
+}
+
+.building-card:hover .card-overlay h3 {
+    color: var(--accent-color);
+    transform: scale(1.05);
+    transition: all var(--transition-normal);
 }
 
 .card-overlay h3 {
-    font-size: 1.2rem;
-    font-weight: 600;
+    font-size: 1.3rem;
+    font-weight: 700;
     margin-bottom: 0;
     color: var(--primary-text);
     letter-spacing: -0.01em;
@@ -569,6 +579,7 @@ section {
     font-family: var(--font-primary);
     line-height: 1.2;
     position: relative;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .card-overlay p {
@@ -1967,13 +1978,20 @@ section {
     }
     
     .card-overlay {
-        padding: var(--spacing-sm);
-        min-height: 60px;
+        padding: var(--spacing-md);
+        min-height: 80px;
+        background: var(--white);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        border-radius: 0 0 var(--radius-md) var(--radius-md);
     }
     
     .card-overlay h3 {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
+        font-weight: 700;
         margin-bottom: 0;
+        color: var(--primary-text);
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        letter-spacing: -0.01em;
     }
     
     .card-overlay {
@@ -2316,15 +2334,19 @@ section {
     .card-overlay {
         padding: var(--spacing-sm);
         background: var(--white);
-        min-height: 60px;
+        min-height: 70px;
+        box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+        border-radius: 0 0 var(--radius-sm) var(--radius-sm);
     }
     
     .card-overlay h3 {
-        font-size: 1rem;
+        font-size: 1.1rem;
         margin-bottom: 0;
-        font-weight: 600;
+        font-weight: 700;
         letter-spacing: -0.01em;
         line-height: 1.2;
+        color: var(--primary-text);
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
     }
     
     .contact-form {
