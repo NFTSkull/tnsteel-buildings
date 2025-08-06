@@ -543,49 +543,54 @@ section {
 
 .card-overlay {
     position: absolute;
-    bottom: 0;
+    top: 0;
     left: 0;
     right: 0;
-    background: var(--white);
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.1) 100%);
     padding: var(--spacing-md);
-    color: var(--primary-text);
+    color: var(--white);
     transform: none;
     transition: all var(--transition-normal);
-    backdrop-filter: none;
+    backdrop-filter: blur(8px);
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    min-height: 100px;
+    min-height: auto;
     z-index: 2;
     text-align: center;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    border-radius: 0 0 var(--radius-md) var(--radius-md);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    border-radius: var(--radius-md) var(--radius-md) 0 0;
 }
 
 .building-card:hover .card-overlay {
-    transform: translateY(0);
-    background: linear-gradient(135deg, var(--white) 0%, #f8f9fa 100%);
-    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.2) 100%);
+    backdrop-filter: blur(12px);
 }
 
 .building-card:hover .card-overlay h3 {
-    color: var(--accent-color);
-    transform: scale(1.05);
+    color: var(--white);
+    transform: scale(1.02);
+    background: rgba(220, 38, 38, 0.8);
+    box-shadow: 0 4px 15px rgba(220, 38, 38, 0.4);
     transition: all var(--transition-normal);
 }
 
 .card-overlay h3 {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     font-weight: 700;
     margin-bottom: 0;
-    color: var(--primary-text);
+    color: var(--white);
     letter-spacing: -0.01em;
     text-transform: none;
     font-family: var(--font-primary);
     line-height: 1.2;
     position: relative;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: var(--radius-sm);
+    backdrop-filter: blur(4px);
 }
 
 .card-overlay p {
@@ -1922,30 +1927,34 @@ section {
     
     .card-overlay {
         position: absolute;
-        bottom: 0;
+        top: 0;
         left: 0;
         right: 0;
-        padding: var(--spacing-md);
-        background: var(--white);
-        backdrop-filter: none;
-        min-height: 90px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        border-radius: 0 0 var(--radius-md) var(--radius-md);
+        padding: var(--spacing-sm);
+        background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.1) 100%);
+        backdrop-filter: blur(8px);
+        min-height: auto;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        border-radius: var(--radius-md) var(--radius-md) 0 0;
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: flex-start;
         align-items: center;
         text-align: center;
     }
     
     .card-overlay h3 {
-        font-size: 1.3rem;
+        font-size: 1.2rem;
         font-weight: 700;
         margin-bottom: 0;
-        color: var(--primary-text);
-        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        color: var(--white);
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
         letter-spacing: -0.01em;
         line-height: 1.2;
+        padding: var(--spacing-xs) var(--spacing-sm);
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: var(--radius-sm);
+        backdrop-filter: blur(4px);
     }
     
     .card-overlay p {
@@ -2272,24 +2281,29 @@ section {
     
     .card-overlay {
         position: absolute;
-        bottom: 0;
+        top: 0;
         left: 0;
         right: 0;
-        padding: var(--spacing-sm);
-        background: var(--white);
-        min-height: 80px;
-        box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
-        border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+        padding: var(--spacing-xs);
+        background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.1) 100%);
+        backdrop-filter: blur(6px);
+        min-height: auto;
+        box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
+        border-radius: var(--radius-sm) var(--radius-sm) 0 0;
     }
     
     .card-overlay h3 {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
         margin-bottom: 0;
         font-weight: 700;
         letter-spacing: -0.01em;
         line-height: 1.2;
-        color: var(--primary-text);
-        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        color: var(--white);
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+        padding: var(--spacing-xs);
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: var(--radius-sm);
+        backdrop-filter: blur(4px);
     }
     
     .contact-form {
