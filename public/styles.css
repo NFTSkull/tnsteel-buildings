@@ -1644,7 +1644,13 @@ section {
     .nav.active ~ * [class*="close"],
     .nav.active ~ * [id*="close"],
     .nav.active ~ * [class*="Close"],
-    .nav.active ~ * [id*="Close"] {
+    .nav.active ~ * [id*="Close"],
+    .nav.active ~ .modal,
+    .nav.active ~ * .modal,
+    .nav.active ~ footer .modal,
+    .nav.active ~ .modal *,
+    .nav.active ~ * .modal *,
+    .nav.active ~ footer .modal * {
         display: none !important;
         visibility: hidden !important;
         opacity: 0 !important;
@@ -1999,18 +2005,21 @@ section {
     
     .card-overlay {
         padding: var(--spacing-md);
-        background: rgba(0, 0, 0, 0.85);
-        backdrop-filter: blur(10px);
-        min-height: 180px;
+        background: var(--white);
+        backdrop-filter: none;
+        min-height: 90px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        border-radius: 0 0 var(--radius-md) var(--radius-md);
     }
     
     .card-overlay h3 {
-        font-size: 1.4rem;
-        margin-bottom: var(--spacing-sm);
+        font-size: 1.3rem;
+        margin-bottom: 0;
         font-weight: 700;
         letter-spacing: -0.01em;
-        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
         line-height: 1.2;
+        color: var(--primary-text);
     }
     
     .card-overlay p {
