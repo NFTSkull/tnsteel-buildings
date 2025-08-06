@@ -1537,17 +1537,29 @@ section {
     }
     
     /* Also hide any modal when mobile menu is active */
-    .nav.active ~ .modal {
+    .nav.active ~ .modal,
+    .nav.active ~ * .modal,
+    .nav.active ~ footer .modal {
         display: none !important;
         visibility: hidden !important;
         opacity: 0 !important;
         pointer-events: none !important;
+        z-index: -9999 !important;
     }
     
     /* Nuclear option: Hide ALL elements with close class when mobile menu is active */
     .nav.active ~ * .close,
     .nav.active ~ * [class*="close"],
-    .nav.active ~ * [id*="close"] {
+    .nav.active ~ * [id*="close"],
+    .nav.active ~ .modal .close,
+    .nav.active ~ .modal [class*="close"],
+    .nav.active ~ .modal [id*="close"],
+    .nav.active ~ footer .modal .close,
+    .nav.active ~ footer .modal [class*="close"],
+    .nav.active ~ footer .modal [id*="close"],
+    .nav.active ~ * .modal .close,
+    .nav.active ~ * .modal [class*="close"],
+    .nav.active ~ * .modal [id*="close"] {
         display: none !important;
         visibility: hidden !important;
         opacity: 0 !important;
@@ -1555,6 +1567,7 @@ section {
         position: absolute !important;
         left: -9999px !important;
         top: -9999px !important;
+        z-index: -9999 !important;
     }
     
     /* Mobile Menu Close Overlay - REMOVED to eliminate duplicate close button */
@@ -1588,6 +1601,44 @@ section {
         visibility: visible !important;
         opacity: 1 !important;
         z-index: 1002 !important;
+    }
+    
+    /* Hide ALL modals and their close buttons when mobile menu is active */
+    .nav.active ~ .modal,
+    .nav.active ~ * .modal,
+    .nav.active ~ footer .modal,
+    .nav.active ~ .modal .close,
+    .nav.active ~ * .modal .close,
+    .nav.active ~ footer .modal .close,
+    .nav.active ~ .modal [class*="close"],
+    .nav.active ~ * .modal [class*="close"],
+    .nav.active ~ footer .modal [class*="close"],
+    .nav.active ~ .modal [id*="close"],
+    .nav.active ~ * .modal [id*="close"],
+    .nav.active ~ footer .modal [id*="close"] {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+        z-index: -9999 !important;
+        position: absolute !important;
+        left: -9999px !important;
+        top: -9999px !important;
+    }
+    
+    /* Additional nuclear option for any close button anywhere */
+    .nav.active ~ * [class*="close"],
+    .nav.active ~ * [id*="close"],
+    .nav.active ~ * [class*="Close"],
+    .nav.active ~ * [id*="Close"] {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+        z-index: -9999 !important;
+        position: absolute !important;
+        left: -9999px !important;
+        top: -9999px !important;
     }
     
     .mobile-menu-close::before {
