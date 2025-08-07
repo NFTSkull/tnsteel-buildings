@@ -4206,6 +4206,16 @@ img[loading="lazy"].loaded {
     margin-bottom: var(--spacing-md);
 }
 
+.work-with-us-contact .form-group label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--primary-text);
+    margin-bottom: var(--spacing-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
 .work-with-us-contact .form-group input,
 .work-with-us-contact .form-group textarea {
     width: 100%;
@@ -4215,6 +4225,7 @@ img[loading="lazy"].loaded {
     font-size: 1rem;
     transition: all var(--transition-normal);
     background: var(--white);
+    font-family: inherit;
 }
 
 .work-with-us-contact .form-group input:focus,
@@ -4223,6 +4234,12 @@ img[loading="lazy"].loaded {
     border-color: var(--accent-color);
     box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
     transform: translateY(-2px);
+}
+
+.work-with-us-contact .form-group input::placeholder,
+.work-with-us-contact .form-group textarea::placeholder {
+    color: #9ca3af;
+    font-style: italic;
 }
 
 .work-with-us-contact .btn {
@@ -4237,6 +4254,7 @@ img[loading="lazy"].loaded {
     cursor: pointer;
     transition: all var(--transition-normal);
     box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
+    margin-top: var(--spacing-md);
 }
 
 .work-with-us-contact .btn:hover {

@@ -142,28 +142,34 @@
                     <form class="contact-form" id="workWithUsForm">
                         <div class="form-row">
                             <div class="form-group">
-                                <input type="text" name="name" placeholder="Full Name" required>
+                                <label for="name">Name</label>
+                                <input type="text" id="name" name="name" required>
                             </div>
                             <div class="form-group">
-                                <input type="email" name="email" placeholder="Email Address" required>
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" required>
                             </div>
                         </div>
                         
                         <div class="form-row">
                             <div class="form-group">
-                                <input type="tel" name="phone" placeholder="Phone Number" required>
+                                <label for="phone">Phone</label>
+                                <input type="tel" id="phone" name="phone" required>
                             </div>
                             <div class="form-group">
-                                <input type="text" name="city" placeholder="City" required>
+                                <label for="city">City</label>
+                                <input type="text" id="city" name="city" required>
                             </div>
                         </div>
                         
                         <div class="form-group">
-                            <input type="text" name="state" placeholder="State" required>
+                            <label for="state">State</label>
+                            <input type="text" id="state" name="state" required>
                         </div>
                         
                         <div class="form-group">
-                            <textarea name="message" placeholder="Tell us about your business goals and how we can help..." rows="4" required></textarea>
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="4" required></textarea>
                         </div>
                         
                         <button type="submit" class="btn btn-primary">
