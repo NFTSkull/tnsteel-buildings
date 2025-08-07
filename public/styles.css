@@ -3909,14 +3909,14 @@ img[loading="lazy"].loaded {
 
 /* Work With Us Page Styles */
 .work-with-us-hero {
-    min-height: 80vh;
+    min-height: 70vh;
     display: flex;
     align-items: center;
     justify-content: center;
     background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
     position: relative;
     overflow: hidden;
-    padding: var(--spacing-xl) 0;
+    padding: var(--spacing-lg) 0;
 }
 
 .work-with-us-hero::before {
@@ -3933,7 +3933,7 @@ img[loading="lazy"].loaded {
 .work-with-us-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: var(--spacing-xl);
+    gap: var(--spacing-lg);
     align-items: center;
     max-width: 1200px;
     margin: 0 auto;
@@ -3947,7 +3947,7 @@ img[loading="lazy"].loaded {
 }
 
 .work-with-us-title {
-    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
     font-weight: 800;
     color: var(--primary-text);
     margin-bottom: var(--spacing-md);
@@ -3956,10 +3956,10 @@ img[loading="lazy"].loaded {
 }
 
 .work-with-us-subtitle {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: var(--secondary-text);
     line-height: 1.6;
-    margin-bottom: var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
 }
 
 .work-with-us-image {
@@ -3984,14 +3984,14 @@ img[loading="lazy"].loaded {
 /* Benefits Section */
 .work-with-us-benefits {
     background: #000000;
-    padding: var(--spacing-xl) 0;
+    padding: var(--spacing-lg) 0;
     position: relative;
 }
 
 .benefits-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: var(--spacing-xl);
+    gap: var(--spacing-lg);
     align-items: center;
     max-width: 1200px;
     margin: 0 auto;
@@ -4018,10 +4018,10 @@ img[loading="lazy"].loaded {
 }
 
 .benefits-list h3 {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     font-weight: 700;
     color: #ffffff;
-    margin-bottom: var(--spacing-xl);
+    margin-bottom: var(--spacing-lg);
     text-align: left;
 }
 
@@ -4035,7 +4035,7 @@ img[loading="lazy"].loaded {
     display: flex;
     align-items: flex-start;
     gap: var(--spacing-md);
-    margin-bottom: var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
     padding: var(--spacing-md);
     border-radius: var(--radius-lg);
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
@@ -4044,7 +4044,7 @@ img[loading="lazy"].loaded {
 
 .benefit-item:hover {
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.1) 100%);
-    transform: translateY(-5px);
+    transform: translateY(-3px);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
@@ -4052,25 +4052,25 @@ img[loading="lazy"].loaded {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     background: linear-gradient(135deg, var(--accent-color) 0%, var(--blue) 100%);
     border-radius: 50%;
     color: var(--white);
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     flex-shrink: 0;
     box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
 }
 
 .benefit-content h4 {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 600;
     color: #ffffff;
     margin-bottom: var(--spacing-sm);
 }
 
 .benefit-content p {
-    font-size: 1rem;
+    font-size: 0.95rem;
     color: #e2e8f0;
     line-height: 1.6;
     margin-bottom: var(--spacing-sm);
@@ -4085,7 +4085,7 @@ img[loading="lazy"].loaded {
 /* Quote Section */
 .work-with-us-quote {
     background: var(--white);
-    padding: var(--spacing-xl) 0;
+    padding: var(--spacing-lg) 0;
     text-align: center;
 }
 
@@ -4096,7 +4096,7 @@ img[loading="lazy"].loaded {
 }
 
 .quote-content blockquote {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     font-weight: 700;
     color: var(--secondary-text);
     font-style: italic;
@@ -4107,35 +4107,35 @@ img[loading="lazy"].loaded {
 
 .quote-content blockquote::before {
     content: '"';
-    font-size: 4rem;
+    font-size: 3.5rem;
     color: var(--accent-color);
     position: absolute;
-    top: -20px;
-    left: -40px;
+    top: -15px;
+    left: -30px;
     opacity: 0.3;
 }
 
 .quote-content blockquote::after {
     content: '"';
-    font-size: 4rem;
+    font-size: 3.5rem;
     color: var(--accent-color);
     position: absolute;
-    bottom: -40px;
-    right: -40px;
+    bottom: -30px;
+    right: -30px;
     opacity: 0.3;
 }
 
 /* Contact Section */
 .work-with-us-contact {
     background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-    padding: var(--spacing-xl) 0;
+    padding: var(--spacing-lg) 0;
     position: relative;
 }
 
 .contact-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: var(--spacing-xl);
+    gap: var(--spacing-lg);
     align-items: center;
     max-width: 1200px;
     margin: 0 auto;
@@ -4163,18 +4163,28 @@ img[loading="lazy"].loaded {
 
 .contact-form-container {
     background: var(--white);
-    padding: var(--spacing-xl);
+    padding: var(--spacing-lg);
     border-radius: var(--radius-xl);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
-.contact-form-container h3 {
-    font-size: 2rem;
+.form-header {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+.form-header h3 {
+    font-size: 1.8rem;
     font-weight: 700;
     color: var(--primary-text);
-    margin-bottom: var(--spacing-lg);
-    text-align: center;
+    margin-bottom: var(--spacing-sm);
+}
+
+.form-header p {
+    font-size: 1rem;
+    color: var(--secondary-text);
+    line-height: 1.5;
 }
 
 .work-with-us-contact .contact-form {
@@ -4185,8 +4195,15 @@ img[loading="lazy"].loaded {
     border: none;
 }
 
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+}
+
 .work-with-us-contact .form-group {
-    margin-bottom: var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
 }
 
 .work-with-us-contact .form-group input,
@@ -4210,8 +4227,8 @@ img[loading="lazy"].loaded {
 
 .work-with-us-contact .btn {
     width: 100%;
-    padding: var(--spacing-md) var(--spacing-xl);
-    font-size: 1.1rem;
+    padding: var(--spacing-md) var(--spacing-lg);
+    font-size: 1rem;
     font-weight: 600;
     background: linear-gradient(135deg, var(--accent-color) 0%, var(--blue) 100%);
     border: none;
@@ -4230,9 +4247,14 @@ img[loading="lazy"].loaded {
 
 /* Responsive Design for Work With Us */
 @media (max-width: 768px) {
+    .work-with-us-hero {
+        min-height: 60vh;
+        padding: var(--spacing-md) 0;
+    }
+    
     .work-with-us-content {
         grid-template-columns: 1fr;
-        gap: var(--spacing-lg);
+        gap: var(--spacing-md);
         text-align: center;
     }
     
@@ -4241,11 +4263,11 @@ img[loading="lazy"].loaded {
     }
     
     .work-with-us-title {
-        font-size: 2.5rem;
+        font-size: 2.2rem;
     }
     
     .work-with-us-subtitle {
-        font-size: 1.1rem;
+        font-size: 1rem;
     }
     
     .work-with-us-image {
@@ -4254,25 +4276,29 @@ img[loading="lazy"].loaded {
     
     .benefits-content {
         grid-template-columns: 1fr;
-        gap: var(--spacing-lg);
+        gap: var(--spacing-md);
     }
     
     .benefits-list h3 {
-        font-size: 2rem;
+        font-size: 1.8rem;
         text-align: center;
     }
     
     .benefit-item {
         flex-direction: column;
         text-align: center;
+        padding: var(--spacing-sm);
     }
     
     .benefit-icon {
         align-self: center;
+        width: 45px;
+        height: 45px;
+        font-size: 1.1rem;
     }
     
     .quote-content blockquote {
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
     
     .quote-content blockquote::before,
@@ -4282,34 +4308,39 @@ img[loading="lazy"].loaded {
     
     .contact-content {
         grid-template-columns: 1fr;
-        gap: var(--spacing-lg);
+        gap: var(--spacing-md);
     }
     
     .contact-form-container {
-        padding: var(--spacing-lg);
+        padding: var(--spacing-md);
     }
     
-    .contact-form-container h3 {
-        font-size: 1.8rem;
+    .form-header h3 {
+        font-size: 1.5rem;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-sm);
     }
 }
 
 @media (max-width: 480px) {
     .work-with-us-hero {
-        min-height: 70vh;
-        padding: var(--spacing-lg) 0;
+        min-height: 50vh;
+        padding: var(--spacing-sm) 0;
     }
     
     .work-with-us-title {
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
     
     .work-with-us-subtitle {
-        font-size: 1rem;
+        font-size: 0.95rem;
     }
     
     .benefits-list h3 {
-        font-size: 1.8rem;
+        font-size: 1.5rem;
     }
     
     .benefit-item {
@@ -4317,9 +4348,9 @@ img[loading="lazy"].loaded {
     }
     
     .benefit-icon {
-        width: 50px;
-        height: 50px;
-        font-size: 1.2rem;
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
     }
     
     .quote-content blockquote {
@@ -4327,10 +4358,16 @@ img[loading="lazy"].loaded {
     }
     
     .contact-form-container {
-        padding: var(--spacing-md);
+        padding: var(--spacing-sm);
     }
     
-    .contact-form-container h3 {
-        font-size: 1.5rem;
+    .form-header h3 {
+        font-size: 1.3rem;
+    }
+    
+    .work-with-us-contact .form-group input,
+    .work-with-us-contact .form-group textarea {
+        padding: var(--spacing-sm);
+        font-size: 0.95rem;
     }
 }
