@@ -3983,7 +3983,7 @@ img[loading="lazy"].loaded {
 
 /* Benefits Section */
 .work-with-us-benefits {
-    background: var(--white);
+    background: #000000;
     padding: var(--spacing-xl) 0;
     position: relative;
 }
@@ -4020,7 +4020,7 @@ img[loading="lazy"].loaded {
 .benefits-list h3 {
     font-size: 2.5rem;
     font-weight: 700;
-    color: var(--primary-text);
+    color: #ffffff;
     margin-bottom: var(--spacing-xl);
     text-align: left;
 }
@@ -4038,14 +4038,14 @@ img[loading="lazy"].loaded {
     margin-bottom: var(--spacing-lg);
     padding: var(--spacing-md);
     border-radius: var(--radius-lg);
-    background: linear-gradient(135deg, rgba(248, 250, 252, 0.8) 0%, rgba(241, 245, 249, 0.9) 100%);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
     transition: all var(--transition-normal);
 }
 
 .benefit-item:hover {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(248, 250, 252, 1) 100%);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.1) 100%);
     transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 .benefit-icon {
@@ -4065,20 +4065,20 @@ img[loading="lazy"].loaded {
 .benefit-content h4 {
     font-size: 1.2rem;
     font-weight: 600;
-    color: var(--primary-text);
+    color: #ffffff;
     margin-bottom: var(--spacing-sm);
 }
 
 .benefit-content p {
     font-size: 1rem;
-    color: var(--secondary-text);
+    color: #e2e8f0;
     line-height: 1.6;
     margin-bottom: var(--spacing-sm);
 }
 
 .benefit-content span {
     font-size: 0.9rem;
-    color: var(--secondary-text);
+    color: #cbd5e1;
     line-height: 1.5;
 }
 
