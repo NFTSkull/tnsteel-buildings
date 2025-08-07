@@ -3906,3 +3906,300 @@ img[loading="lazy"].loaded {
         font-size: 0.85rem;
     }
 }
+
+/* Work With Us Page Styles */
+.work-with-us-hero {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    position: relative;
+    overflow: hidden;
+    padding: var(--spacing-xl) 0;
+}
+
+.work-with-us-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(248, 250, 252, 0.9) 100%);
+    z-index: 1;
+}
+
+.work-with-us-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xl);
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+    position: relative;
+    z-index: 2;
+}
+
+.work-with-us-text {
+    text-align: left;
+}
+
+.work-with-us-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 800;
+    color: var(--primary-text);
+    margin-bottom: var(--spacing-md);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+}
+
+.work-with-us-subtitle {
+    font-size: 1.2rem;
+    color: var(--secondary-text);
+    line-height: 1.6;
+    margin-bottom: var(--spacing-lg);
+}
+
+.work-with-us-image {
+    position: relative;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    aspect-ratio: 4/3;
+}
+
+.work-with-us-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+}
+
+.work-with-us-image:hover img {
+    transform: scale(1.05);
+}
+
+/* Work With Us Contact Section */
+.work-with-us-contact {
+    background: var(--white);
+    padding: var(--spacing-xl) 0;
+    position: relative;
+}
+
+.contact-form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+}
+
+.work-with-us-contact .contact-form {
+    background: var(--white);
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-xl);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.work-with-us-contact .contact-form h3 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-text);
+    margin-bottom: var(--spacing-sm);
+    text-align: center;
+}
+
+.work-with-us-contact .contact-form > p {
+    font-size: 1.1rem;
+    color: var(--secondary-text);
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+    line-height: 1.6;
+}
+
+.work-with-us-contact .form-group {
+    margin-bottom: var(--spacing-lg);
+}
+
+.work-with-us-contact .form-group input,
+.work-with-us-contact .form-group textarea {
+    width: 100%;
+    padding: var(--spacing-md);
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    transition: all var(--transition-normal);
+    background: var(--white);
+}
+
+.work-with-us-contact .form-group input:focus,
+.work-with-us-contact .form-group textarea:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+    transform: translateY(-2px);
+}
+
+.work-with-us-contact .btn {
+    width: 100%;
+    padding: var(--spacing-md) var(--spacing-xl);
+    font-size: 1.1rem;
+    font-weight: 600;
+    background: linear-gradient(135deg, var(--accent-color) 0%, var(--blue) 100%);
+    border: none;
+    border-radius: var(--radius-md);
+    color: var(--white);
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
+}
+
+.work-with-us-contact .btn:hover {
+    background: linear-gradient(135deg, var(--blue) 0%, var(--accent-color) 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(220, 38, 38, 0.4);
+}
+
+/* Work With Us Social Section */
+.work-with-us-social {
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    padding: var(--spacing-xl) 0;
+    text-align: center;
+}
+
+.social-content {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+}
+
+.social-content h3 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-text);
+    margin-bottom: var(--spacing-sm);
+}
+
+.social-content > p {
+    font-size: 1.1rem;
+    color: var(--secondary-text);
+    margin-bottom: var(--spacing-xl);
+    line-height: 1.6;
+}
+
+.work-with-us-social .social-links {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-lg);
+    flex-wrap: wrap;
+}
+
+.work-with-us-social .social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--accent-color) 0%, var(--blue) 100%);
+    border-radius: 50%;
+    color: var(--white);
+    font-size: 1.5rem;
+    text-decoration: none;
+    transition: all var(--transition-normal);
+    box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
+}
+
+.work-with-us-social .social-link:hover {
+    background: linear-gradient(135deg, var(--blue) 0%, var(--accent-color) 100%);
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 8px 25px rgba(220, 38, 38, 0.4);
+}
+
+/* Responsive Design for Work With Us */
+@media (max-width: 768px) {
+    .work-with-us-content {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+        text-align: center;
+    }
+    
+    .work-with-us-text {
+        text-align: center;
+    }
+    
+    .work-with-us-title {
+        font-size: 2.5rem;
+    }
+    
+    .work-with-us-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .work-with-us-image {
+        aspect-ratio: 3/2;
+    }
+    
+    .contact-form-container {
+        padding: 0 var(--spacing-md);
+    }
+    
+    .work-with-us-contact .contact-form {
+        padding: var(--spacing-lg);
+    }
+    
+    .work-with-us-contact .contact-form h3 {
+        font-size: 1.8rem;
+    }
+    
+    .social-content {
+        padding: 0 var(--spacing-md);
+    }
+    
+    .social-content h3 {
+        font-size: 1.8rem;
+    }
+    
+    .work-with-us-social .social-links {
+        gap: var(--spacing-md);
+    }
+    
+    .work-with-us-social .social-link {
+        width: 50px;
+        height: 50px;
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .work-with-us-hero {
+        min-height: 70vh;
+        padding: var(--spacing-lg) 0;
+    }
+    
+    .work-with-us-title {
+        font-size: 2rem;
+    }
+    
+    .work-with-us-subtitle {
+        font-size: 1rem;
+    }
+    
+    .work-with-us-contact .contact-form {
+        padding: var(--spacing-md);
+    }
+    
+    .work-with-us-contact .contact-form h3 {
+        font-size: 1.5rem;
+    }
+    
+    .social-content h3 {
+        font-size: 1.5rem;
+    }
+    
+    .work-with-us-social .social-link {
+        width: 45px;
+        height: 45px;
+        font-size: 1.2rem;
+    }
+}
