@@ -4150,7 +4150,7 @@ img[loading="lazy"].loaded {
 
 .form-header {
     text-align: center;
-    margin-bottom: var(--spacing-lg);
+    margin-bottom: var(--spacing-md); /* Reduced from lg to md for more compact design */
     position: relative;
 }
 
@@ -4207,7 +4207,7 @@ img[loading="lazy"].loaded {
     font-size: 1rem;
     color: var(--secondary-text);
     line-height: 1.5;
-    margin-bottom: var(--spacing-sm);
+    margin-bottom: var(--spacing-xs); /* Reduced margin for more compact design */
 }
 
 .work-with-us-contact .contact-form {
@@ -4221,12 +4221,16 @@ img[loading="lazy"].loaded {
 .form-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: var(--spacing-sm);
-    margin-bottom: var(--spacing-sm);
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
 }
 
 .work-with-us-contact .form-group {
-    margin-bottom: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+}
+
+.form-group-full {
+    grid-column: 1 / -1;
 }
 
 .input-wrapper {
