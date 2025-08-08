@@ -4422,37 +4422,49 @@ img[loading="lazy"].loaded {
         margin-bottom: var(--spacing-sm);
     }
     
-    .form-row {
-        display: flex;
-        flex-direction: column; /* Single column layout on mobile */
-        gap: var(--spacing-sm);
-        margin-bottom: 0;
-    }
-    
-    .work-with-us-contact .form-group,
-    .work-with-us-contact .form-group-full {
-        margin-bottom: var(--spacing-sm); /* Consistent spacing */
+    /* Simplify form structure like homepage */
+    .work-with-us-contact .form-group {
+        margin-bottom: var(--spacing-sm);
         width: 100%;
     }
     
+    /* Hide complex wrapper elements on mobile */
     .input-wrapper {
-        padding: var(--spacing-xs);
+        padding: 0;
+        background: transparent;
+        border-radius: 0;
+        box-shadow: none;
+        border: none;
+        position: static;
     }
     
     .input-icon {
         display: none; /* Hide icons on mobile */
     }
     
+    .input-border {
+        display: none; /* Hide animated borders on mobile */
+    }
+    
     .work-with-us-contact .form-group label {
-        font-size: 0.75rem;
-        margin-bottom: var(--spacing-xs);
-        padding-left: var(--spacing-xs);
+        display: none; /* Hide labels on mobile, use placeholders */
     }
     
     .work-with-us-contact .form-group input,
     .work-with-us-contact .form-group textarea {
         padding: var(--spacing-sm);
         font-size: 0.9rem;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: var(--radius-md);
+        color: var(--white);
+        width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .work-with-us-contact .form-group input::placeholder,
+    .work-with-us-contact .form-group textarea::placeholder {
+        color: rgba(255, 255, 255, 0.7);
     }
     
     .work-with-us-contact .btn {
@@ -4504,37 +4516,49 @@ img[loading="lazy"].loaded {
         margin-bottom: var(--spacing-sm);
     }
     
-    .form-row {
-        display: flex;
-        flex-direction: column; /* Single column layout on small mobile */
-        gap: var(--spacing-xs);
-        margin-bottom: 0;
-    }
-    
-    .work-with-us-contact .form-group,
-    .work-with-us-contact .form-group-full {
-        margin-bottom: var(--spacing-xs); /* Consistent spacing */
+    /* Simplify form structure like homepage */
+    .work-with-us-contact .form-group {
+        margin-bottom: var(--spacing-xs);
         width: 100%;
     }
     
+    /* Hide complex wrapper elements on small mobile */
     .input-wrapper {
-        padding: var(--spacing-xs);
+        padding: 0;
+        background: transparent;
+        border-radius: 0;
+        box-shadow: none;
+        border: none;
+        position: static;
     }
     
     .input-icon {
         display: none; /* Hide icons on small mobile */
     }
     
+    .input-border {
+        display: none; /* Hide animated borders on small mobile */
+    }
+    
     .work-with-us-contact .form-group label {
-        font-size: 0.7rem;
-        margin-bottom: var(--spacing-xs);
-        padding-left: var(--spacing-xs);
+        display: none; /* Hide labels on small mobile, use placeholders */
     }
     
     .work-with-us-contact .form-group input,
     .work-with-us-contact .form-group textarea {
         padding: var(--spacing-xs);
         font-size: 0.85rem;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: var(--radius-md);
+        color: var(--white);
+        width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .work-with-us-contact .form-group input::placeholder,
+    .work-with-us-contact .form-group textarea::placeholder {
+        color: rgba(255, 255, 255, 0.7);
     }
     
     .work-with-us-contact .btn {
