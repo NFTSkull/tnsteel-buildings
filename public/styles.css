@@ -4447,7 +4447,14 @@ img[loading="lazy"].loaded {
     }
     
     .work-with-us-contact .form-group label {
-        display: none; /* Hide labels on mobile, use placeholders */
+        display: block; /* Show labels on mobile */
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: var(--white);
+        margin-bottom: var(--spacing-xs);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        padding-left: 0;
     }
     
     .work-with-us-contact .form-group input,
@@ -4541,7 +4548,14 @@ img[loading="lazy"].loaded {
     }
     
     .work-with-us-contact .form-group label {
-        display: none; /* Hide labels on small mobile, use placeholders */
+        display: block; /* Show labels on small mobile */
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: var(--white);
+        margin-bottom: var(--spacing-xs);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        padding-left: 0;
     }
     
     .work-with-us-contact .form-group input,
