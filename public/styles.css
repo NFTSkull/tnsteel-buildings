@@ -4455,7 +4455,7 @@ img[loading="lazy"].loaded {
         padding: var(--spacing-sm);
         font-size: 0.9rem;
         background: rgba(255, 255, 255, 0.1);
-        border: 1px solid rgba(255, 255, 255, 0.2);
+        border: 1px solid var(--accent-color);
         border-radius: var(--radius-md);
         color: var(--white);
         width: 100%;
@@ -4549,7 +4549,7 @@ img[loading="lazy"].loaded {
         padding: var(--spacing-xs);
         font-size: 0.85rem;
         background: rgba(255, 255, 255, 0.1);
-        border: 1px solid rgba(255, 255, 255, 0.2);
+        border: 1px solid var(--accent-color);
         border-radius: var(--radius-md);
         color: var(--white);
         width: 100%;
