@@ -4118,7 +4118,7 @@ img[loading="lazy"].loaded {
 
 .contact-form-container {
     background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
-    padding: var(--spacing-xl) var(--spacing-xl);
+    padding: var(--spacing-lg) var(--spacing-lg);
     border-radius: var(--radius-xl);
     box-shadow: 
         0 20px 40px rgba(0, 0, 0, 0.1),
@@ -4150,19 +4150,19 @@ img[loading="lazy"].loaded {
 
 .form-header {
     text-align: center;
-    margin-bottom: var(--spacing-xl);
+    margin-bottom: var(--spacing-lg);
     position: relative;
 }
 
 .form-header-icon {
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
     background: linear-gradient(135deg, var(--accent-color) 0%, var(--blue) 100%);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto var(--spacing-md);
+    margin: 0 auto var(--spacing-sm);
     box-shadow: 0 10px 30px rgba(220, 38, 38, 0.3);
     position: relative;
     overflow: hidden;
@@ -4186,17 +4186,17 @@ img[loading="lazy"].loaded {
 }
 
 .form-header-icon i {
-    font-size: 2rem;
+    font-size: 1.5rem;
     color: white;
     z-index: 1;
     position: relative;
 }
 
 .form-header h3 {
-    font-size: 2.2rem;
+    font-size: 1.8rem;
     font-weight: 700;
     color: var(--primary-text);
-    margin-bottom: var(--spacing-sm);
+    margin-bottom: var(--spacing-xs);
     background: linear-gradient(135deg, var(--primary-text) 0%, var(--accent-color) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -4204,9 +4204,10 @@ img[loading="lazy"].loaded {
 }
 
 .form-header p {
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: var(--secondary-text);
-    line-height: 1.6;
+    line-height: 1.5;
+    margin-bottom: var(--spacing-sm);
 }
 
 .work-with-us-contact .contact-form {
@@ -4220,19 +4221,19 @@ img[loading="lazy"].loaded {
 .form-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: var(--spacing-md);
-    margin-bottom: var(--spacing-md);
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
 }
 
 .work-with-us-contact .form-group {
-    margin-bottom: var(--spacing-md);
+    margin-bottom: var(--spacing-sm);
 }
 
 .input-wrapper {
     position: relative;
     background: #ffffff;
     border-radius: var(--radius-lg);
-    padding: var(--spacing-sm);
+    padding: var(--spacing-xs);
     box-shadow: 
         0 2px 10px rgba(0, 0, 0, 0.05),
         inset 0 1px 0 rgba(255, 255, 255, 0.8);
@@ -4257,16 +4258,16 @@ img[loading="lazy"].loaded {
 
 .input-icon {
     position: absolute;
-    left: var(--spacing-md);
+    left: var(--spacing-sm);
     top: 50%;
     transform: translateY(-50%);
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
     display: flex;
     align-items: center;
     justify-content: center;
     color: var(--accent-color);
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     z-index: 2;
     transition: all var(--transition-normal);
 }
@@ -4278,13 +4279,13 @@ img[loading="lazy"].loaded {
 
 .work-with-us-contact .form-group label {
     display: block;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     font-weight: 600;
     color: var(--primary-text);
-    margin-bottom: var(--spacing-sm);
+    margin-bottom: var(--spacing-xs);
     text-transform: uppercase;
-    letter-spacing: 1px;
-    padding-left: var(--spacing-md);
+    letter-spacing: 0.5px;
+    padding-left: var(--spacing-sm);
     transition: all var(--transition-normal);
 }
 
@@ -4295,10 +4296,10 @@ img[loading="lazy"].loaded {
 .work-with-us-contact .form-group input,
 .work-with-us-contact .form-group textarea {
     width: 100%;
-    padding: var(--spacing-md) var(--spacing-md) var(--spacing-md) calc(var(--spacing-md) * 2 + 20px);
+    padding: var(--spacing-sm) var(--spacing-sm) var(--spacing-sm) calc(var(--spacing-sm) * 2 + 18px);
     border: none;
     border-radius: var(--radius-md);
-    font-size: 1rem;
+    font-size: 0.95rem;
     transition: all var(--transition-normal);
     background: transparent;
     font-family: inherit;
@@ -4338,8 +4339,8 @@ img[loading="lazy"].loaded {
 
 .work-with-us-contact .btn {
     width: 100%;
-    padding: var(--spacing-lg) var(--spacing-xl);
-    font-size: 1.1rem;
+    padding: var(--spacing-md) var(--spacing-lg);
+    font-size: 1rem;
     font-weight: 600;
     background: linear-gradient(135deg, var(--accent-color) 0%, var(--blue) 100%);
     border: none;
@@ -4350,7 +4351,7 @@ img[loading="lazy"].loaded {
     box-shadow: 
         0 8px 25px rgba(220, 38, 38, 0.3),
         0 4px 10px rgba(0, 0, 0, 0.1);
-    margin-top: var(--spacing-lg);
+    margin-top: var(--spacing-md);
     position: relative;
     overflow: hidden;
 }
