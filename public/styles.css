@@ -4423,18 +4423,16 @@ img[loading="lazy"].loaded {
     }
     
     .form-row {
-        grid-template-columns: 1fr 1fr; /* 2 columns on mobile */
+        display: flex;
+        flex-direction: column; /* Single column layout on mobile */
         gap: var(--spacing-sm);
-        margin-bottom: var(--spacing-sm);
+        margin-bottom: 0;
     }
     
-    .work-with-us-contact .form-group {
-        margin-bottom: 0; /* Remove individual margins */
-    }
-    
-    /* Make State and Message full width */
+    .work-with-us-contact .form-group,
     .work-with-us-contact .form-group-full {
-        grid-column: 1 / -1; /* Full width for State and Message */
+        margin-bottom: var(--spacing-sm); /* Consistent spacing */
+        width: 100%;
     }
     
     .input-wrapper {
@@ -4507,18 +4505,16 @@ img[loading="lazy"].loaded {
     }
     
     .form-row {
-        grid-template-columns: 1fr 1fr; /* Keep 2 columns on small mobile */
+        display: flex;
+        flex-direction: column; /* Single column layout on small mobile */
         gap: var(--spacing-xs);
-        margin-bottom: var(--spacing-sm);
+        margin-bottom: 0;
     }
     
-    .work-with-us-contact .form-group {
-        margin-bottom: 0; /* Remove individual margins */
-    }
-    
-    /* Make State and Message full width on small mobile */
+    .work-with-us-contact .form-group,
     .work-with-us-contact .form-group-full {
-        grid-column: 1 / -1;
+        margin-bottom: var(--spacing-xs); /* Consistent spacing */
+        width: 100%;
     }
     
     .input-wrapper {
