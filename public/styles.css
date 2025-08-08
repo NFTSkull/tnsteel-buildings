@@ -3913,72 +3913,47 @@ img[loading="lazy"].loaded {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('Gráfico financiero en tonos cálidos.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     position: relative;
     overflow: hidden;
     padding: var(--spacing-lg) 0;
 }
 
-.work-with-us-hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(248, 250, 252, 0.9) 100%);
-    z-index: 1;
-}
-
 .work-with-us-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--spacing-lg);
+    display: flex;
+    justify-content: center;
     align-items: center;
-    max-width: 1200px;
+    max-width: 800px;
     margin: 0 auto;
     padding: 0 var(--spacing-lg);
     position: relative;
     z-index: 2;
+    text-align: center;
 }
 
 .work-with-us-text {
-    text-align: left;
+    text-align: center;
 }
 
 .work-with-us-title {
     font-size: clamp(2.5rem, 5vw, 3.5rem);
     font-weight: 800;
-    color: var(--primary-text);
+    color: #ffffff;
     margin-bottom: var(--spacing-md);
     letter-spacing: -0.02em;
     line-height: 1.1;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .work-with-us-subtitle {
     font-size: 1.1rem;
-    color: var(--secondary-text);
+    color: #f8fafc;
     line-height: 1.6;
     margin-bottom: var(--spacing-md);
-}
-
-.work-with-us-image {
-    position: relative;
-    border-radius: var(--radius-xl);
-    overflow: hidden;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-    aspect-ratio: 4/3;
-}
-
-.work-with-us-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform var(--transition-slow);
-}
-
-.work-with-us-image:hover img {
-    transform: scale(1.05);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 /* Benefits Section */
