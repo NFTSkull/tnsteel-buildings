@@ -4450,7 +4450,7 @@ img[loading="lazy"].loaded {
         display: block; /* Show labels on mobile */
         font-size: 0.8rem;
         font-weight: 600;
-        color: var(--white);
+        color: #000000; /* Black text for labels */
         margin-bottom: var(--spacing-xs);
         text-transform: uppercase;
         letter-spacing: 0.5px;
@@ -4461,17 +4461,17 @@ img[loading="lazy"].loaded {
     .work-with-us-contact .form-group textarea {
         padding: var(--spacing-sm);
         font-size: 0.9rem;
-        background: rgba(255, 255, 255, 0.1);
+        background: rgba(128, 128, 128, 0.3); /* Light gray background */
         border: 1px solid #000000;
         border-radius: var(--radius-md);
-        color: var(--white);
+        color: #000000; /* Black text for inputs */
         width: 100%;
         box-sizing: border-box;
     }
     
     .work-with-us-contact .form-group input::placeholder,
     .work-with-us-contact .form-group textarea::placeholder {
-        color: rgba(255, 255, 255, 0.7);
+        color: rgba(0, 0, 0, 0.5); /* Dark placeholder text */
     }
     
     .work-with-us-contact .btn {
@@ -4551,7 +4551,7 @@ img[loading="lazy"].loaded {
         display: block; /* Show labels on small mobile */
         font-size: 0.75rem;
         font-weight: 600;
-        color: var(--white);
+        color: #000000; /* Black text for labels */
         margin-bottom: var(--spacing-xs);
         text-transform: uppercase;
         letter-spacing: 0.5px;
@@ -4562,17 +4562,17 @@ img[loading="lazy"].loaded {
     .work-with-us-contact .form-group textarea {
         padding: var(--spacing-xs);
         font-size: 0.85rem;
-        background: rgba(255, 255, 255, 0.1);
+        background: rgba(128, 128, 128, 0.3); /* Light gray background */
         border: 1px solid #000000;
         border-radius: var(--radius-md);
-        color: var(--white);
+        color: #000000; /* Black text for inputs */
         width: 100%;
         box-sizing: border-box;
     }
     
     .work-with-us-contact .form-group input::placeholder,
     .work-with-us-contact .form-group textarea::placeholder {
-        color: rgba(255, 255, 255, 0.7);
+        color: rgba(0, 0, 0, 0.5); /* Dark placeholder text */
     }
     
     .work-with-us-contact .btn {
