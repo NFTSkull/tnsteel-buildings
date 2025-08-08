@@ -4429,12 +4429,11 @@ img[loading="lazy"].loaded {
     }
     
     .work-with-us-contact .form-group {
-        margin-bottom: var(--spacing-sm);
+        margin-bottom: 0; /* Remove individual margins */
     }
     
-    /* Single column for State and Message */
-    .form-group:nth-of-type(5),
-    .form-group:nth-of-type(6) {
+    /* Make State and Message full width */
+    .work-with-us-contact .form-group-full {
         grid-column: 1 / -1; /* Full width for State and Message */
     }
     
@@ -4510,16 +4509,15 @@ img[loading="lazy"].loaded {
     .form-row {
         grid-template-columns: 1fr 1fr; /* Keep 2 columns on small mobile */
         gap: var(--spacing-xs);
-        margin-bottom: var(--spacing-xs);
+        margin-bottom: var(--spacing-sm);
     }
     
     .work-with-us-contact .form-group {
-        margin-bottom: var(--spacing-xs);
+        margin-bottom: 0; /* Remove individual margins */
     }
     
-    /* Single column for State and Message on small mobile */
-    .form-group:nth-of-type(5),
-    .form-group:nth-of-type(6) {
+    /* Make State and Message full width on small mobile */
+    .work-with-us-contact .form-group-full {
         grid-column: 1 / -1;
     }
     
