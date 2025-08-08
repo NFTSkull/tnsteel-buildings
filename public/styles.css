@@ -4404,7 +4404,7 @@ img[loading="lazy"].loaded {
     }
     
     .form-header {
-        margin-bottom: var(--spacing-md);
+        margin-bottom: var(--spacing-sm); /* Reduced header spacing */
     }
     
     .form-header-icon {
@@ -4424,7 +4424,7 @@ img[loading="lazy"].loaded {
     
     /* Simplify form structure like homepage */
     .work-with-us-contact .form-group {
-        margin-bottom: var(--spacing-sm);
+        margin-bottom: var(--spacing-xs); /* Reduced spacing between fields */
         width: 100%;
     }
     
@@ -4477,7 +4477,7 @@ img[loading="lazy"].loaded {
     .work-with-us-contact .btn {
         padding: var(--spacing-sm) var(--spacing-lg);
         font-size: 1rem;
-        margin-top: var(--spacing-md);
+        margin-top: var(--spacing-sm); /* Reduced button top margin */
     }
     
     .form-header h3 {
@@ -4501,12 +4501,12 @@ img[loading="lazy"].loaded {
 
 @media (max-width: 480px) {
     .contact-form-container {
-        padding: var(--spacing-sm);
+        padding: var(--spacing-xs); /* Reduced container padding for compact design */
         margin: 0 var(--spacing-xs);
     }
     
     .form-header {
-        margin-bottom: var(--spacing-sm);
+        margin-bottom: var(--spacing-xs); /* Further reduced header spacing for small mobile */
     }
     
     .form-header-icon {
@@ -4525,7 +4525,7 @@ img[loading="lazy"].loaded {
     
     /* Simplify form structure like homepage */
     .work-with-us-contact .form-group {
-        margin-bottom: var(--spacing-xs);
+        margin-bottom: calc(var(--spacing-xs) * 0.5); /* Even smaller spacing for small mobile */
         width: 100%;
     }
     
@@ -4578,7 +4578,7 @@ img[loading="lazy"].loaded {
     .work-with-us-contact .btn {
         padding: var(--spacing-sm) var(--spacing-md);
         font-size: 0.9rem;
-        margin-top: var(--spacing-sm);
+        margin-top: var(--spacing-xs); /* Reduced button margin for compact design */
     }
     
     .form-header h3 {
