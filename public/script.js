@@ -468,29 +468,48 @@ function initializeLazyLoading() {
     }
 }
 
-// Smooth Scrolling for Anchor Links
+// Smooth Scrolling for Navigation Links
 function initializeSmoothScrolling() {
-    const links = document.querySelectorAll('a[href^="#"]');
+    // Get all navigation links
+    const navLinks = document.querySelectorAll('a[href^="#"]');
     
-    links.forEach(link => {
+    navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
             
             const targetId = this.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
+            const targetSection = document.querySelector(targetId);
             
-            if (targetElement) {
-                const headerHeight = document.querySelector('.header').offsetHeight;
-                const targetPosition = targetElement.offsetTop - headerHeight;
+            if (targetSection) {
+                // Calculate offset for fixed header (110px for two-line header)
+                const headerHeight = 110;
+                const targetPosition = targetSection.offsetTop - headerHeight;
                 
+                // Smooth scroll to target
                 window.scrollTo({
                     top: targetPosition,
                     behavior: 'smooth'
                 });
+                
+                // Close mobile menu if open
+                const mobileMenu = document.querySelector('.nav-principal.active');
+                const mobileToggle = document.querySelector('.mobile-menu-toggle.active');
+                if (mobileMenu && mobileToggle) {
+                    mobileMenu.classList.remove('active');
+                    mobileToggle.classList.remove('active');
+                    const spans = mobileToggle.querySelectorAll('span');
+                    spans.forEach(span => span.classList.remove('active'));
+                    document.body.style.overflow = 'auto';
+                }
             }
         });
     });
 }
+
+// Initialize smooth scrolling when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    initializeSmoothScrolling();
+});
 
 // Scroll Animations
 function initializeAnimations() {

@@ -1413,6 +1413,175 @@ section {
     margin-bottom: var(--spacing-md);
 }
 
+/* Carports Section */
+.carports-section {
+    padding: var(--spacing-xl) 0;
+    background: var(--white);
+}
+
+.carports-content {
+    text-align: center;
+}
+
+.carports-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-lg);
+}
+
+.carport-feature {
+    background: var(--light-gray);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    text-align: center;
+    transition: all var(--transition-normal);
+}
+
+.carport-feature:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-strong);
+}
+
+.carports-cta {
+    margin-top: var(--spacing-xl);
+}
+
+/* Garages Section */
+.garages-section {
+    padding: var(--spacing-xl) 0;
+    background: var(--light-gray);
+}
+
+.garages-content {
+    text-align: center;
+}
+
+.garages-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-lg);
+}
+
+.garage-feature {
+    background: var(--white);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    text-align: center;
+    box-shadow: var(--shadow-soft);
+    transition: all var(--transition-normal);
+}
+
+.garage-feature:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-strong);
+}
+
+.garages-cta {
+    margin-top: var(--spacing-xl);
+}
+
+/* Steel Barns Section */
+.steel-barns-section {
+    padding: var(--spacing-xl) 0;
+    background: var(--white);
+}
+
+.barns-content {
+    text-align: center;
+}
+
+.barns-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-lg);
+}
+
+.barn-feature {
+    background: var(--light-gray);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    text-align: center;
+    transition: all var(--transition-normal);
+}
+
+.barn-feature:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-strong);
+}
+
+.barns-cta {
+    margin-top: var(--spacing-xl);
+}
+
+/* Commercial Section */
+.commercial-section {
+    padding: var(--spacing-xl) 0;
+    background: var(--light-gray);
+}
+
+.commercial-content {
+    text-align: center;
+}
+
+.commercial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-lg);
+}
+
+.commercial-feature {
+    background: var(--white);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    text-align: center;
+    box-shadow: var(--shadow-soft);
+    transition: all var(--transition-normal);
+}
+
+.commercial-feature:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-strong);
+}
+
+.commercial-cta {
+    margin-top: var(--spacing-xl);
+}
+
+/* Feature Icons for all sections */
+.feature-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--accent-color), #FF3B30);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto var(--spacing-md);
+    color: var(--white);
+    font-size: 2rem;
+}
+
+.carport-feature h3,
+.garage-feature h3,
+.barn-feature h3,
+.commercial-feature h3 {
+    color: var(--black);
+    margin-bottom: var(--spacing-sm);
+    font-size: 1.25rem;
+}
+
+.carport-feature p,
+.garage-feature p,
+.barn-feature p,
+.commercial-feature p {
+    color: var(--secondary-text);
+    line-height: 1.6;
+}
+
 /* Modern Footer */
 .footer {
     background: var(--header-footer-bg);
@@ -2057,6 +2226,29 @@ section {
         width: 50px;
         height: 50px;
         font-size: 1.25rem;
+    }
+    
+    /* Carports, Garages, Steel Barns, Commercial Sections Mobile */
+    .carports-grid,
+    .garages-grid,
+    .barns-grid,
+    .commercial-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+        padding: 0 var(--spacing-sm);
+    }
+    
+    .carport-feature,
+    .garage-feature,
+    .barn-feature,
+    .commercial-feature {
+        padding: var(--spacing-md);
+    }
+    
+    .feature-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
     }
     
     /* Navegación Principal en móvil */
@@ -2740,6 +2932,28 @@ section {
         width: 40px;
         height: 40px;
         font-size: 1rem;
+    }
+    
+    /* Carports, Garages, Steel Barns, Commercial Sections Small Mobile */
+    .carports-grid,
+    .garages-grid,
+    .barns-grid,
+    .commercial-grid {
+        gap: var(--spacing-sm);
+        padding: 0 var(--spacing-xs);
+    }
+    
+    .carport-feature,
+    .garage-feature,
+    .barn-feature,
+    .commercial-feature {
+        padding: var(--spacing-sm);
+    }
+    
+    .feature-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.25rem;
     }
     
     .btn {
