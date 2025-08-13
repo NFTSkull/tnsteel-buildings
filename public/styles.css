@@ -177,7 +177,7 @@ p {
     top: 0;
     left: 0;
     right: 0;
-    background: var(--header-footer-bg);
+    background: #000000;
     backdrop-filter: blur(20px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     z-index: 1000;
@@ -185,8 +185,8 @@ p {
 }
 
 .header.scrolled {
-    background: var(--header-footer-bg);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    background: #000000;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
 }
 
 .header-content {
@@ -211,6 +211,8 @@ p {
 .nav {
     display: flex;
     align-items: center;
+    flex: 1;
+    justify-content: center;
 }
 
 .nav-list {
@@ -231,23 +233,62 @@ p {
     padding: 0.5rem 0;
 }
 
-.nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--accent-color);
-    transition: width var(--transition-normal);
-}
-
 .nav-link:hover {
     color: var(--accent-color);
 }
 
-.nav-link:hover::after {
-    width: 100%;
+/* Header Actions */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.btn-contact {
+    background: var(--white);
+    color: var(--black);
+    border-radius: var(--radius-md);
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all var(--transition-normal);
+}
+
+.btn-contact:hover {
+    background: var(--light-gray);
+    transform: translateY(-2px);
+}
+
+.btn-design {
+    background: #FF3B30;
+    color: var(--white);
+    border-radius: var(--radius-md);
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all var(--transition-normal);
+    box-shadow: 0 4px 20px rgba(255, 59, 48, 0.3);
+}
+
+.btn-design:hover {
+    background: #E02E24;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(255, 59, 48, 0.4);
+}
+
+.search-icon {
+    background: none;
+    border: none;
+    color: var(--white);
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: all var(--transition-normal);
+}
+
+.search-icon:hover {
+    color: var(--accent-color);
+    transform: scale(1.1);
 }
 
 /* Modern Dropdown */
@@ -363,7 +404,7 @@ p {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.6);
     z-index: 2;
 }
 
@@ -383,6 +424,7 @@ p {
     margin-bottom: var(--spacing-md);
     letter-spacing: -0.02em;
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    text-transform: uppercase;
 }
 
 .hero-subtitle {
@@ -1856,6 +1898,45 @@ section {
     .nav.active .nav-list li:nth-child(2) { transition-delay: 0.2s; }
     .nav.active .nav-list li:nth-child(3) { transition-delay: 0.3s; }
     .nav.active .nav-list li:nth-child(4) { transition-delay: 0.4s; }
+    
+    /* Hide header actions on mobile */
+    .header-actions {
+        display: none;
+    }
+    
+    /* Show mobile menu toggle */
+    .mobile-menu-toggle {
+        display: block;
+    }
+    
+    /* Hero responsive styles */
+    .hero {
+        min-height: 80vh;
+        height: 80vh;
+        padding-top: 80px;
+    }
+    
+    .hero-content {
+        max-width: 100%;
+        padding: var(--spacing-lg) var(--spacing-sm);
+    }
+    
+    .hero-title {
+        font-size: clamp(2.5rem, 8vw, 4rem);
+        margin-bottom: var(--spacing-sm);
+    }
+    
+    .hero-subtitle {
+        font-size: clamp(1rem, 4vw, 1.25rem);
+        margin-bottom: var(--spacing-md);
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+        align-items: center;
+    }
+    
     .nav.active .nav-list li:nth-child(5) { transition-delay: 0.5s; }
     
     .nav-link {
@@ -2454,10 +2535,20 @@ section {
     
     .hero-title {
         font-size: clamp(2rem, 8vw, 3rem);
+        text-align: center;
+        margin-bottom: var(--spacing-sm);
     }
     
     .hero-subtitle {
         font-size: clamp(1rem, 4vw, 1.25rem);
+        text-align: center;
+        margin-bottom: var(--spacing-md);
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+        align-items: center;
     }
     
     .btn {
