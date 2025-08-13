@@ -51,15 +51,15 @@ function initializeHeader() {
 // Mobile Menu Toggle
 function initializeMobileMenu() {
     const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-    const navContainer = document.querySelector('.nav-container');
+    const navPrincipal = document.querySelector('.nav-principal');
     const body = document.body;
     
-    console.log('Mobile menu elements found:', { mobileMenuToggle, navContainer });
+    console.log('Mobile menu elements found:', { mobileMenuToggle, navPrincipal });
     
-    if (mobileMenuToggle && navContainer) {
+    if (mobileMenuToggle && navPrincipal) {
         mobileMenuToggle.addEventListener('click', function() {
             console.log('Mobile menu toggle clicked!');
-            navContainer.classList.toggle('active');
+            navPrincipal.classList.toggle('active');
             mobileMenuToggle.classList.toggle('active');
             
             // Toggle hamburger animation
@@ -67,7 +67,7 @@ function initializeMobileMenu() {
             spans.forEach(span => span.classList.toggle('active'));
             
             // Prevent body scroll when menu is open
-            if (navContainer.classList.contains('active')) {
+            if (navPrincipal.classList.contains('active')) {
                 body.style.overflow = 'hidden';
             } else {
                 body.style.overflow = 'auto';
@@ -75,10 +75,10 @@ function initializeMobileMenu() {
         });
         
         // Close mobile menu when clicking on nav links
-        const navLinks = navContainer.querySelectorAll('.nav-link-primary, .nav-link-secondary');
+        const navLinks = navPrincipal.querySelectorAll('.nav-link-principal');
         navLinks.forEach(link => {
             link.addEventListener('click', function() {
-                navContainer.classList.remove('active');
+                navPrincipal.classList.remove('active');
                 mobileMenuToggle.classList.remove('active');
                 const spans = mobileMenuToggle.querySelectorAll('span');
                 spans.forEach(span => span.classList.remove('active'));
@@ -88,8 +88,8 @@ function initializeMobileMenu() {
         
         // Close mobile menu when clicking outside
         document.addEventListener('click', function(e) {
-            if (!navContainer.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
-                navContainer.classList.remove('active');
+            if (!navPrincipal.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
+                navPrincipal.classList.remove('active');
                 mobileMenuToggle.classList.remove('active');
                 const spans = mobileMenuToggle.querySelectorAll('span');
                 spans.forEach(span => span.classList.remove('active'));
@@ -100,7 +100,7 @@ function initializeMobileMenu() {
         // Close mobile menu on window resize
         window.addEventListener('resize', function() {
             if (window.innerWidth > 768) {
-                navContainer.classList.remove('active');
+                navPrincipal.classList.remove('active');
                 mobileMenuToggle.classList.remove('active');
                 const spans = mobileMenuToggle.querySelectorAll('span');
                 spans.forEach(span => span.classList.remove('active'));
