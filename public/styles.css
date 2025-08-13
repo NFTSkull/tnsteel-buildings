@@ -1322,69 +1322,124 @@ section {
 /* Work With Us Section */
 .work-with-us {
     padding: var(--spacing-xl) 0;
-    background: var(--light-gray);
+    background: linear-gradient(135deg, var(--light-gray) 0%, #f8f9fa 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.work-with-us::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(0,0,0,0.03)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+    opacity: 0.5;
+}
+
+.work-with-us-header {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+    position: relative;
+    z-index: 1;
 }
 
 .work-with-us-content {
-    text-align: center;
+    position: relative;
+    z-index: 1;
 }
 
 .work-options {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: var(--spacing-lg);
-    margin-top: var(--spacing-lg);
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
 }
 
 .work-option {
     background: var(--white);
-    padding: var(--spacing-lg);
-    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-xl);
     box-shadow: var(--shadow-soft);
     transition: all var(--transition-normal);
     text-align: left;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+.work-option::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent-color), #FF3B30);
+    transform: scaleX(0);
+    transition: transform var(--transition-normal);
 }
 
 .work-option:hover {
-    transform: translateY(-5px);
+    transform: translateY(-8px);
     box-shadow: var(--shadow-strong);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+.work-option:hover::before {
+    transform: scaleX(1);
 }
 
 .work-icon {
-    width: 70px;
-    height: 70px;
+    width: 80px;
+    height: 80px;
     background: linear-gradient(135deg, var(--accent-color), #FF3B30);
-    border-radius: var(--radius-md);
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
     color: var(--white);
-    font-size: 1.5rem;
+    font-size: 2rem;
+    box-shadow: 0 8px 25px rgba(255, 59, 48, 0.3);
+    transition: all var(--transition-normal);
 }
 
-.work-option h3 {
+.work-option:hover .work-icon {
+    transform: scale(1.1);
+    box-shadow: 0 12px 35px rgba(255, 59, 48, 0.4);
+}
+
+.work-option-content h3 {
     color: var(--black);
-    margin-bottom: var(--spacing-sm);
-    font-size: 1.25rem;
+    margin-bottom: var(--spacing-md);
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.3;
 }
 
-.work-option p {
+.work-option-content p {
     color: var(--secondary-text);
-    margin-bottom: var(--spacing-md);
-    line-height: 1.6;
+    margin-bottom: var(--spacing-lg);
+    line-height: 1.7;
+    font-size: 1rem;
 }
 
 .work-benefits {
     list-style: none;
     padding: 0;
+    margin: 0;
 }
 
 .work-benefits li {
-    padding: var(--spacing-xs) 0;
+    padding: var(--spacing-sm) 0;
     color: var(--secondary-text);
     position: relative;
-    padding-left: var(--spacing-md);
+    padding-left: var(--spacing-lg);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    transition: color var(--transition-normal);
 }
 
 .work-benefits li::before {
@@ -1393,24 +1448,83 @@ section {
     font-weight: bold;
     position: absolute;
     left: 0;
+    font-size: 1.1rem;
+    background: rgba(255, 59, 48, 0.1);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+}
+
+.work-option:hover .work-benefits li {
+    color: var(--black);
 }
 
 .work-cta {
-    margin-top: var(--spacing-xl);
-    padding: var(--spacing-lg);
-    background: var(--white);
-    border-radius: var(--radius-lg);
+    background: linear-gradient(135deg, var(--white) 0%, #f8f9fa 100%);
+    border-radius: var(--radius-xl);
     box-shadow: var(--shadow-soft);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    padding: var(--spacing-xl);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.work-cta::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 59, 48, 0.02) 0%, rgba(0, 123, 255, 0.02) 100%);
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+}
+
+.work-cta:hover::before {
+    opacity: 1;
+}
+
+.work-cta-content {
+    position: relative;
+    z-index: 1;
 }
 
 .work-cta h3 {
     color: var(--black);
-    margin-bottom: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 1.3;
 }
 
 .work-cta p {
     color: var(--secondary-text);
-    margin-bottom: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.work-cta-buttons {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.work-cta-buttons .btn {
+    min-width: 160px;
+    padding: var(--spacing-md) var(--spacing-lg);
+    font-size: 1rem;
+    font-weight: 500;
 }
 
 /* Carports Section */
@@ -2212,20 +2326,81 @@ section {
     }
     
     /* Work With Us Section Mobile */
+    .work-with-us {
+        padding: var(--spacing-lg) 0;
+    }
+    
+    .work-with-us-header {
+        margin-bottom: var(--spacing-lg);
+        padding: 0 var(--spacing-sm);
+    }
+    
     .work-options {
         grid-template-columns: 1fr;
         gap: var(--spacing-md);
         padding: 0 var(--spacing-sm);
+        margin-bottom: var(--spacing-lg);
     }
     
     .work-option {
-        padding: var(--spacing-md);
+        padding: var(--spacing-lg);
+        text-align: center;
     }
     
     .work-icon {
-        width: 50px;
-        height: 50px;
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+        margin: 0 auto var(--spacing-md);
+    }
+    
+    .work-option-content h3 {
         font-size: 1.25rem;
+        margin-bottom: var(--spacing-sm);
+    }
+    
+    .work-option-content p {
+        font-size: 0.95rem;
+        margin-bottom: var(--spacing-md);
+    }
+    
+    .work-benefits li {
+        padding: var(--spacing-xs) 0;
+        font-size: 0.9rem;
+        padding-left: var(--spacing-md);
+    }
+    
+    .work-benefits li::before {
+        width: 18px;
+        height: 18px;
+        font-size: 0.7rem;
+    }
+    
+    .work-cta {
+        padding: var(--spacing-lg);
+        margin: 0 var(--spacing-sm);
+    }
+    
+    .work-cta h3 {
+        font-size: 1.5rem;
+        margin-bottom: var(--spacing-sm);
+    }
+    
+    .work-cta p {
+        font-size: 1rem;
+        margin-bottom: var(--spacing-md);
+    }
+    
+    .work-cta-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: var(--spacing-sm);
+    }
+    
+    .work-cta-buttons .btn {
+        min-width: 200px;
+        width: 100%;
+        max-width: 280px;
     }
     
     /* Carports, Garages, Steel Barns, Commercial Sections Mobile */
@@ -2919,19 +3094,82 @@ section {
     }
     
     /* Work With Us Section Small Mobile */
-    .work-options {
-        gap: var(--spacing-sm);
+    .work-with-us {
+        padding: var(--spacing-md) 0;
+    }
+    
+    .work-with-us-header {
+        margin-bottom: var(--spacing-md);
         padding: 0 var(--spacing-xs);
     }
     
+    .work-options {
+        gap: var(--spacing-sm);
+        padding: 0 var(--spacing-xs);
+        margin-bottom: var(--spacing-md);
+    }
+    
     .work-option {
-        padding: var(--spacing-sm);
+        padding: var(--spacing-md);
+        text-align: center;
     }
     
     .work-icon {
-        width: 40px;
-        height: 40px;
-        font-size: 1rem;
+        width: 50px;
+        height: 50px;
+        font-size: 1.25rem;
+        margin: 0 auto var(--spacing-sm);
+    }
+    
+    .work-option-content h3 {
+        font-size: 1.1rem;
+        margin-bottom: var(--spacing-xs);
+    }
+    
+    .work-option-content p {
+        font-size: 0.9rem;
+        margin-bottom: var(--spacing-sm);
+        line-height: 1.5;
+    }
+    
+    .work-benefits li {
+        padding: var(--spacing-xs) 0;
+        font-size: 0.85rem;
+        padding-left: var(--spacing-sm);
+        line-height: 1.4;
+    }
+    
+    .work-benefits li::before {
+        width: 16px;
+        height: 16px;
+        font-size: 0.65rem;
+    }
+    
+    .work-cta {
+        padding: var(--spacing-md);
+        margin: 0 var(--spacing-xs);
+    }
+    
+    .work-cta h3 {
+        font-size: 1.25rem;
+        margin-bottom: var(--spacing-xs);
+    }
+    
+    .work-cta p {
+        font-size: 0.9rem;
+        margin-bottom: var(--spacing-sm);
+        line-height: 1.5;
+    }
+    
+    .work-cta-buttons {
+        gap: var(--spacing-xs);
+    }
+    
+    .work-cta-buttons .btn {
+        min-width: 180px;
+        max-width: 250px;
+        padding: var(--spacing-sm) var(--spacing-md);
+        font-size: 0.9rem;
     }
     
     /* Carports, Garages, Steel Barns, Commercial Sections Small Mobile */
