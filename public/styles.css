@@ -5416,6 +5416,24 @@ img[loading="lazy"].loaded {
     color: var(--accent-color);
 }
 
+.nav-link-principal.active {
+    color: var(--accent-color);
+    font-weight: 600;
+    position: relative;
+}
+
+.nav-link-principal.active::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 3px;
+    background: var(--accent-color);
+    border-radius: 2px;
+}
+
 /* Header Actions */
 .header-actions {
     display: flex;
