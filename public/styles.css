@@ -5301,6 +5301,12 @@ img[loading="lazy"].loaded {
     color: var(--accent-color);
 }
 
+.nav-link-superior:not(a) {
+    cursor: default;
+    opacity: 0.7;
+    pointer-events: none;
+}
+
 /* Header Principal (Línea Blanca) */
 .header-principal {
     position: fixed;
