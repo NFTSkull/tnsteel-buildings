@@ -1891,7 +1891,7 @@ section {
         padding: 0 var(--spacing-sm);
     }
     
-    /* Header Superior */
+    /* Header Superior Mobile */
     .header-superior {
         position: fixed;
         top: 0;
@@ -1914,7 +1914,7 @@ section {
         padding: 0.125rem 0;
     }
     
-    /* Header Principal */
+    /* Header Principal Mobile */
     .header-principal {
         position: fixed;
         top: 30px;
@@ -1936,7 +1936,7 @@ section {
         transform: none;
     }
     
-    /* Navegación Principal */
+    /* Navegación Principal Mobile */
     .nav-principal {
         position: fixed;
         top: 0;
@@ -2285,6 +2285,16 @@ section {
         overflow: hidden;
         letter-spacing: 0.1px;
         opacity: 0.85;
+    }
+    
+    /* Header Actions Mobile */
+    .header-actions {
+        display: none;
+    }
+    
+    /* Search Icon Mobile */
+    .search-icon {
+        display: none;
     }
     
     .nav-link-principal::before {
