@@ -2840,16 +2840,50 @@ section {
         height: 50px;
     }
     
+    /* Header Principal Mobile Pequeño */
+    .header-principal-content {
+        padding: 0.5rem 0.75rem;
+        min-height: 55px;
+    }
+    
     .mobile-menu-toggle {
-        min-width: 48px;
-        min-height: 48px;
+        min-width: 44px;
+        min-height: 44px;
         margin-left: var(--spacing-sm);
     }
     
     .mobile-menu-toggle span {
-        width: 26px;
-        height: 3px;
+        width: 22px;
+        height: 2.5px;
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    }
+    
+    /* Navegación Mobile Pequeño */
+    .nav-principal {
+        padding: 80px var(--spacing-sm) var(--spacing-lg);
+    }
+    
+    .nav-link-principal {
+        font-size: 1.1rem;
+        padding: 1.25rem 1.5rem;
+    }
+    
+    .nav-dropdown-item {
+        padding: 0.75rem 1.5rem 0.75rem 2.5rem;
+    }
+    
+    .nav-dropdown-link {
+        font-size: 0.9rem;
+    }
+    
+    /* Botones Mobile Pequeño */
+    .mobile-header-actions {
+        padding: 1.5rem;
+    }
+    
+    .mobile-btn {
+        padding: 0.875rem 1.5rem;
+        font-size: 0.9rem;
     }
     
     .nav-link {
