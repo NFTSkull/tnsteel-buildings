@@ -175,6 +175,17 @@ p {
     opacity: 0.9;
 }
 
+/* Botón Design & Price del Hero */
+.hero-buttons .btn-outline {
+    background: #000;
+    color: #fff;
+    border: 1px solid #000;
+    border-radius: 8px;
+    font-weight: 700;
+    height: 40px;
+    padding: 0 16px;
+}
+
 
 
 /* Modern Dropdown */
@@ -245,12 +256,12 @@ p {
 
 /* Hero Section - Industrial/Minimalista */
 .hero {
-    min-height: calc(100vh - 100px);
+    position: relative;
+    width: 100%;
+    min-height: calc(100vh - (36px + 72px));
+    overflow: hidden;
     display: flex;
     align-items: center;
-    position: relative;
-    overflow: hidden;
-    width: 100%;
 }
 
 .hero-background {
@@ -288,14 +299,20 @@ p {
     inset: 0;
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.18) 0%, rgba(0, 0, 0, 0.24) 100%);
     z-index: 2;
+    pointer-events: none;
 }
 
 .hero-content {
     position: relative;
     z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 16px;
     max-width: 800px;
     margin: 0 auto;
-    text-align: center;
     padding: 2rem;
 }
 
@@ -307,6 +324,7 @@ p {
     letter-spacing: -0.02em;
     line-height: 1.15;
     text-transform: uppercase;
+    text-shadow: none;
 }
 
 .hero-subtitle {
@@ -316,6 +334,7 @@ p {
     margin-bottom: 2rem;
     line-height: 1.5;
     letter-spacing: 0.01em;
+    text-shadow: none;
 }
 
 .hero-buttons {
@@ -328,11 +347,11 @@ p {
 .hero-buttons .btn-primary,
 .hero-buttons .btn-outline {
     height: 40px;
-    padding: 0 1rem;
+    padding: 0 16px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-weight: 600;
+    font-weight: 700;
     font-size: 0.875rem;
     border-radius: 8px;
 }
@@ -5456,7 +5475,7 @@ img[loading="lazy"].loaded {
     color: #fff;
     font-size: 14px;
     font-weight: 600;
-    letter-spacing: 0.2px;
+    white-space: nowrap;
 }
 
 .header-superior-content {
@@ -5494,7 +5513,7 @@ img[loading="lazy"].loaded {
     font-family: var(--font-primary);
     font-size: 0.8125rem;
     font-weight: 500;
-    color: rgba(255, 255, 255, 0.9);
+    color: #fff;
     text-decoration: none;
     transition: color 150ms ease;
     padding: 0.25rem 0;
@@ -5510,6 +5529,11 @@ img[loading="lazy"].loaded {
     cursor: default;
     opacity: 0.6;
     pointer-events: none;
+}
+
+/* Reglas globales para evitar subrayados en header */
+header a {
+    text-decoration: none;
 }
 
 /* Phone Link in Header Superior */
@@ -5654,6 +5678,7 @@ img[loading="lazy"].loaded {
     gap: 12px;
     justify-self: end;
     margin-left: auto;
+    white-space: nowrap;
 }
 
 .btn-contact,
