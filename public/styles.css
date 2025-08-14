@@ -5626,34 +5626,43 @@ img[loading="lazy"].loaded {
 
 /* CSS MÓVIL COMPLETAMENTE NUEVO Y FUNCIONAL */
 @media (max-width: 768px) {
-    /* ELIMINAR COMPLETAMENTE LA LÍNEA BLANCA DEL HEADER PRINCIPAL */
-    .header-principal {
+    /* OCULTAR SOLO LA NAVEGACIÓN DESKTOP EN MÓVIL */
+    .header-principal .desktop-nav {
         display: none !important;
     }
     
-    /* HEADER SUPERIOR SOLO - MANTENER SOLO LA LÍNEA NEGRA */
-    .header-superior {
+    .header-principal .desktop-actions {
+        display: none !important;
+    }
+    
+    /* HEADER PRINCIPAL MÓVIL - SOLO LOGO Y HAMBURGUESA */
+    .header-principal {
         position: fixed !important;
-        top: 0 !important;
+        top: 30px !important;
         left: 0 !important;
         right: 0 !important;
-        background: #000000 !important;
-        z-index: 1001 !important;
-        min-height: 50px !important;
+        z-index: 1000 !important;
+        background: #ffffff !important;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1) !important;
+        min-height: 60px !important;
+    }
+    
+    .header-principal-content {
         display: flex !important;
         align-items: center !important;
         justify-content: space-between !important;
-        padding: 0 1rem !important;
+        padding: 0.5rem 1rem !important;
+        min-height: 60px !important;
     }
     
-    /* LOGO EN EL HEADER SUPERIOR */
-    .header-superior .logo {
+    /* LOGO EN EL HEADER PRINCIPAL */
+    .header-principal .logo {
         display: flex !important;
         align-items: center !important;
     }
     
-    .header-superior .logo img {
-        height: 35px !important;
+    .header-principal .logo img {
+        height: 40px !important;
     }
     
     /* BOTÓN HAMBURGUESA A LA DERECHA */
@@ -5665,7 +5674,7 @@ img[loading="lazy"].loaded {
         width: 40px !important;
         height: 40px !important;
         background: transparent !important;
-        border: 2px solid #ffffff !important;
+        border: 2px solid #000000 !important;
         border-radius: 6px !important;
         cursor: pointer !important;
         transition: all 0.3s ease !important;
@@ -5675,14 +5684,14 @@ img[loading="lazy"].loaded {
     .mobile-menu-toggle span {
         width: 20px !important;
         height: 2px !important;
-        background: #ffffff !important;
+        background: #000000 !important;
         margin: 2px 0 !important;
         transition: all 0.3s ease !important;
         border-radius: 1px !important;
     }
     
     .mobile-menu-toggle:hover {
-        background: rgba(255, 255, 255, 0.1) !important;
+        background: rgba(0, 0, 0, 0.1) !important;
         transform: scale(1.05) !important;
     }
     
