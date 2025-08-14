@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeLazyLoading();
     initializeSmoothScrolling();
     initializeAnimations();
+    initializeLightbox(); // Initialize lightbox for all galleries
     
     // Initialize RTO Calculator with delay to ensure all elements are ready
     setTimeout(() => {
@@ -1308,4 +1309,200 @@ function initializeCommercialCarousel() {
     
     // Initialize
     updateCarousel();
-} 
+}
+
+// Lightbox/Carousel Implementation - Industrial/Institutional Style
+function initializeLightbox() {
+    // Create lightbox overlay structure
+    const lightboxHTML = `
+        <div id="lightbox-overlay" class="lightbox-overlay" role="dialog" aria-modal="true" aria-label="Image viewer">
+            <button class="lightbox-close" aria-label="Close image viewer">&times;</button>
+            <button class="lightbox-prev" aria-label="Previous image">‹</button>
+            <button class="lightbox-next" aria-label="Next image">›</button>
+            <div class="lightbox-content">
+                <img class="lightbox-image" alt="">
+                <div class="lightbox-counter"></div>
+            </div>
+        </div>
+    `;
+    
+    // Inject lightbox into body
+    document.body.insertAdjacentHTML('beforeend', lightboxHTML);
+    
+    const overlay = document.getElementById('lightbox-overlay');
+    const lightboxImage = overlay.querySelector('.lightbox-image');
+    const lightboxCounter = overlay.querySelector('.lightbox-counter');
+    const closeBtn = overlay.querySelector('.lightbox-close');
+    const prevBtn = overlay.querySelector('.lightbox-prev');
+    const nextBtn = overlay.querySelector('.lightbox-next');
+    
+    let currentImages = [];
+    let currentIndex = 0;
+    let touchStartX = 0;
+    let touchEndX = 0;
+    let focusedElement = null;
+    
+    // Find all gallery images
+    const gallerySelectors = [
+        '.gallery img',
+        '.grid img',
+        'figure img',
+        '.building-style-card img',
+        '.style-image',
+        '.gallery-item img',
+        '.product-image img',
+        '.benefits-image img',
+        '.work-with-us-image img'
+    ];
+    
+    const allImages = document.querySelectorAll(gallerySelectors.join(', '));
+    
+    // Add click handlers to all gallery images
+    allImages.forEach((img, index) => {
+        img.style.cursor = 'pointer';
+        img.setAttribute('tabindex', '0');
+        img.setAttribute('role', 'button');
+        img.setAttribute('aria-label', 'Open image in viewer');
+        
+        const openLightbox = (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            // Store focus element
+            focusedElement = img;
+            
+            // Get all images from the same container
+            const container = img.closest('.gallery, .grid, .building-styles-grid, section');
+            if (container) {
+                currentImages = Array.from(container.querySelectorAll('img'));
+            } else {
+                currentImages = [img];
+            }
+            
+            currentIndex = currentImages.indexOf(img);
+            if (currentIndex === -1) currentIndex = 0;
+            
+            showImage();
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            
+            // Focus on close button
+            setTimeout(() => closeBtn.focus(), 100);
+        };
+        
+        img.addEventListener('click', openLightbox);
+        img.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                openLightbox(e);
+            }
+        });
+    });
+    
+    // Show image function
+    function showImage() {
+        if (currentImages.length === 0) return;
+        
+        const img = currentImages[currentIndex];
+        const fullSrc = img.dataset.full || img.src;
+        
+        lightboxImage.src = fullSrc;
+        lightboxImage.alt = img.alt || 'Gallery image';
+        
+        // Update counter
+        if (currentImages.length > 1) {
+            lightboxCounter.textContent = `${currentIndex + 1} / ${currentImages.length}`;
+            lightboxCounter.style.display = 'block';
+            prevBtn.style.display = 'block';
+            nextBtn.style.display = 'block';
+        } else {
+            lightboxCounter.style.display = 'none';
+            prevBtn.style.display = 'none';
+            nextBtn.style.display = 'none';
+        }
+        
+        // Update button states
+        prevBtn.disabled = currentIndex === 0;
+        nextBtn.disabled = currentIndex === currentImages.length - 1;
+    }
+    
+    // Navigation functions
+    function nextImage() {
+        if (currentIndex < currentImages.length - 1) {
+            currentIndex++;
+            showImage();
+        }
+    }
+    
+    function prevImage() {
+        if (currentIndex > 0) {
+            currentIndex--;
+            showImage();
+        }
+    }
+    
+    function closeLightbox() {
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+        
+        // Return focus to original element
+        if (focusedElement) {
+            focusedElement.focus();
+            focusedElement = null;
+        }
+    }
+    
+    // Event listeners
+    closeBtn.addEventListener('click', closeLightbox);
+    prevBtn.addEventListener('click', prevImage);
+    nextBtn.addEventListener('click', nextImage);
+    
+    // Click outside to close
+    overlay.addEventListener('click', (e) => {
+        if (e.target === overlay || e.target === overlay.querySelector('.lightbox-content')) {
+            closeLightbox();
+        }
+    });
+    
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        if (!overlay.classList.contains('active')) return;
+        
+        switch(e.key) {
+            case 'Escape':
+                closeLightbox();
+                break;
+            case 'ArrowLeft':
+                prevImage();
+                break;
+            case 'ArrowRight':
+                nextImage();
+                break;
+        }
+    });
+    
+    // Touch support for mobile
+    overlay.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+    });
+    
+    overlay.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    });
+    
+    function handleSwipe() {
+        const swipeThreshold = 50;
+        const diff = touchStartX - touchEndX;
+        
+        if (Math.abs(diff) > swipeThreshold) {
+            if (diff > 0) {
+                // Swipe left - next image
+                nextImage();
+            } else {
+                // Swipe right - previous image
+                prevImage();
+            }
+        }
+    }
+}
