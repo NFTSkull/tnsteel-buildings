@@ -497,6 +497,79 @@ section:last-child {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
+/* New Institutional Card Design */
+.card-link {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
+}
+
+.card-link:hover {
+    text-decoration: none;
+    color: inherit;
+}
+
+.style-image-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    border-radius: 4px 4px 0 0;
+}
+
+.style-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 150ms ease;
+}
+
+.building-style-card:hover .style-image {
+    transform: scale(1.02);
+}
+
+.style-content {
+    flex: 1;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.style-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: var(--black);
+    text-align: center;
+}
+
+.style-description {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: var(--text-color);
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.style-footer {
+    background: rgba(0, 0, 0, 0.05);
+    padding: 1rem 1.5rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.style-cta {
+    display: block;
+    text-align: center;
+    font-weight: 600;
+    color: var(--accent-color);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
 .building-style-card:focus-visible {
     outline: 2px solid rgba(0, 0, 0, 0.2);
     outline-offset: 2px;
@@ -3153,6 +3226,17 @@ section:last-child {
         padding: 0 var(--spacing-sm);
     }
     
+    /* Phone Link Mobile */
+    .phone-link {
+        margin-left: 0;
+        margin-top: 0.5rem;
+    }
+    
+    .phone-number {
+        justify-content: center;
+        font-size: 0.9rem;
+    }
+    
     /* New Building Styles Small Mobile */
     .building-styles-grid {
         grid-template-columns: 1fr;
@@ -5488,6 +5572,23 @@ img[loading="lazy"].loaded {
     cursor: default;
     opacity: 0.6;
     pointer-events: none;
+}
+
+/* Phone Link in Header Superior */
+.phone-link {
+    margin-left: auto;
+}
+
+.phone-number {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+}
+
+.phone-number i {
+    font-size: 0.875rem;
+    opacity: 0.9;
 }
 
 /* Header Principal (Línea Blanca - Institucional) */
