@@ -1734,24 +1734,11 @@ section {
     
     /* Mostrar navegación en el header móvil */
     .nav-principal {
-        display: flex !important;
+        display: flex;
         align-items: center;
         flex: 1;
         justify-content: center;
         margin: 0 1rem;
-        position: static !important;
-        left: auto !important;
-        width: auto !important;
-        height: auto !important;
-        background: transparent !important;
-        backdrop-filter: none !important;
-        opacity: 1 !important;
-        visibility: visible !important;
-        padding: 0 !important;
-        border: none !important;
-        gap: 0 !important;
-        overflow: visible !important;
-        z-index: auto !important;
     }
     
     .nav-list-principal {
@@ -1761,7 +1748,6 @@ section {
         list-style: none;
         margin: 0;
         padding: 0;
-        flex-direction: row !important;
     }
     
     .nav-link-principal {
