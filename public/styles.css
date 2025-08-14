@@ -4258,6 +4258,7 @@ img[loading="lazy"].loaded {
     height: 100%;
     object-fit: cover;
     transition: transform var(--transition-slow);
+    cursor: pointer;
 }
 
 .feed-item:hover .feed-image {
