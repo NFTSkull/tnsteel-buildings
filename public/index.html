@@ -41,11 +41,84 @@
                 </div>
                 <nav class="nav-principal">
                     <ul class="nav-list-principal">
-                        <li><a href="carports.html" class="nav-link-principal">Carports</a></li>
-                        <li><a href="garages.html" class="nav-link-principal">Garages</a></li>
-                        <li><a href="barns.html" class="nav-link-principal">Steel Barns</a></li>
-                        <li><a href="commercial.html" class="nav-link-principal">Commercial</a></li>
+                        <li class="nav-item-principal">
+                            <a href="carports.html" class="nav-link-principal">
+                                Carports
+                                <span class="dropdown-indicator"></span>
+                            </a>
+                            <div class="nav-dropdown">
+                                <div class="nav-dropdown-item">
+                                    <a href="carports.html" class="nav-dropdown-link">Steel Carports</a>
+                                </div>
+                                <div class="nav-dropdown-item">
+                                    <a href="carports.html#gallery" class="nav-dropdown-link">Photo Gallery</a>
+                                </div>
+                                <div class="nav-dropdown-item">
+                                    <a href="carports.html#features" class="nav-dropdown-link">Features</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item-principal">
+                            <a href="garages.html" class="nav-link-principal">
+                                Garages
+                                <span class="dropdown-indicator"></span>
+                            </a>
+                            <div class="nav-dropdown">
+                                <div class="nav-dropdown-item">
+                                    <a href="garages.html" class="nav-dropdown-link">Steel Garages</a>
+                                </div>
+                                <div class="nav-dropdown-item">
+                                    <a href="garages.html#gallery" class="nav-dropdown-link">Photo Gallery</a>
+                                </div>
+                                <div class="nav-dropdown-item">
+                                    <a href="garages.html#features" class="nav-dropdown-link">Features</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item-principal">
+                            <a href="barns.html" class="nav-link-principal">
+                                Steel Barns
+                                <span class="dropdown-indicator"></span>
+                            </a>
+                            <div class="nav-dropdown">
+                                <div class="nav-dropdown-item">
+                                    <a href="barns.html" class="nav-dropdown-link">Agricultural Barns</a>
+                                </div>
+                                <div class="nav-dropdown-item">
+                                    <a href="barns.html#gallery" class="nav-dropdown-link">Photo Gallery</a>
+                                </div>
+                                <div class="nav-dropdown-item">
+                                    <a href="barns.html#features" class="nav-dropdown-link">Features</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item-principal">
+                            <a href="commercial.html" class="nav-link-principal">
+                                Commercial
+                                <span class="dropdown-indicator"></span>
+                            </a>
+                            <div class="nav-dropdown">
+                                <div class="nav-dropdown-item">
+                                    <a href="commercial.html" class="nav-dropdown-link">Commercial Buildings</a>
+                                </div>
+                                <div class="nav-dropdown-item">
+                                    <a href="commercial.html#gallery" class="nav-dropdown-link">Photo Gallery</a>
+                                </div>
+                                <div class="nav-dropdown-item">
+                                    <a href="commercial.html#features" class="nav-dropdown-link">Features</a>
+                                </div>
+                            </div>
+                        </li>
                     </ul>
+                    
+                    <!-- Botones de Acción Mobile -->
+                    <div class="mobile-header-actions">
+                        <a href="#contact" class="mobile-btn">Contact Us</a>
+                        <a href="#partner-tools" class="mobile-btn accent">Design & Price</a>
+                        <button class="mobile-btn" aria-label="Search">
+                            <i class="fas fa-search"></i> Search
+                        </button>
+                    </div>
                 </nav>
                 <div class="header-actions">
                     <a href="#contact" class="btn btn-contact">Contact Us</a>
@@ -366,6 +439,9 @@
             </div>
         </div>
     </footer>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
 
     <!-- Modal for Gallery -->
     <div class="modal" id="galleryModal">
