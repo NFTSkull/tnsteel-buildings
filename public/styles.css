@@ -4538,29 +4538,33 @@ img[loading="lazy"].loaded {
 
 /* Work With Us Page Styles */
 .work-with-us-hero {
-    min-height: 70vh;
+    min-height: 100vh;
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('Gráfico financiero en tonos cálidos.png');
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('Gráfico financiero en tonos cálidos.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    background-attachment: fixed;
     position: relative;
     overflow: hidden;
-    padding: var(--spacing-lg) 0;
+    padding: 0;
+    margin: 0;
 }
 
 .work-with-us-content {
     display: flex;
     justify-content: center;
     align-items: center;
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
-    padding: 0 var(--spacing-lg);
+    padding: 0 var(--spacing-xl);
     position: relative;
     z-index: 2;
     text-align: center;
+    width: 100%;
 }
 
 .work-with-us-text {
@@ -4568,21 +4572,28 @@ img[loading="lazy"].loaded {
 }
 
 .work-with-us-title {
-    font-size: clamp(2.5rem, 5vw, 3.5rem);
-    font-weight: 800;
+    font-size: clamp(3rem, 6vw, 4.5rem);
+    font-weight: 900;
     color: #ffffff;
-    margin-bottom: var(--spacing-md);
-    letter-spacing: -0.02em;
+    margin-bottom: var(--spacing-lg);
+    letter-spacing: -0.03em;
     line-height: 1.1;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    text-transform: uppercase;
+    font-family: var(--font-primary);
 }
 
 .work-with-us-subtitle {
-    font-size: 1.1rem;
-    color: #f8fafc;
-    line-height: 1.6;
-    margin-bottom: var(--spacing-md);
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+    color: #ffffff;
+    line-height: 1.7;
+    margin-bottom: var(--spacing-lg);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    font-weight: 400;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0.95;
 }
 
 /* Benefits Section */
@@ -5236,28 +5247,34 @@ img[loading="lazy"].loaded {
 /* Responsive Design for Work With Us */
 @media (max-width: 768px) {
     .work-with-us-hero {
-        min-height: 60vh;
-        padding: calc(var(--spacing-lg) + 80px) 0 var(--spacing-md) 0; /* Added top padding to avoid header */
+        min-height: 100vh;
+        height: 100vh;
+        padding: calc(var(--spacing-lg) + 80px) 0 0 0; /* Added top padding to avoid header */
+        background-attachment: scroll;
     }
     
     .work-with-us-content {
-        grid-template-columns: 1fr;
-        gap: var(--spacing-md);
+        padding: 0 var(--spacing-md);
+        max-width: 100%;
         text-align: center;
     }
     
     .work-with-us-text {
         text-align: center;
+        padding: 0 var(--spacing-sm);
     }
     
     .work-with-us-title {
-        font-size: 2.2rem;
-        margin-bottom: var(--spacing-sm);
+        font-size: clamp(2.5rem, 10vw, 3.5rem);
+        margin-bottom: var(--spacing-md);
+        line-height: 1.2;
     }
     
     .work-with-us-subtitle {
-        font-size: 1rem;
-        line-height: 1.5;
+        font-size: clamp(1rem, 4vw, 1.2rem);
+        line-height: 1.6;
+        margin-bottom: var(--spacing-md);
+        max-width: 100%;
     }
     
     .work-with-us-image {
@@ -5326,18 +5343,22 @@ img[loading="lazy"].loaded {
 
 @media (max-width: 480px) {
     .work-with-us-hero {
-        min-height: 50vh;
-        padding: calc(var(--spacing-md) + 60px) 0 var(--spacing-sm) 0; /* Added top padding to avoid header */
+        min-height: 100vh;
+        height: 100vh;
+        padding: calc(var(--spacing-md) + 60px) 0 0 0; /* Added top padding to avoid header */
+        background-attachment: scroll;
     }
     
     .work-with-us-title {
-        font-size: 1.8rem;
+        font-size: clamp(2rem, 12vw, 2.5rem);
         margin-bottom: var(--spacing-sm);
+        line-height: 1.2;
     }
     
     .work-with-us-subtitle {
-        font-size: 0.95rem;
-        line-height: 1.4;
+        font-size: clamp(0.9rem, 4.5vw, 1.1rem);
+        line-height: 1.5;
+        padding: 0 var(--spacing-sm);
     }
     
     .benefits-list h3 {
