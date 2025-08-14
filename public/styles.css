@@ -5476,6 +5476,7 @@ img[loading="lazy"].loaded {
 }
 
 /* Header Superior (Línea Negra - Institucional) */
+.topbar,
 .header-superior {
     position: sticky;
     top: 0;
@@ -5551,13 +5552,16 @@ header a {
 }
 
 /* Prevenir wraps y filas duplicadas en header */
+.topbar,
 .header-superior,
+.mainbar,
 .header-principal {
     white-space: nowrap;
     overflow: hidden;
 }
 
 .header-superior-content,
+.mainbar-inner,
 .header-principal-content {
     white-space: nowrap;
     overflow: hidden;
@@ -5579,6 +5583,24 @@ header a {
     opacity: 1 !important;
 }
 
+/* Asegurar que el logo-box tenga la altura correcta */
+.logo-box img {
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+    display: block;
+}
+
+/* Asegurar que la navegación esté centrada */
+.main-nav {
+    justify-self: center;
+}
+
+/* Asegurar que los CTAs estén a la derecha */
+.cta-group {
+    justify-self: end;
+}
+
 /* Phone Link in Header Superior */
 .phone-link {
     margin-left: auto;
@@ -5597,6 +5619,7 @@ header a {
 }
 
 /* Header Principal (Línea Blanca - Institucional) */
+.mainbar,
 .header-principal {
     position: sticky;
     top: 36px;
@@ -5606,6 +5629,7 @@ header a {
     border-bottom: 1px solid rgba(0, 0, 0, 0.06);
     z-index: 50;
     transition: all 150ms ease;
+    height: 72px;
 }
 
 .header-principal.scrolled {
@@ -5614,24 +5638,20 @@ header a {
     box-shadow: 0 1px 8px rgba(0, 0, 0, 0.06);
 }
 
+.mainbar-inner,
 .header-principal-content {
     display: grid;
     grid-template-columns: auto 1fr auto;
     align-items: center;
     gap: 24px;
     padding: 0 1rem;
-    height: 72px;
+    height: 100%;
     max-width: 1280px;
     margin: 0 auto;
     width: 100%;
 }
 
-.logo {
-    height: 40px;
-    display: flex;
-    align-items: center;
-}
-
+.logo,
 .logo-box {
     height: 40px;
     display: flex;
@@ -5660,8 +5680,8 @@ header a {
 }
 
 /* Navegación Principal */
-.nav-principal,
-.main-nav {
+.main-nav,
+.nav-principal {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -5716,8 +5736,8 @@ header a {
 }
 
 /* Header Actions */
-.header-actions,
-.cta-group {
+.cta-group,
+.header-actions {
     display: flex;
     align-items: center;
     gap: 12px;
@@ -5726,9 +5746,9 @@ header a {
     white-space: nowrap;
 }
 
+.btn,
 .btn-contact,
-.btn-design,
-.btn {
+.btn-design {
     display: inline-flex;
     align-items: center;
     justify-content: center;
