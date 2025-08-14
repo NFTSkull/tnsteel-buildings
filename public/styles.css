@@ -1768,7 +1768,7 @@ section {
         font-family: var(--font-primary);
         font-size: 0.9rem;
         font-weight: 500;
-        color: var(--black) !important;
+        color: #000000 !important;
         text-decoration: none;
         transition: all var(--transition-normal);
         padding: 0.5rem 0;
@@ -1779,11 +1779,11 @@ section {
     }
     
     .header-principal .nav-link-principal:hover {
-        color: var(--accent-color) !important;
+        color: #424242 !important;
     }
     
     .header-principal .nav-link-principal.active {
-        color: var(--accent-color) !important;
+        color: #424242 !important;
         font-weight: 600;
     }
     
