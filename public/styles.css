@@ -12,7 +12,7 @@
     --header-footer-bg: #2D2D2D;
     --primary-text: #000000;
     --secondary-text: #666666;
-    --accent-color: #DC2626;
+    --accent-color: #424242;
     --white: #FFFFFF;
     --light-gray: #F5F5F5;
     --dark-gray: #2D2D2D;
@@ -1230,7 +1230,7 @@ section {
 .partner-icon {
     width: 80px;
     height: 80px;
-    background: linear-gradient(135deg, var(--accent-color), #FF3B30);
+    background: linear-gradient(135deg, var(--accent-color), #424242);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -1657,8 +1657,8 @@ section {
 
 .mobile-menu-toggle.active span:nth-child(1) {
     transform: rotate(45deg) translate(6px, 6px);
-    background: linear-gradient(135deg, var(--accent-color) 0%, #ff4444 100%);
-    box-shadow: 0 2px 8px rgba(220, 38, 38, 0.6), 0 0 15px rgba(220, 38, 38, 0.4);
+    background: linear-gradient(135deg, var(--accent-color) 0%, #666666 100%);
+    box-shadow: 0 2px 8px rgba(66, 66, 66, 0.6), 0 0 15px rgba(66, 66, 66, 0.4);
     width: 32px;
     height: 4px;
     border-radius: 2px;
@@ -1672,8 +1672,8 @@ section {
 
 .mobile-menu-toggle.active span:nth-child(3) {
     transform: rotate(-45deg) translate(6px, -6px);
-    background: linear-gradient(135deg, var(--accent-color) 0%, #ff4444 100%);
-    box-shadow: 0 2px 8px rgba(220, 38, 38, 0.6), 0 0 15px rgba(220, 38, 38, 0.4);
+    background: linear-gradient(135deg, var(--accent-color) 0%, #666666 100%);
+    box-shadow: 0 2px 8px rgba(66, 66, 66, 0.6), 0 0 15px rgba(66, 66, 66, 0.4);
     width: 32px;
     height: 4px;
     border-radius: 2px;
@@ -5499,7 +5499,7 @@ img[loading="lazy"].loaded {
 }
 
 .btn-design {
-    background: #FF3B30;
+    background: #424242;
     color: var(--white);
     border-radius: var(--radius-md);
     padding: 0.75rem 1.5rem;
