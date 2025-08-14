@@ -1729,16 +1729,21 @@ section {
     
     /* Ocultar botones del header en móvil */
     .header-actions {
-        display: none;
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        position: absolute !important;
+        left: -9999px !important;
+        pointer-events: none !important;
     }
     
     /* Mostrar navegación en el header móvil */
     .header-principal .nav-principal {
         display: flex !important;
-        align-items: center;
-        flex: 1;
-        justify-content: center;
-        margin: 0 1rem;
+        align-items: center !important;
+        flex: 1 !important;
+        justify-content: center !important;
+        margin: 0 1rem !important;
         position: static !important;
         left: auto !important;
         width: auto !important;
@@ -1754,6 +1759,14 @@ section {
         z-index: auto !important;
         min-width: 300px !important;
         max-width: 400px !important;
+        transform: none !important;
+        filter: none !important;
+        clip: auto !important;
+        clip-path: none !important;
+        mask: none !important;
+        mask-image: none !important;
+        -webkit-text-fill-color: initial !important;
+        color: inherit !important;
     }
     
     .header-principal .nav-list-principal {
@@ -5586,4 +5599,91 @@ img[loading="lazy"].loaded {
 .search-icon:hover {
     color: var(--accent-color);
     transform: scale(1.1);
+}
+
+/* CSS FORZADO PARA NAVEGACIÓN MÓVIL - MÁXIMA PRIORIDAD */
+@media (max-width: 768px) {
+    /* FORZAR VISIBILIDAD DE NAVEGACIÓN EN HEADER PRINCIPAL */
+    .header-principal .nav-principal {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        flex: 1 !important;
+        margin: 0 1rem !important;
+        position: static !important;
+        left: auto !important;
+        width: auto !important;
+        height: auto !important;
+        background: transparent !important;
+        backdrop-filter: none !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        padding: 0 !important;
+        border: none !important;
+        gap: 0 !important;
+        overflow: visible !important;
+        z-index: auto !important;
+        min-width: 300px !important;
+        max-width: 400px !important;
+        transform: none !important;
+        filter: none !important;
+        clip: auto !important;
+        clip-path: none !important;
+        mask: none !important;
+        mask-image: none !important;
+        -webkit-text-fill-color: initial !important;
+        color: inherit !important;
+    }
+    
+    .header-principal .nav-list-principal {
+        display: flex !important;
+        align-items: center !important;
+        gap: 1.5rem !important;
+        list-style: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        flex-direction: row !important;
+        min-width: 300px !important;
+        max-width: 400px !important;
+        background: transparent !important;
+        border: none !important;
+        position: static !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+    
+    .header-principal .nav-link-principal {
+        font-family: var(--font-primary) !important;
+        font-size: 0.9rem !important;
+        font-weight: 600 !important;
+        color: #000000 !important;
+        text-decoration: none !important;
+        transition: all var(--transition-normal) !important;
+        padding: 0.5rem 0 !important;
+        text-transform: capitalize !important;
+        white-space: nowrap !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        display: block !important;
+        position: static !important;
+        background: transparent !important;
+        border: none !important;
+        margin: 0 !important;
+        line-height: 1.2 !important;
+        -webkit-text-fill-color: #000000 !important;
+        text-fill-color: #000000 !important;
+    }
+    
+    /* OCULTAR BOTONES EN MÓVIL */
+    .header-principal .header-actions {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        position: absolute !important;
+        left: -9999px !important;
+        pointer-events: none !important;
+        width: 0 !important;
+        height: 0 !important;
+        overflow: hidden !important;
+    }
 }
