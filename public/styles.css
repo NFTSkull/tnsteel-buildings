@@ -253,7 +253,7 @@ p {
     align-items: center;
     position: relative;
     overflow: hidden;
-    padding-top: 96px;
+    padding-top: 84px;
     width: 100%;
 }
 
@@ -290,7 +290,7 @@ p {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.5) 100%);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.22) 0%, rgba(0, 0, 0, 0.28) 100%);
     z-index: 2;
 }
 
@@ -308,20 +308,18 @@ p {
     font-weight: 700;
     color: var(--white);
     margin-bottom: 1.5rem;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.02em;
     line-height: 1.15;
     text-transform: uppercase;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .hero-subtitle {
-    font-size: clamp(1rem, 1.8vw, 1.25rem);
-    color: rgba(255, 255, 255, 0.95);
+    font-size: clamp(1.125rem, 2vw, 1.375rem);
+    color: rgba(255, 255, 255, 0.9);
     font-weight: 400;
     margin-bottom: 2rem;
     line-height: 1.5;
-    letter-spacing: 0.02em;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    letter-spacing: 0.01em;
 }
 
 .hero-buttons {
@@ -482,19 +480,20 @@ section:last-child {
 
 .building-style-card {
     background: var(--white);
-    border: 1px solid rgba(0, 0, 0, 0.08);
-    border-radius: 4px;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
     overflow: hidden;
     transition: all 150ms ease;
     position: relative;
-    height: 400px;
-    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 360px;
 }
 
 .building-style-card:hover {
     transform: translateY(-2px);
-    border-color: rgba(0, 0, 0, 0.15);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 /* New Institutional Card Design */
@@ -504,6 +503,7 @@ section:last-child {
     height: 100%;
     text-decoration: none;
     color: inherit;
+    justify-content: space-between;
 }
 
 .card-link:hover {
@@ -511,15 +511,24 @@ section:last-child {
     color: inherit;
 }
 
+.building-style-card:focus-visible {
+    outline: 2px solid rgba(0, 0, 0, 0.2);
+    outline-offset: 2px;
+}
+
+/* Card Elements */
 .style-image-container {
     position: relative;
     width: 100%;
     aspect-ratio: 16/9;
     overflow: hidden;
-    border-radius: 4px 4px 0 0;
+    border-radius: 8px 8px 0 0;
 }
 
 .style-image {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -532,32 +541,31 @@ section:last-child {
 
 .style-content {
     flex: 1;
-    padding: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    padding: 1.25rem;
+    background: var(--white);
 }
 
 .style-title {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     font-weight: 700;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
     color: var(--black);
     text-align: center;
+    letter-spacing: -0.01em;
 }
 
 .style-description {
-    font-size: 0.9rem;
+    font-size: 0.875rem;
     line-height: 1.5;
-    color: var(--text-color);
+    color: #666;
     text-align: center;
-    margin-bottom: 0;
+    margin: 0;
 }
 
 .style-footer {
-    background: rgba(0, 0, 0, 0.05);
-    padding: 1rem 1.5rem;
-    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    background: #f8f8f8;
+    padding: 0.75rem 1.25rem;
+    border-top: 1px solid #e5e5e5;
 }
 
 .style-cta {
@@ -565,94 +573,13 @@ section:last-child {
     text-align: center;
     font-weight: 600;
     color: var(--accent-color);
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.building-style-card:focus-visible {
-    outline: 2px solid rgba(0, 0, 0, 0.2);
-    outline-offset: 2px;
-}
-
-.style-image-container {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-}
-
-.style-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 150ms ease;
-}
-
-.building-style-card:hover .style-image {
-    transform: scale(1.02);
-}
-
-.style-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.7) 100%);
-    display: flex;
-    align-items: flex-end;
-    padding: 2rem;
-    transition: background 150ms ease;
-}
-
-.building-style-card:hover .style-overlay {
-    background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.8) 100%);
-}
-
-.style-content {
-    color: var(--white);
-    text-align: center;
-    width: 100%;
-}
-
-.style-title {
-    font-size: 1.8rem;
-    font-weight: 700;
-    margin-bottom: var(--spacing-sm);
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
-}
-
-.style-description {
-    font-size: 1rem;
-    margin-bottom: var(--spacing-md);
-    opacity: 0.9;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
-}
-
-.style-button {
-    display: inline-block;
-    background: var(--white);
-    color: var(--black);
-    padding: 0.625rem 1.25rem;
-    border-radius: 4px;
-    border: 1px solid var(--white);
-    text-decoration: none;
-    font-weight: 500;
     font-size: 0.875rem;
-    transition: all 150ms ease;
-    text-transform: uppercase;
-    letter-spacing: 0.03em;
+    text-transform: capitalize;
+    letter-spacing: 0.01em;
 }
 
-.style-button:hover {
-    background: rgba(255, 255, 255, 0.95);
-    transform: translateY(-1px);
-}
-
-.style-button:active {
-    background: rgba(255, 255, 255, 0.9);
-    transform: translateY(0);
+.style-cta:hover {
+    text-decoration: underline;
 }
 
 .building-grid {
@@ -5525,8 +5452,8 @@ img[loading="lazy"].loaded {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    padding: 0.375rem 0;
-    min-height: 32px;
+    padding: 0.25rem 1rem;
+    min-height: 28px;
     max-width: 1280px;
     margin: 0 auto;
 }
@@ -5554,14 +5481,14 @@ img[loading="lazy"].loaded {
 
 .nav-link-superior {
     font-family: var(--font-primary);
-    font-size: 0.75rem;
-    font-weight: 400;
+    font-size: 0.8125rem;
+    font-weight: 500;
     color: rgba(255, 255, 255, 0.9);
     text-decoration: none;
     transition: color 150ms ease;
     padding: 0.25rem 0;
-    text-transform: uppercase;
-    letter-spacing: 0.02em;
+    text-transform: capitalize;
+    letter-spacing: 0.01em;
 }
 
 .nav-link-superior:hover {
@@ -5594,7 +5521,7 @@ img[loading="lazy"].loaded {
 /* Header Principal (Línea Blanca - Institucional) */
 .header-principal {
     position: fixed;
-    top: 32px;
+    top: 28px;
     left: 0;
     right: 0;
     background: var(--white);
@@ -5606,23 +5533,23 @@ img[loading="lazy"].loaded {
 .header-principal.scrolled {
     top: 0;
     background: var(--white);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
 .header-principal-content {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0.875rem 0;
+    padding: 0.75rem 1rem;
     gap: 2rem;
-    min-height: 64px;
+    min-height: 56px;
     max-width: 1280px;
     margin: 0 auto;
 }
 
 .logo {
     flex-shrink: 0;
-    padding: var(--spacing-sm) 0;
+    padding: 0;
 }
 
 .logo a {
@@ -5631,14 +5558,14 @@ img[loading="lazy"].loaded {
 }
 
 .logo img {
-    height: 80px;
+    height: 32px;
     width: auto;
     filter: none;
     transition: all var(--transition-normal);
 }
 
 .logo:hover img {
-    transform: scale(1.05);
+    transform: scale(1.02);
 }
 
 /* Navegación Principal */
@@ -5693,34 +5620,36 @@ img[loading="lazy"].loaded {
 .header-actions {
     display: flex;
     align-items: center;
-    gap: var(--spacing-md);
+    gap: 0.75rem;
     flex-shrink: 0;
+}
+
+.btn-contact,
+.btn-design {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    padding: 0 1.25rem;
+    font-family: var(--font-primary);
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: all 150ms ease;
+    text-transform: capitalize;
+    letter-spacing: 0.01em;
+    border: 1px solid transparent;
 }
 
 .btn-contact {
     background: var(--black);
     color: var(--white);
-    border: 1px solid var(--black);
-    border-radius: 4px;
-    padding: 0.625rem 1.25rem;
-    font-weight: 500;
-    text-decoration: none;
-    transition: all 150ms ease;
-    font-family: var(--font-primary);
-    font-size: 0.875rem;
-    text-transform: uppercase;
-    letter-spacing: 0.03em;
-    display: inline-block;
+    border-color: var(--black);
 }
 
 .btn-contact:hover {
-    background: #1a1a1a;
-    border-color: #1a1a1a;
-}
-
-.btn-contact:active {
-    background: #000;
-    border-color: #000;
+    opacity: 0.9;
 }
 
 .btn-contact:focus-visible {
@@ -5731,27 +5660,11 @@ img[loading="lazy"].loaded {
 .btn-design {
     background: #424242;
     color: var(--white);
-    border: 1px solid #424242;
-    border-radius: 4px;
-    padding: 0.625rem 1.25rem;
-    font-weight: 500;
-    text-decoration: none;
-    transition: all 150ms ease;
-    font-family: var(--font-primary);
-    font-size: 0.875rem;
-    text-transform: uppercase;
-    letter-spacing: 0.03em;
-    display: inline-block;
+    border-color: #424242;
 }
 
 .btn-design:hover {
-    background: #363636;
-    border-color: #363636;
-}
-
-.btn-design:active {
-    background: #2a2a2a;
-    border-color: #2a2a2a;
+    filter: brightness(0.95);
 }
 
 .btn-design:focus-visible {
@@ -5760,18 +5673,22 @@ img[loading="lazy"].loaded {
 }
 
 .search-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     background: none;
     border: none;
     color: var(--black);
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     cursor: pointer;
     padding: 0.5rem;
+    height: 40px;
+    width: 40px;
     transition: all var(--transition-normal);
 }
 
 .search-icon:hover {
     color: var(--accent-color);
-    transform: scale(1.1);
 }
 
 /* Lightbox Styles - Industrial/Institutional */
