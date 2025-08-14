@@ -1864,6 +1864,28 @@ section {
         overflow-y: auto;
     }
     
+    /* Navegación del Header Principal - Móvil */
+    .header-principal .nav-principal {
+        position: static !important;
+        top: auto !important;
+        left: auto !important;
+        width: auto !important;
+        height: auto !important;
+        background: transparent !important;
+        backdrop-filter: none !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        padding: 0 !important;
+        border: none !important;
+        gap: 0 !important;
+        overflow: visible !important;
+        z-index: auto !important;
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+    
     .nav-principal.active {
         left: 0;
         opacity: 1;
