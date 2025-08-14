@@ -1723,7 +1723,7 @@ section {
     }
     
     .logo img {
-        height: 40px;
+        height: 60px;
     }
     
     .logo:hover img {
@@ -2559,7 +2559,7 @@ section {
     }
     
     .logo img {
-        height: 40px;
+        height: 50px;
     }
     
     .mobile-menu-toggle {
@@ -5013,12 +5013,12 @@ img[loading="lazy"].loaded {
     justify-content: space-between;
     padding: 1rem 0;
     gap: var(--spacing-md);
-    min-height: 70px;
+    min-height: 90px;
 }
 
 .logo {
     flex-shrink: 0;
-    padding: var(--spacing-sm) 0;
+    padding: var(--spacing-md) 0;
 }
 
 .logo a {
@@ -5027,7 +5027,7 @@ img[loading="lazy"].loaded {
 }
 
 .logo img {
-    height: 50px;
+    height: 80px;
     width: auto;
     filter: none;
     transition: all var(--transition-normal);
