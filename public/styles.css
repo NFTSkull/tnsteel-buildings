@@ -1727,8 +1727,52 @@ section {
         justify-content: space-between;
     }
     
+    /* Ocultar botones del header en móvil */
+    .header-actions {
+        display: none;
+    }
+    
+    /* Mostrar navegación en el header móvil */
+    .nav-principal {
+        display: flex;
+        align-items: center;
+        flex: 1;
+        justify-content: center;
+        margin: 0 1rem;
+    }
+    
+    .nav-list-principal {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .nav-link-principal {
+        font-family: var(--font-primary);
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: var(--black);
+        text-decoration: none;
+        transition: all var(--transition-normal);
+        padding: 0.5rem 0;
+        text-transform: capitalize;
+        white-space: nowrap;
+    }
+    
+    .nav-link-principal:hover {
+        color: var(--accent-color);
+    }
+    
+    .nav-link-principal.active {
+        color: var(--accent-color);
+        font-weight: 600;
+    }
+    
     .logo img {
-        height: 60px;
+        height: 50px;
     }
     
     .logo:hover img {
@@ -1805,6 +1849,35 @@ section {
     }
     
     .nav-principal.active {
+        left: 0;
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    /* Menú móvil específico */
+    #mobileNav {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100vh;
+        background: linear-gradient(135deg, rgba(0, 0, 0, 0.98) 0%, rgba(20, 20, 20, 0.95) 100%);
+        backdrop-filter: blur(25px);
+        transition: all var(--transition-slow);
+        z-index: 1000;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        opacity: 0;
+        visibility: hidden;
+        padding: 100px var(--spacing-md) var(--spacing-xl);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        gap: 0;
+        overflow-y: auto;
+    }
+    
+    #mobileNav.active {
         left: 0;
         opacity: 1;
         visibility: visible;
