@@ -1928,7 +1928,7 @@ section:last-child {
         backdrop-filter: blur(25px);
         transition: all var(--transition-slow);
         z-index: 1000;
-        display: flex;
+        display: none;
         flex-direction: column;
         align-items: center;
         justify-content: flex-start;
@@ -1966,6 +1966,7 @@ section:last-child {
         left: 0;
         opacity: 1;
         visibility: visible;
+        display: flex;
     }
     
     /* Menú móvil específico */
@@ -1979,7 +1980,7 @@ section:last-child {
         backdrop-filter: blur(25px);
         transition: all var(--transition-slow);
         z-index: 1000;
-        display: flex;
+        display: none;
         flex-direction: column;
         align-items: center;
         justify-content: flex-start;
@@ -1995,6 +1996,7 @@ section:last-child {
         left: 0;
         opacity: 1;
         visibility: visible;
+        display: flex;
     }
     
     /* Header Superior Mobile */
@@ -5559,6 +5561,22 @@ header a {
 .header-principal-content {
     white-space: nowrap;
     overflow: hidden;
+}
+
+/* Ocultar menús móviles por defecto para evitar duplicación */
+.nav-principal:not(.active),
+#mobileNav:not(.active) {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+}
+
+/* Solo mostrar menús móviles cuando estén activos */
+.nav-principal.active,
+#mobileNav.active {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
 }
 
 /* Phone Link in Header Superior */
