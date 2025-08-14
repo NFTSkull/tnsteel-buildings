@@ -186,6 +186,17 @@ p {
     padding: 0 16px;
 }
 
+/* Asegurar que el botón Design & Price del Hero use .btn .btn--black */
+.hero-buttons .btn-outline.btn--black {
+    background: #000;
+    color: #fff;
+    border: 1px solid #000;
+    border-radius: 8px;
+    font-weight: 700;
+    height: 40px;
+    padding: 0 16px;
+}
+
 
 
 /* Modern Dropdown */
@@ -297,7 +308,7 @@ p {
 .hero-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.18) 0%, rgba(0, 0, 0, 0.24) 100%);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.25) 100%);
     z-index: 2;
     pointer-events: none;
 }
@@ -5500,6 +5511,7 @@ img[loading="lazy"].loaded {
     list-style: none;
     margin: 0;
     padding: 0;
+    white-space: nowrap;
 }
 
 .nav-list-superior li:not(:last-child)::after {
@@ -5534,6 +5546,19 @@ img[loading="lazy"].loaded {
 /* Reglas globales para evitar subrayados en header */
 header a {
     text-decoration: none;
+}
+
+/* Prevenir wraps y filas duplicadas en header */
+.header-superior,
+.header-principal {
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.header-superior-content,
+.header-principal-content {
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 /* Phone Link in Header Superior */
@@ -5626,6 +5651,7 @@ header a {
     gap: 40px;
     font-size: 18px;
     font-weight: 600;
+    white-space: nowrap;
 }
 
 .nav-list-principal {
@@ -5635,6 +5661,7 @@ header a {
     list-style: none;
     margin: 0;
     padding: 0;
+    white-space: nowrap;
 }
 
 .nav-link-principal {
