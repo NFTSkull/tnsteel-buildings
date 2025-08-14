@@ -5443,23 +5443,28 @@ img[loading="lazy"].loaded {
     }
 }
 
-/* Header Superior (Línea Negra Delgada - Institucional) */
+/* Header Superior (Línea Negra - Institucional) */
 .header-superior {
-    position: fixed;
+    position: sticky;
     top: 0;
     left: 0;
     right: 0;
     background: #000;
-    z-index: 1001;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    z-index: 50;
+    height: 36px;
+    padding: 0 16px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.2px;
 }
 
 .header-superior-content {
     display: flex;
-    align-items: center;
     justify-content: flex-end;
-    padding: 0.25rem 1rem;
-    min-height: 28px;
+    align-items: center;
+    gap: 18px;
+    height: 100%;
     max-width: 1280px;
     margin: 0 auto;
 }
@@ -5526,34 +5531,41 @@ img[loading="lazy"].loaded {
 
 /* Header Principal (Línea Blanca - Institucional) */
 .header-principal {
-    position: fixed;
-    top: 28px;
+    position: sticky;
+    top: 36px;
     left: 0;
     right: 0;
     background: var(--white);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-    z-index: 1000;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    z-index: 50;
     transition: all 150ms ease;
 }
 
 .header-principal.scrolled {
     top: 0;
     background: var(--white);
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.06);
 }
 
 .header-principal-content {
     display: grid;
     grid-template-columns: auto 1fr auto;
     align-items: center;
-    gap: 1.5rem;
+    gap: 24px;
     padding: 0 1rem;
     height: 72px;
     max-width: 1280px;
     margin: 0 auto;
+    width: 100%;
 }
 
 .logo {
+    height: 40px;
+    display: flex;
+    align-items: center;
+}
+
+.logo-box {
     height: 40px;
     display: flex;
     align-items: center;
@@ -5565,30 +5577,37 @@ img[loading="lazy"].loaded {
     height: 100%;
 }
 
-.logo img {
+.logo img,
+.logo-box img {
     height: 100%;
     width: auto;
     object-fit: contain;
+    display: block;
     filter: none;
     transition: all var(--transition-normal);
 }
 
-.logo:hover img {
+.logo:hover img,
+.logo-box:hover img {
     opacity: 0.9;
 }
 
 /* Navegación Principal */
-.nav-principal {
+.nav-principal,
+.main-nav {
     display: flex;
     align-items: center;
     justify-content: center;
     justify-self: center;
+    gap: 40px;
+    font-size: 18px;
+    font-weight: 600;
 }
 
 .nav-list-principal {
     display: flex;
     align-items: center;
-    gap: 2.5rem;
+    gap: 40px;
     list-style: none;
     margin: 0;
     padding: 0;
@@ -5628,23 +5647,26 @@ img[loading="lazy"].loaded {
 }
 
 /* Header Actions */
-.header-actions {
+.header-actions,
+.cta-group {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
+    gap: 12px;
     justify-self: end;
+    margin-left: auto;
 }
 
 .btn-contact,
-.btn-design {
+.btn-design,
+.btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     height: 40px;
-    padding: 0 1rem;
+    padding: 0 16px;
     font-family: var(--font-primary);
     font-size: 0.875rem;
-    font-weight: 600;
+    font-weight: 700;
     text-decoration: none;
     border-radius: 8px;
     transition: all 150ms ease;
@@ -5652,34 +5674,41 @@ img[loading="lazy"].loaded {
     letter-spacing: 0.01em;
     border: none;
     white-space: nowrap;
+    line-height: 1;
 }
 
-.btn-contact {
+.btn-contact,
+.btn--black {
     background: #000;
     color: #fff;
 }
 
-.btn-contact:hover {
+.btn-contact:hover,
+.btn--black:hover {
     opacity: 0.9;
 }
 
-.btn-contact:focus-visible {
-    outline: 2px solid rgba(0, 0, 0, 0.2);
-    outline-offset: 2px;
+.btn-contact:focus-visible,
+.btn--black:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.25);
 }
 
-.btn-design {
-    background: #424242;
+.btn-design,
+.btn--red {
+    background: var(--brand-red, #E10600);
     color: #fff;
 }
 
-.btn-design:hover {
+.btn-design:hover,
+.btn--red:hover {
     opacity: 0.9;
 }
 
-.btn-design:focus-visible {
-    outline: 2px solid rgba(66, 66, 66, 0.2);
-    outline-offset: 2px;
+.btn-design:focus-visible,
+.btn--red:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(225, 6, 0, 0.25);
 }
 
 .search-icon {
@@ -5841,11 +5870,13 @@ img[loading="lazy"].loaded {
     }
     
     /* LOGO EN MÓVIL */
-    .header-principal .logo {
+    .header-principal .logo,
+    .header-principal .logo-box {
         height: 32px !important;
     }
     
-    .header-principal .logo img {
+    .header-principal .logo img,
+    .header-principal .logo-box img {
         max-height: 100% !important;
         height: 100% !important;
         width: auto !important;
