@@ -1733,7 +1733,7 @@ section {
     }
     
     /* Mostrar navegación en el header móvil */
-    .nav-principal {
+    .header-principal .nav-principal {
         display: flex !important;
         align-items: center;
         flex: 1;
@@ -1754,7 +1754,7 @@ section {
         z-index: auto !important;
     }
     
-    .nav-list-principal {
+    .header-principal .nav-list-principal {
         display: flex !important;
         align-items: center;
         gap: 1.5rem;
@@ -1764,7 +1764,7 @@ section {
         flex-direction: row !important;
     }
     
-    .nav-link-principal {
+    .header-principal .nav-link-principal {
         font-family: var(--font-primary);
         font-size: 0.9rem;
         font-weight: 500;
@@ -1778,11 +1778,11 @@ section {
         visibility: visible !important;
     }
     
-    .nav-link-principal:hover {
+    .header-principal .nav-link-principal:hover {
         color: var(--accent-color) !important;
     }
     
-    .nav-link-principal.active {
+    .header-principal .nav-link-principal.active {
         color: var(--accent-color) !important;
         font-weight: 600;
     }
