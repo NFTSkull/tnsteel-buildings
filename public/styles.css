@@ -164,17 +164,15 @@ p {
 }
 
 .btn-outline {
-    background: transparent;
-    color: var(--black);
-    border: 1px solid var(--black);
-    border-radius: 4px;
+    background: #000;
+    color: #fff;
+    border: 1px solid #000;
+    border-radius: 6px;
     transition: all 150ms ease;
 }
 
 .btn-outline:hover {
-    background: var(--black);
-    color: var(--white);
-    border-color: var(--black);
+    opacity: 0.9;
 }
 
 
@@ -247,13 +245,12 @@ p {
 
 /* Hero Section - Industrial/Minimalista */
 .hero {
-    min-height: 100vh;
-    height: 100vh;
+    min-height: 70vh;
     display: flex;
     align-items: center;
     position: relative;
     overflow: hidden;
-    padding-top: 84px;
+    padding-top: 100px;
     width: 100%;
 }
 
@@ -290,7 +287,7 @@ p {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.22) 0%, rgba(0, 0, 0, 0.28) 100%);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.18) 0%, rgba(0, 0, 0, 0.24) 100%);
     z-index: 2;
 }
 
@@ -324,9 +321,20 @@ p {
 
 .hero-buttons {
     display: flex;
-    gap: var(--spacing-md);
+    gap: 0.75rem;
     justify-content: center;
     flex-wrap: wrap;
+}
+
+.hero-buttons .btn-primary,
+.hero-buttons .btn-outline {
+    height: 40px;
+    padding: 0 1.25rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 0.875rem;
 }
 
 /* Sections - Industrial/Institutional */
@@ -2325,8 +2333,7 @@ section:last-child {
     
     /* Hero responsive styles */
     .hero {
-        min-height: 80vh;
-        height: 80vh;
+        min-height: 60vh;
         padding-top: 80px;
     }
     
@@ -5540,26 +5547,31 @@ img[loading="lazy"].loaded {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0.75rem 1rem;
-    gap: 2rem;
-    min-height: 56px;
+    padding: 0 1rem;
+    gap: 1.5rem;
+    height: 72px;
     max-width: 1280px;
     margin: 0 auto;
 }
 
 .logo {
     flex-shrink: 0;
-    padding: 0;
+    height: 36px;
+    display: flex;
+    align-items: center;
 }
 
 .logo a {
     display: block;
     text-decoration: none;
+    height: 100%;
 }
 
 .logo img {
-    height: 32px;
+    max-height: 100%;
+    height: 100%;
     width: auto;
+    object-fit: contain;
     filter: none;
     transition: all var(--transition-normal);
 }
@@ -5572,14 +5584,13 @@ img[loading="lazy"].loaded {
 .nav-principal {
     display: flex;
     align-items: center;
-    flex: 1;
-    justify-content: center;
+    margin: 0 auto;
 }
 
 .nav-list-principal {
     display: flex;
     align-items: center;
-    gap: var(--spacing-lg);
+    gap: 2.5rem;
     list-style: none;
 }
 
@@ -5622,6 +5633,7 @@ img[loading="lazy"].loaded {
     align-items: center;
     gap: 0.75rem;
     flex-shrink: 0;
+    margin-left: auto;
 }
 
 .btn-contact,
@@ -5633,19 +5645,18 @@ img[loading="lazy"].loaded {
     padding: 0 1.25rem;
     font-family: var(--font-primary);
     font-size: 0.875rem;
-    font-weight: 500;
+    font-weight: 600;
     text-decoration: none;
     border-radius: 6px;
     transition: all 150ms ease;
     text-transform: capitalize;
     letter-spacing: 0.01em;
-    border: 1px solid transparent;
+    border: none;
 }
 
 .btn-contact {
-    background: var(--black);
-    color: var(--white);
-    border-color: var(--black);
+    background: #000;
+    color: #fff;
 }
 
 .btn-contact:hover {
@@ -5659,12 +5670,11 @@ img[loading="lazy"].loaded {
 
 .btn-design {
     background: #424242;
-    color: var(--white);
-    border-color: #424242;
+    color: #fff;
 }
 
 .btn-design:hover {
-    filter: brightness(0.95);
+    opacity: 0.9;
 }
 
 .btn-design:focus-visible {
@@ -5829,15 +5839,15 @@ img[loading="lazy"].loaded {
         min-height: 50px !important;
     }
     
-    /* LOGO CENTRADO EN MÓVIL */
+    /* LOGO EN MÓVIL */
     .header-principal .logo {
-        flex: 1 !important;
-        display: flex !important;
-        justify-content: center !important;
+        height: 32px !important;
     }
     
     .header-principal .logo img {
-        height: 40px !important;
+        max-height: 100% !important;
+        height: 100% !important;
+        width: auto !important;
     }
     
     /* BOTÓN HAMBURGUESA A LA DERECHA */
