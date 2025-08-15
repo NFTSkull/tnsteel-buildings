@@ -175,24 +175,6 @@ p {
     opacity: 0.9;
 }
 
-/* Botón Design & Price del Hero */
-.hero-buttons .btn-outline {
-    background: #000;
-    color: #fff;
-    border: 1px solid #000;
-    border-radius: 8px;
-    font-weight: 700;
-    height: 40px;
-    padding: 0 16px;
-}
-
-/* Asegurar que el botón Design & Price del hero use .btn .btn--black */
-.hero-buttons .btn-outline {
-    background: #000 !important;
-    color: #fff !important;
-    border: 1px solid #000 !important;
-}
-
 
 
 /* Modern Dropdown */
@@ -304,9 +286,9 @@ p {
 .hero-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.25) 100%);
-    z-index: 2;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.24));
     pointer-events: none;
+    z-index: 2;
 }
 
 .hero-content {
@@ -331,7 +313,7 @@ p {
     letter-spacing: -0.02em;
     line-height: 1.15;
     text-transform: uppercase;
-    text-shadow: none;
+    /* Sin text-shadow pesado */
 }
 
 .hero-subtitle {
@@ -341,7 +323,7 @@ p {
     margin-bottom: 2rem;
     line-height: 1.5;
     letter-spacing: 0.01em;
-    text-shadow: none;
+    /* Sin text-shadow pesado */
 }
 
 .hero-buttons {
@@ -354,13 +336,20 @@ p {
 .hero-buttons .btn-primary,
 .hero-buttons .btn-outline {
     height: 40px;
-    padding: 0 16px;
+    padding: 0 1rem;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-weight: 700;
+    font-weight: 600;
     font-size: 0.875rem;
     border-radius: 8px;
+}
+
+/* Botón Design & Price del HERO debe usar .btn--black */
+.hero-buttons .btn-outline {
+    background: #000;
+    color: #fff;
+    border: 1px solid #000;
 }
 
 /* Sections - Industrial/Institutional */
@@ -5470,7 +5459,6 @@ img[loading="lazy"].loaded {
 }
 
 /* Header Superior (Línea Negra - Institucional) */
-.topbar,
 .header-superior {
     position: sticky;
     top: 0;
@@ -5486,7 +5474,6 @@ img[loading="lazy"].loaded {
     white-space: nowrap;
 }
 
-.topbar-inner,
 .header-superior-content {
     display: flex;
     justify-content: flex-end;
@@ -5497,21 +5484,18 @@ img[loading="lazy"].loaded {
     margin: 0 auto;
 }
 
-.nav-superior,
-.topbar-nav {
+.nav-superior {
     display: flex;
     align-items: center;
 }
 
-.nav-list-superior,
-.topbar-nav-list {
+.nav-list-superior {
     display: flex;
     align-items: center;
     gap: 0;
     list-style: none;
     margin: 0;
     padding: 0;
-    white-space: nowrap;
 }
 
 .nav-list-superior li:not(:last-child)::after {
@@ -5521,11 +5505,16 @@ img[loading="lazy"].loaded {
     font-size: 0.625rem;
 }
 
+/* Regla global para eliminar subrayados en header */
+header a {
+    text-decoration: none;
+}
+
 .nav-link-superior {
     font-family: var(--font-primary);
     font-size: 0.8125rem;
     font-weight: 500;
-    color: #fff;
+    color: rgba(255, 255, 255, 0.9);
     text-decoration: none;
     transition: color 150ms ease;
     padding: 0.25rem 0;
@@ -5541,24 +5530,6 @@ img[loading="lazy"].loaded {
     cursor: default;
     opacity: 0.6;
     pointer-events: none;
-}
-
-/* Reglas globales para evitar subrayados en header */
-header a {
-    text-decoration: none;
-}
-
-/* Eliminar cualquier fila duplicada de anchors */
-header + section a,
-header ~ section a {
-    text-decoration: none;
-}
-
-/* Evitar que aparezcan anchors azules extra bajo el header */
-header + * a[href^="#"],
-header ~ * a[href^="#"] {
-    text-decoration: none;
-    color: inherit;
 }
 
 /* Phone Link in Header Superior */
@@ -5579,7 +5550,6 @@ header ~ * a[href^="#"] {
 }
 
 /* Header Principal (Línea Blanca - Institucional) */
-.mainbar,
 .header-principal {
     position: sticky;
     top: 36px;
@@ -5589,7 +5559,6 @@ header ~ * a[href^="#"] {
     border-bottom: 1px solid rgba(0, 0, 0, 0.06);
     z-index: 50;
     transition: all 150ms ease;
-    height: 72px;
 }
 
 .header-principal.scrolled {
@@ -5598,14 +5567,13 @@ header ~ * a[href^="#"] {
     box-shadow: 0 1px 8px rgba(0, 0, 0, 0.06);
 }
 
-.mainbar-inner,
 .header-principal-content {
     display: grid;
     grid-template-columns: auto 1fr auto;
     align-items: center;
     gap: 24px;
     padding: 0 1rem;
-    height: 100%;
+    height: 72px;
     max-width: 1280px;
     margin: 0 auto;
     width: 100%;
@@ -5621,13 +5589,6 @@ header ~ * a[href^="#"] {
     height: 40px;
     display: flex;
     align-items: center;
-}
-
-.logo-box img {
-    height: 100%;
-    width: auto;
-    object-fit: contain;
-    display: block;
 }
 
 .logo a {
@@ -5661,7 +5622,6 @@ header ~ * a[href^="#"] {
     gap: 40px;
     font-size: 18px;
     font-weight: 600;
-    white-space: nowrap;
 }
 
 .nav-list-principal {
