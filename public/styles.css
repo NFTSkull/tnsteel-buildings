@@ -186,15 +186,11 @@ p {
     padding: 0 16px;
 }
 
-/* Asegurar que el botón Design & Price del Hero use .btn .btn--black */
-.hero-buttons .btn-outline.btn--black {
-    background: #000;
-    color: #fff;
-    border: 1px solid #000;
-    border-radius: 8px;
-    font-weight: 700;
-    height: 40px;
-    padding: 0 16px;
+/* Asegurar que el botón Design & Price del hero use .btn .btn--black */
+.hero-buttons .btn-outline {
+    background: #000 !important;
+    color: #fff !important;
+    border: 1px solid #000 !important;
 }
 
 
@@ -1928,7 +1924,7 @@ section:last-child {
         backdrop-filter: blur(25px);
         transition: all var(--transition-slow);
         z-index: 1000;
-        display: none;
+        display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: flex-start;
@@ -1966,7 +1962,6 @@ section:last-child {
         left: 0;
         opacity: 1;
         visibility: visible;
-        display: flex;
     }
     
     /* Menú móvil específico */
@@ -1980,7 +1975,7 @@ section:last-child {
         backdrop-filter: blur(25px);
         transition: all var(--transition-slow);
         z-index: 1000;
-        display: none;
+        display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: flex-start;
@@ -1996,7 +1991,6 @@ section:last-child {
         left: 0;
         opacity: 1;
         visibility: visible;
-        display: flex;
     }
     
     /* Header Superior Mobile */
@@ -5492,6 +5486,7 @@ img[loading="lazy"].loaded {
     white-space: nowrap;
 }
 
+.topbar-inner,
 .header-superior-content {
     display: flex;
     justify-content: flex-end;
@@ -5502,12 +5497,14 @@ img[loading="lazy"].loaded {
     margin: 0 auto;
 }
 
-.nav-superior {
+.nav-superior,
+.topbar-nav {
     display: flex;
     align-items: center;
 }
 
-.nav-list-superior {
+.nav-list-superior,
+.topbar-nav-list {
     display: flex;
     align-items: center;
     gap: 0;
@@ -5551,54 +5548,17 @@ header a {
     text-decoration: none;
 }
 
-/* Prevenir wraps y filas duplicadas en header */
-.topbar,
-.header-superior,
-.mainbar,
-.header-principal {
-    white-space: nowrap;
-    overflow: hidden;
+/* Eliminar cualquier fila duplicada de anchors */
+header + section a,
+header ~ section a {
+    text-decoration: none;
 }
 
-.header-superior-content,
-.mainbar-inner,
-.header-principal-content {
-    white-space: nowrap;
-    overflow: hidden;
-}
-
-/* Ocultar menús móviles por defecto para evitar duplicación */
-.nav-principal:not(.active),
-#mobileNav:not(.active) {
-    display: none !important;
-    visibility: hidden !important;
-    opacity: 0 !important;
-}
-
-/* Solo mostrar menús móviles cuando estén activos */
-.nav-principal.active,
-#mobileNav.active {
-    display: flex !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-}
-
-/* Asegurar que el logo-box tenga la altura correcta */
-.logo-box img {
-    height: 100%;
-    width: auto;
-    object-fit: contain;
-    display: block;
-}
-
-/* Asegurar que la navegación esté centrada */
-.main-nav {
-    justify-self: center;
-}
-
-/* Asegurar que los CTAs estén a la derecha */
-.cta-group {
-    justify-self: end;
+/* Evitar que aparezcan anchors azules extra bajo el header */
+header + * a[href^="#"],
+header ~ * a[href^="#"] {
+    text-decoration: none;
+    color: inherit;
 }
 
 /* Phone Link in Header Superior */
@@ -5651,11 +5611,23 @@ header a {
     width: 100%;
 }
 
-.logo,
+.logo {
+    height: 40px;
+    display: flex;
+    align-items: center;
+}
+
 .logo-box {
     height: 40px;
     display: flex;
     align-items: center;
+}
+
+.logo-box img {
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+    display: block;
 }
 
 .logo a {
@@ -5680,8 +5652,8 @@ header a {
 }
 
 /* Navegación Principal */
-.main-nav,
-.nav-principal {
+.nav-principal,
+.main-nav {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -5699,7 +5671,6 @@ header a {
     list-style: none;
     margin: 0;
     padding: 0;
-    white-space: nowrap;
 }
 
 .nav-link-principal {
@@ -5736,8 +5707,8 @@ header a {
 }
 
 /* Header Actions */
-.cta-group,
-.header-actions {
+.header-actions,
+.cta-group {
     display: flex;
     align-items: center;
     gap: 12px;
@@ -5746,9 +5717,9 @@ header a {
     white-space: nowrap;
 }
 
-.btn,
 .btn-contact,
-.btn-design {
+.btn-design,
+.btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
