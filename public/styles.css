@@ -5510,6 +5510,16 @@ header a {
     text-decoration: none;
 }
 
+/* OCULTAR MENÚ MÓVIL EN DESKTOP */
+.mobile-menu-overlay,
+#mobileNav,
+.mobile-menu-toggle {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+
 .nav-link-superior {
     font-family: var(--font-primary);
     font-size: 0.8125rem;
