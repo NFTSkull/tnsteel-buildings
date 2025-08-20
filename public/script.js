@@ -53,50 +53,83 @@ function initializeHeader() {
 
 // ===== HEADER RESPONSIVE Y MENÚ MÓVIL OPTIMIZADO =====
 
-// Mobile Menu Toggle
+// Mobile Menu Toggle - Mejorado y robusto
 function initializeMobileMenu() {
-    (function () {
-        const toggle = document.querySelector('.menu-toggle');
-        const nav = document.getElementById('mobile-nav');
-        if (!toggle || !nav) return;
+    const toggle = document.querySelector('.menu-toggle');
+    const nav = document.getElementById('mobile-nav');
+    
+    // Verificar que existan los elementos necesarios
+    if (!toggle || !nav) {
+        console.log('Mobile menu elements not found');
+        return;
+    }
+    
+    console.log('Mobile menu initialized');
+    
+    // Funciones para abrir y cerrar el menú
+    const openMenu = () => {
+        toggle.setAttribute('aria-expanded', 'true');
+        nav.hidden = false;
+        nav.classList.add('open');
+        document.body.style.overflow = 'hidden'; // Prevenir scroll del body
         
-        const open = () => {
-            toggle.setAttribute('aria-expanded', 'true');
-            nav.hidden = false;
-            nav.classList.add('open');
-            // cerrar al hacer clic fuera
-            document.addEventListener('click', onDocClick);
-            document.addEventListener('keydown', onEsc);
-        };
+        // Agregar event listeners para cerrar
+        setTimeout(() => {
+            document.addEventListener('click', handleOutsideClick);
+            document.addEventListener('keydown', handleEscape);
+        }, 100);
+    };
+    
+    const closeMenu = () => {
+        toggle.setAttribute('aria-expanded', 'false');
+        nav.classList.remove('open');
+        nav.hidden = true;
+        document.body.style.overflow = ''; // Restaurar scroll del body
         
-        const close = () => {
-            toggle.setAttribute('aria-expanded', 'false');
-            nav.classList.remove('open');
-            nav.hidden = true;
-            document.removeEventListener('click', onDocClick);
-            document.removeEventListener('keydown', onEsc);
-        };
-        
-        const onDocClick = (e) => {
-            if (e.target.closest('.mobile-nav') || e.target.closest('.menu-toggle')) return;
-            close();
-        };
-        
-        const onEsc = (e) => { 
-            if (e.key === 'Escape') close(); 
-        };
-        
-        toggle.addEventListener('click', () => {
-            const expanded = toggle.getAttribute('aria-expanded') === 'true';
-            expanded ? close() : open();
-        });
-        
-        // cerrar al navegar
-        nav.addEventListener('click', (e) => {
-            const a = e.target.closest('a'); 
-            if (a) close();
-        });
-    })();
+        // Remover event listeners
+        document.removeEventListener('click', handleOutsideClick);
+        document.removeEventListener('keydown', handleEscape);
+    };
+    
+    // Manejar clics fuera del menú
+    const handleOutsideClick = (e) => {
+        if (!e.target.closest('.mobile-nav') && !e.target.closest('.menu-toggle')) {
+            closeMenu();
+        }
+    };
+    
+    // Manejar tecla Escape
+    const handleEscape = (e) => {
+        if (e.key === 'Escape') {
+            closeMenu();
+        }
+    };
+    
+    // Event listener para el botón hamburguesa
+    toggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+        if (isOpen) {
+            closeMenu();
+        } else {
+            openMenu();
+        }
+    });
+    
+    // Cerrar menú al hacer clic en enlaces
+    nav.addEventListener('click', (e) => {
+        const link = e.target.closest('a');
+        if (link) {
+            closeMenu();
+        }
+    });
+    
+    // Cerrar menú si se cambia el tamaño de ventana a desktop
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 768) {
+            closeMenu();
+        }
+    });
 }
 
 // Review Slider
