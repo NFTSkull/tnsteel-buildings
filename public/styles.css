@@ -6296,6 +6296,35 @@ header a {
         display: none !important;
     }
     
+    /* Expand white header to cover full space */
+    .site-header {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        z-index: 1000 !important;
+        background: rgba(255, 255, 255, 0.98) !important;
+        backdrop-filter: blur(10px) !important;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06) !important;
+    }
+    
+    .header-inner {
+        padding: 18px 24px !important;
+        min-height: 72px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        max-width: 1280px !important;
+        margin: 0 auto !important;
+    }
+    
+    /* Adjust hero and content spacing for mobile header */
+    .hero {
+        min-height: calc(100vh - 72px) !important;
+        padding-top: 72px !important;
+    }
+    
     /* Hide desktop navigation */
     .desktop-nav,
     .desktop-actions {
