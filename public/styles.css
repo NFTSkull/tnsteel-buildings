@@ -21,6 +21,10 @@
     --blue: #DC2626;
     --blue-hover: #B91C1C;
     
+    /* Header Heights - Desktop */
+    --topbar-h: 36px;   /* Topbar negra altura */
+    --mainbar-h: 72px;  /* Header blanco altura */
+    
     /* Gradients and Shadows */
     --gradient-dark: linear-gradient(135deg, #2D2D2D 0%, #1a1a1a 100%);
     --gradient-light: linear-gradient(135deg, #F5F5F5 0%, #FFFFFF 100%);
@@ -49,6 +53,13 @@
     --radius-md: 8px;
     --radius-lg: 16px;
     --radius-xl: 24px;
+}
+
+/* Mobile Header Heights - Topbar no existe en mobile */
+@media (max-width: 1023px) {
+    :root {
+        --topbar-h: 0px;  /* Topbar oculta en mobile */
+    }
 }
 
 /* Modern Base Styles */
@@ -247,7 +258,7 @@ p {
 .hero {
     position: relative;
     width: 100%;
-    min-height: calc(100vh - (36px + 72px));
+    min-height: calc(100vh - (var(--topbar-h) + var(--mainbar-h)));
     overflow: hidden;
     display: flex;
     align-items: center;
@@ -5390,6 +5401,131 @@ header a {
 
 /* ===== HEADER RESPONSIVE Y OPTIMIZADO PARA MÓVIL ===== */
 
+/* ===== MAINBAR DESKTOP - GRID 3 COLUMNAS ===== */
+/* Altura fija y padding sobrio */
+.mainbar {
+    min-height: 72px;
+    background: #fff;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+/* Grid 3 columnas: auto | 1fr | auto; todo centrado verticalmente */
+.mainbar-inner {
+    max-width: 1200px;
+    margin-inline: auto;
+    padding-inline: 24px;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 24px;
+    width: 100%;
+    min-width: 0;  /* min-width:0 evita desbordes de la col central */
+}
+
+/* LOGO más grande SIN crecer la barra */
+.logo-box {
+    height: 40px;  /* sube a 44px si cabe */
+}
+
+.logo-box img {
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+    display: block;
+}
+
+/* NAV central: centrado y SIN wrap */
+.main-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    white-space: nowrap;
+    min-width: 0;
+}
+
+.main-nav a {
+    font-weight: 700;
+    text-decoration: none;
+}
+
+/* CTAs a la DERECHA en línea con lupa */
+.cta-group {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    white-space: nowrap;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    padding: 0 16px;
+    border-radius: 8px;
+    font-weight: 700;
+    line-height: 1;
+    text-decoration: none;
+    border: 0;
+}
+
+.btn--black {
+    background: #000;
+    color: #fff;
+}
+
+.btn--red {
+    background: var(--blue, #DC2626);
+    color: #fff;
+}
+
+.icon-search {
+    width: 40px;
+    height: 40px;
+    display: inline-grid;
+    place-items: center;
+}
+
+/* Evitar que la barra crezca por wrap/line-height/márgenes colapsados */
+.mainbar * {
+    line-height: 1.2;
+}
+
+.mainbar, .mainbar-inner, .main-nav, .cta-group {
+    flex-wrap: nowrap;
+}
+
+/* Breakpoints para que NUNCA rompa en desktop */
+@media (max-width: 1280px) {
+    .main-nav {
+        gap: 28px;
+    }
+    
+    .btn {
+        height: 38px;
+        padding: 0 14px;
+    }
+    
+    .logo-box {
+        height: 36px;
+    }
+}
+
+@media (max-width: 1024px) {
+    /* Aquí entra el menú móvil; NO tocarlo ahora */
+}
+
+/* Limpieza de duplicados y márgenes accidentales */
+header a {
+    text-decoration: none;
+}
+
+header .duplicated, header + .subnav, header + nav {
+    display: none !important;
+}
+
 /* OCULTAR MENÚ MÓVIL EN DESKTOP */
 .mobile-menu-overlay,
 #mobileNav,
@@ -5398,6 +5534,16 @@ header a {
     visibility: hidden !important;
     opacity: 0 !important;
     pointer-events: none !important;
+}
+
+/* Desktop: mostrar mainbar */
+.mainbar {
+    display: block;
+}
+
+/* Desktop: ocultar mobile menu toggle */
+.mobile-menu-toggle {
+    display: none !important;
 }
 
 /* ===== HEADER MÓVIL RESPONSIVE ===== */
@@ -6309,20 +6455,41 @@ header a {
         box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06) !important;
     }
     
-    .header-inner {
+    /* Mobile: usar flexbox en lugar de grid */
+    .mainbar-inner {
         padding: 18px 24px !important;
-        min-height: 72px !important;
+        min-height: var(--mainbar-h) !important;
         display: flex !important;
         align-items: center !important;
         justify-content: space-between !important;
         max-width: 1280px !important;
         margin: 0 auto !important;
+        grid-template-columns: none !important;
+        gap: 0 !important;
     }
     
     /* Adjust hero and content spacing for mobile header */
     .hero {
-        min-height: calc(100vh - 72px) !important;
-        padding-top: 72px !important;
+        min-height: calc(100vh - var(--mainbar-h)) !important;
+        padding-top: var(--mainbar-h) !important;
+    }
+    
+        /* Mobile: ocultar mainbar desktop y mostrar mobile */
+    .mainbar {
+        display: none !important;
+    }
+    
+    /* Mobile: centrar logo y posicionar mobile menu toggle */
+    .mainbar-inner {
+        position: relative !important;
+        justify-content: center !important;
+    }
+    
+    .logo-box {
+        position: absolute !important;
+        left: 50% !important;
+        top: 50% !important;
+        transform: translate(-50%, -50%) !important;
     }
     
     /* Hide desktop navigation */
@@ -6345,6 +6512,10 @@ header a {
         padding: 8px !important;
         border-radius: 6px !important;
         transition: background-color 0.2s ease !important;
+        position: absolute !important;
+        right: 24px !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
     }
     
     .mobile-menu-toggle:hover {
