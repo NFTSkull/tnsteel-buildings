@@ -53,83 +53,138 @@ function initializeHeader() {
 
 // ===== HEADER RESPONSIVE Y MENÚ MÓVIL OPTIMIZADO =====
 
-// Mobile Menu Toggle - Mejorado y robusto
+// Professional Mobile Drawer with Focus Trap
 function initializeMobileMenu() {
-    const toggle = document.querySelector('.menu-toggle');
-    const nav = document.getElementById('mobile-nav');
+    const toggleButton = document.querySelector('.mobile-menu-toggle');
+    const drawer = document.getElementById('mobile-drawer');
+    const overlay = document.getElementById('mobile-drawer-overlay');
+    const closeButton = document.querySelector('.mobile-drawer-close');
     
-    // Verificar que existan los elementos necesarios
-    if (!toggle || !nav) {
-        console.log('Mobile menu elements not found');
+    if (!toggleButton || !drawer || !overlay) {
+        console.log('Mobile drawer elements not found');
         return;
     }
     
-    console.log('Mobile menu initialized');
+    console.log('Mobile drawer initialized');
     
-    // Funciones para abrir y cerrar el menú
-    const openMenu = () => {
-        toggle.setAttribute('aria-expanded', 'true');
-        nav.hidden = false;
-        nav.classList.add('open');
-        document.body.style.overflow = 'hidden'; // Prevenir scroll del body
-        
-        // Agregar event listeners para cerrar
-        setTimeout(() => {
-            document.addEventListener('click', handleOutsideClick);
-            document.addEventListener('keydown', handleEscape);
-        }, 100);
+    // Focus trap elements
+    let focusableElements = [];
+    let firstFocusableElement = null;
+    let lastFocusableElement = null;
+    
+    // Update focusable elements
+    const updateFocusableElements = () => {
+        focusableElements = drawer.querySelectorAll(
+            'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        );
+        firstFocusableElement = focusableElements[0];
+        lastFocusableElement = focusableElements[focusableElements.length - 1];
     };
     
-    const closeMenu = () => {
-        toggle.setAttribute('aria-expanded', 'false');
-        nav.classList.remove('open');
-        nav.hidden = true;
-        document.body.style.overflow = ''; // Restaurar scroll del body
-        
-        // Remover event listeners
-        document.removeEventListener('click', handleOutsideClick);
-        document.removeEventListener('keydown', handleEscape);
-    };
-    
-    // Manejar clics fuera del menú
-    const handleOutsideClick = (e) => {
-        if (!e.target.closest('.mobile-nav') && !e.target.closest('.menu-toggle')) {
-            closeMenu();
-        }
-    };
-    
-    // Manejar tecla Escape
-    const handleEscape = (e) => {
-        if (e.key === 'Escape') {
-            closeMenu();
-        }
-    };
-    
-    // Event listener para el botón hamburguesa
-    toggle.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const isOpen = toggle.getAttribute('aria-expanded') === 'true';
-        if (isOpen) {
-            closeMenu();
+    // Toggle drawer function
+    const toggleDrawer = (open) => {
+        if (open) {
+            // Open drawer
+            toggleButton.setAttribute('aria-expanded', 'true');
+            drawer.setAttribute('aria-hidden', 'false');
+            overlay.setAttribute('aria-hidden', 'false');
+            
+            drawer.classList.add('open');
+            overlay.classList.add('open');
+            
+            // Lock scroll
+            document.body.style.overflow = 'hidden';
+            
+            // Update focusable elements and focus first element
+            updateFocusableElements();
+            if (firstFocusableElement) {
+                setTimeout(() => firstFocusableElement.focus(), 100);
+            }
+            
+            // Add event listeners
+            document.addEventListener('keydown', handleKeyDown);
+            overlay.addEventListener('click', handleOverlayClick);
+            
         } else {
-            openMenu();
+            // Close drawer
+            toggleButton.setAttribute('aria-expanded', 'false');
+            drawer.setAttribute('aria-hidden', 'true');
+            overlay.setAttribute('aria-hidden', 'true');
+            
+            drawer.classList.remove('open');
+            overlay.classList.remove('open');
+            
+            // Unlock scroll
+            document.body.style.overflow = '';
+            
+            // Return focus to toggle button
+            toggleButton.focus();
+            
+            // Remove event listeners
+            document.removeEventListener('keydown', handleKeyDown);
+            overlay.removeEventListener('click', handleOverlayClick);
         }
-    });
+    };
     
-    // Cerrar menú al hacer clic en enlaces
-    nav.addEventListener('click', (e) => {
+    // Handle keyboard navigation
+    const handleKeyDown = (e) => {
+        if (e.key === 'Escape') {
+            toggleDrawer(false);
+            return;
+        }
+        
+        if (e.key === 'Tab') {
+            // Focus trap
+            if (e.shiftKey) {
+                // Shift + Tab
+                if (document.activeElement === firstFocusableElement) {
+                    e.preventDefault();
+                    lastFocusableElement.focus();
+                }
+            } else {
+                // Tab
+                if (document.activeElement === lastFocusableElement) {
+                    e.preventDefault();
+                    firstFocusableElement.focus();
+                }
+            }
+        }
+    };
+    
+    // Handle overlay click
+    const handleOverlayClick = () => {
+        toggleDrawer(false);
+    };
+    
+    // Handle link clicks
+    const handleLinkClick = (e) => {
         const link = e.target.closest('a');
-        if (link) {
-            closeMenu();
+        if (link && link.getAttribute('href') !== '#') {
+            toggleDrawer(false);
+        }
+    };
+    
+    // Event listeners
+    toggleButton.addEventListener('click', () => {
+        const isOpen = toggleButton.getAttribute('aria-expanded') === 'true';
+        toggleDrawer(!isOpen);
+    });
+    
+    if (closeButton) {
+        closeButton.addEventListener('click', () => toggleDrawer(false));
+    }
+    
+    drawer.addEventListener('click', handleLinkClick);
+    
+    // Close on window resize to desktop
+    window.addEventListener('resize', () => {
+        if (window.innerWidth >= 1024) {
+            toggleDrawer(false);
         }
     });
     
-    // Cerrar menú si se cambia el tamaño de ventana a desktop
-    window.addEventListener('resize', () => {
-        if (window.innerWidth > 768) {
-            closeMenu();
-        }
-    });
+    // Expose toggleDrawer function globally
+    window.toggleDrawer = toggleDrawer;
 }
 
 // Review Slider

@@ -52,24 +52,51 @@
                     </button>
                 </div>
 
-                <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-nav">
-                    <span class="menu-bar"></span>
-                    <span class="menu-bar"></span>
-                    <span class="menu-bar"></span>
+                <!-- Mobile Menu Toggle -->
+                <button class="mobile-menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-drawer">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
                 </button>
-                <nav id="mobile-nav" class="mobile-nav" hidden>
-                    <ul>
-                        <li><a href="index.html">Inicio</a></li>
-                        <li><a href="carports.html">Carports</a></li>
-                        <li><a href="garages.html">Garages</a></li>
-                        <li><a href="barns.html">Steel Barns</a></li>
-                        <li><a href="commercial.html">Commercial</a></li>
-                        <li><a href="index.html#contact">Contacto</a></li>
-                    </ul>
-                </nav>
             </div>
         </div>
     </header>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-drawer-overlay" id="mobile-drawer-overlay" aria-hidden="true"></div>
+    <div class="mobile-drawer" id="mobile-drawer" role="dialog" aria-modal="true" aria-labelledby="mobile-drawer-title" aria-hidden="true">
+        <div class="mobile-drawer-header">
+            <h2 id="mobile-drawer-title" class="mobile-drawer-title">Menu</h2>
+            <button class="mobile-drawer-close" aria-label="Close menu">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <nav class="mobile-drawer-nav">
+            <ul class="mobile-drawer-menu">
+                <li><a href="index.html" class="mobile-drawer-link">Home</a></li>
+                <li><a href="index.html#about" class="mobile-drawer-link">About Us</a></li>
+                <li><a href="work-with-us.html" class="mobile-drawer-link">Partners</a></li>
+                <li><span class="mobile-drawer-text">Job Board</span></li>
+                <li><a href="carports.html" class="mobile-drawer-link">Carports</a></li>
+                <li><a href="garages.html" class="mobile-drawer-link">Garages</a></li>
+                <li><a href="barns.html" class="mobile-drawer-link">Steel Barns</a></li>
+                <li><a href="commercial.html" class="mobile-drawer-link">Commercial</a></li>
+            </ul>
+            
+            <div class="mobile-drawer-actions">
+                <a href="index.html#contact" class="btn btn-contact mobile-drawer-btn">Contact Us</a>
+                <a href="index.html#partner-tools" class="btn btn-design mobile-drawer-btn">Design & Price</a>
+            </div>
+            
+            <div class="mobile-drawer-phone">
+                <a href="tel:6157632010" class="mobile-drawer-phone-link">
+                    <i class="fas fa-phone"></i>
+                    615-763-2010
+                </a>
+            </div>
+        </nav>
+    </div>
 
     <!-- Hero Section -->
     <section class="work-with-us-hero">
