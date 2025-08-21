@@ -6291,6 +6291,11 @@ header a {
 
 /* MOBILE NAVIGATION - PROFESSIONAL DRAWER */
 @media (max-width: 1023px) {
+    /* Hide top black bar in mobile */
+    .header-superior {
+        display: none !important;
+    }
+    
     /* Hide desktop navigation */
     .desktop-nav,
     .desktop-actions {
