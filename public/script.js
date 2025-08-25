@@ -1580,3 +1580,238 @@ function initializeLightbox() {
         }
     }
 }
+// ===== SOLUCIÓN EXTREMA PARA FORZAR MENU MÓVIL =====
+// Esta función se ejecuta y GARANTIZA que el botón hamburguesa aparezca
+function forceCreateMobileMenu() {
+    console.log('🔥 FORZANDO CREACIÓN DEL MENÚ MÓVIL...');
+    
+    // Solo en móvil
+    if (window.innerWidth <= 768) {
+        console.log('📱 Dispositivo móvil detectado');
+        
+        // Buscar el container del header
+        const header = document.querySelector('.site-header .mainbar-inner') || 
+                      document.querySelector('.mainbar-inner') ||
+                      document.querySelector('.site-header');
+        
+        if (!header) {
+            console.log('❌ No se encontró header');
+            return;
+        }
+        
+        // Verificar si ya existe el botón
+        let existingButton = header.querySelector('.mobile-menu-toggle');
+        
+        if (existingButton) {
+            console.log('🔍 Botón existente encontrado, forzando visibilidad...');
+            // Forzar que sea visible
+            existingButton.style.cssText = `
+                display: flex !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+                position: relative !important;
+                z-index: 99999 !important;
+                width: 50px !important;
+                height: 50px !important;
+                background: #f0f0f0 !important;
+                border: 3px solid #000 !important;
+                border-radius: 8px !important;
+                margin-left: auto !important;
+                flex-direction: column !important;
+                justify-content: center !important;
+                align-items: center !important;
+                cursor: pointer !important;
+            `;
+            
+            // Forzar líneas visibles
+            const lines = existingButton.querySelectorAll('.hamburger-line, span');
+            lines.forEach((line, index) => {
+                line.style.cssText = `
+                    display: block !important;
+                    width: 20px !important;
+                    height: 3px !important;
+                    background: #000 !important;
+                    margin: 2px 0 !important;
+                `;
+            });
+        } else {
+            console.log('➕ Creando botón hamburguesa desde cero...');
+            
+            // Crear botón desde cero
+            const mobileButton = document.createElement('button');
+            mobileButton.className = 'mobile-menu-toggle FORCED-MOBILE-BTN';
+            mobileButton.setAttribute('aria-label', 'Open menu');
+            mobileButton.setAttribute('aria-expanded', 'false');
+            mobileButton.setAttribute('aria-controls', 'mobile-drawer');
+            
+            // Estilo extremo
+            mobileButton.style.cssText = `
+                display: flex !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+                position: relative !important;
+                z-index: 99999 !important;
+                width: 60px !important;
+                height: 60px !important;
+                background: #ff0000 !important;
+                border: 3px solid #000 !important;
+                border-radius: 12px !important;
+                margin-left: auto !important;
+                flex-direction: column !important;
+                justify-content: center !important;
+                align-items: center !important;
+                cursor: pointer !important;
+                order: 999 !important;
+            `;
+            
+            // Crear las 3 líneas
+            for (let i = 0; i < 3; i++) {
+                const line = document.createElement('span');
+                line.className = 'hamburger-line';
+                line.style.cssText = `
+                    display: block !important;
+                    width: 25px !important;
+                    height: 3px !important;
+                    background: #000 !important;
+                    margin: 2px 0 !important;
+                    transition: all 0.3s ease !important;
+                `;
+                mobileButton.appendChild(line);
+            }
+            
+            // Agregar al header
+            header.appendChild(mobileButton);
+            console.log('✅ Botón hamburguesa creado y agregado!');
+        }
+        
+        // Ocultar navegación desktop en móvil
+        const desktopNav = document.querySelectorAll('.desktop-nav, .desktop-actions');
+        desktopNav.forEach(nav => {
+            nav.style.display = 'none !important';
+        });
+        
+        // Asegurar que el header sea flex
+        header.style.cssText = `
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+            gap: 20px !important;
+        `;
+        
+        console.log('🎉 MENÚ MÓVIL FORZADO EXITOSAMENTE!');
+    }
+}
+
+// Ejecutar inmediatamente y en resize
+document.addEventListener('DOMContentLoaded', function() {
+    forceCreateMobileMenu();
+});
+
+window.addEventListener('resize', function() {
+    forceCreateMobileMenu();
+});
+
+// Ejecutar también inmediatamente por si acaso
+setTimeout(forceCreateMobileMenu, 100);
+setTimeout(forceCreateMobileMenu, 500);
+setTimeout(forceCreateMobileMenu, 1000);
+
+// ===== INYECTAR CSS DIRECTO EN LA PÁGINA =====
+function injectMobileCSSForced() {
+    console.log('💉 Inyectando CSS directo...');
+    
+    // Crear elemento style si no existe
+    let mobileStyle = document.getElementById('forced-mobile-css');
+    if (!mobileStyle) {
+        mobileStyle = document.createElement('style');
+        mobileStyle.id = 'forced-mobile-css';
+        document.head.appendChild(mobileStyle);
+    }
+    
+    // CSS extremo que GARANTIZA visibilidad
+    mobileStyle.textContent = `
+        @media screen and (max-width: 768px) {
+            /* FORZAR BOTÓN HAMBURGUESA - BRUTAL */
+            .mobile-menu-toggle,
+            .FORCED-MOBILE-BTN,
+            button.mobile-menu-toggle,
+            .site-header .mobile-menu-toggle,
+            .mainbar-inner .mobile-menu-toggle {
+                display: flex !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+                pointer-events: auto !important;
+                position: relative !important;
+                z-index: 999999 !important;
+                width: 55px !important;
+                height: 55px !important;
+                background: #ffff00 !important;
+                border: 4px solid #ff0000 !important;
+                border-radius: 10px !important;
+                margin-left: auto !important;
+                margin-right: 10px !important;
+                flex-direction: column !important;
+                justify-content: center !important;
+                align-items: center !important;
+                cursor: pointer !important;
+                order: 999 !important;
+                flex-shrink: 0 !important;
+                box-shadow: 0 0 20px rgba(255,0,0,0.8) !important;
+            }
+            
+            /* LÍNEAS DEL HAMBURGUESA */
+            .mobile-menu-toggle .hamburger-line,
+            .mobile-menu-toggle span,
+            .FORCED-MOBILE-BTN .hamburger-line {
+                display: block !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+                width: 25px !important;
+                height: 4px !important;
+                background: #000000 !important;
+                margin: 2px 0 !important;
+                border-radius: 2px !important;
+                transition: all 0.3s ease !important;
+            }
+            
+            /* OCULTAR DESKTOP EN MÓVIL */
+            .desktop-nav,
+            .desktop-actions,
+            .main-nav.desktop-nav,
+            .cta-group.desktop-actions {
+                display: none !important;
+                visibility: hidden !important;
+            }
+            
+            /* HEADER FLEX */
+            .mainbar-inner {
+                display: flex !important;
+                justify-content: space-between !important;
+                align-items: center !important;
+                gap: 15px !important;
+                padding: 15px 20px !important;
+            }
+            
+            /* LOGO VISIBLE */
+            .logo-box {
+                display: flex !important;
+                align-items: center !important;
+            }
+        }
+        
+        /* DESKTOP: Ocultar hamburguesa */
+        @media screen and (min-width: 769px) {
+            .mobile-menu-toggle,
+            .FORCED-MOBILE-BTN {
+                display: none !important;
+            }
+        }
+    `;
+    
+    console.log('✅ CSS inyectado exitosamente!');
+}
+
+// Ejecutar inyección de CSS
+document.addEventListener('DOMContentLoaded', injectMobileCSSForced);
+setTimeout(injectMobileCSSForced, 50);
+setTimeout(injectMobileCSSForced, 200);
