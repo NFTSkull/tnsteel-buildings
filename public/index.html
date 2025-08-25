@@ -38,72 +38,65 @@
 
     <!-- Header Principal (Línea Blanca) -->
     <header class="site-header" id="header-principal">
-        <div class="mainbar">
-            <div class="mainbar-inner">
-                <a href="index.html" class="logo-box" aria-label="Inicio">
-                    <img src="Logo letras negreas.png" alt="TN Steel Buildings Logo">
+        <div class="main-nav">
+            <div class="container nav-row">
+                <a href="index.html" class="brand logo-box" aria-label="Inicio">
+                    <img src="Logo letras negreas.png" alt="TN Steel Buildings Logo" class="brand__logo">
                 </a>
-                <nav class="main-nav desktop-nav">
-                    <ul class="nav-list-principal">
-                        <li><a href="carports.html" class="nav-link-principal">Carports</a></li>
-                        <li><a href="garages.html" class="nav-link-principal">Garages</a></li>
-                        <li><a href="barns.html" class="nav-link-principal">Steel Barns</a></li>
-                        <li><a href="commercial.html" class="nav-link-principal">Commercial</a></li>
+
+                <!-- Botón hamburguesa (solo visible en móvil) -->
+                <button class="mobile-nav-toggle mobile-menu-toggle" aria-expanded="false" aria-controls="mobile-drawer" aria-label="Open menu">
+                    <span class="mobile-nav-toggle__bar hamburger-line"></span>
+                    <span class="mobile-nav-toggle__bar hamburger-line"></span>
+                    <span class="mobile-nav-toggle__bar hamburger-line"></span>
+                </button>
+
+                <!-- Navegación desktop -->
+                <nav class="primary-nav main-nav desktop-nav" aria-label="Primary">
+                    <ul class="primary-nav__list nav-list-principal">
+                        <li><a href="carports.html">Carports</a></li>
+                        <li><a href="garages.html">Garages</a></li>
+                        <li><a href="barns.html">Steel Barns</a></li>
+                        <li><a href="commercial.html">Commercial</a></li>
                     </ul>
                 </nav>
+
+                <!-- CTAs derecha -->
                 <div class="cta-group desktop-actions">
-                    <a href="#contact" class="btn btn--black">Contact Us</a>
-                    <a href="#partner-tools" class="btn btn--red">Design & Price</a>
-                    <button class="icon-search" aria-label="Search">
+                    <a class="btn btn--black" href="#contact">Contact Us</a>
+                    <a class="btn btn--red" href="#partner-tools">Design & Price</a>
+                    <button class="icon-btn search-btn icon-search" aria-label="Search">
                         <i class="fas fa-search"></i>
                     </button>
                 </div>
-
-                <!-- Mobile Menu Toggle -->
-                <button class="mobile-menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-drawer">
-                    <span class="hamburger-line"></span>
-                    <span class="hamburger-line"></span>
-                    <span class="hamburger-line"></span>
-                </button>
             </div>
         </div>
     </header>
 
-    <!-- Mobile Navigation Drawer -->
-    <div class="mobile-drawer-overlay" id="mobile-drawer-overlay" aria-hidden="true"></div>
-    <div class="mobile-drawer" id="mobile-drawer" role="dialog" aria-modal="true" aria-labelledby="mobile-drawer-title" aria-hidden="true">
-        <div class="mobile-drawer-header">
-            <h2 id="mobile-drawer-title" class="mobile-drawer-title">Menu</h2>
-            <button class="mobile-drawer-close" aria-label="Close menu">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-        
-        <nav class="mobile-drawer-nav">
-            <ul class="mobile-drawer-menu">
-                <li><a href="#home" class="mobile-drawer-link">Home</a></li>
-                <li><a href="#about" class="mobile-drawer-link">About Us</a></li>
-                <li><a href="work-with-us.html" class="mobile-drawer-link">Partners</a></li>
-                <li><span class="mobile-drawer-text">Job Board</span></li>
-                <li><a href="carports.html" class="mobile-drawer-link">Carports</a></li>
-                <li><a href="garages.html" class="mobile-drawer-link">Garages</a></li>
-                <li><a href="barns.html" class="mobile-drawer-link">Steel Barns</a></li>
-                <li><a href="commercial.html" class="mobile-drawer-link">Commercial</a></li>
-            </ul>
-            
-            <div class="mobile-drawer-actions">
-                <a href="#contact" class="btn btn-contact mobile-drawer-btn">Contact Us</a>
-                <a href="#partner-tools" class="btn btn-design mobile-drawer-btn">Design & Price</a>
-            </div>
-            
-            <div class="mobile-drawer-phone">
+    <!-- Panel móvil (drawer) -->
+    <nav id="mobile-drawer" class="mobile-drawer" aria-label="Mobile">
+        <ul class="mobile-drawer__list mobile-drawer-menu">
+            <li><a href="carports.html">Carports</a></li>
+            <li><a href="garages.html">Garages</a></li>
+            <li><a href="barns.html">Steel Barns</a></li>
+            <li><a href="commercial.html">Commercial</a></li>
+            <li class="divider"></li>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="work-with-us.html">Partners</a></li>
+            <li><span class="mobile-drawer-text">Job Board</span></li>
+            <li class="divider"></li>
+            <li><a class="btn btn--black" href="#contact">Contact Us</a></li>
+            <li><a class="btn btn--red" href="#partner-tools">Design & Price</a></li>
+            <li class="divider"></li>
+            <li>
                 <a href="tel:6157632010" class="mobile-drawer-phone-link">
                     <i class="fas fa-phone"></i>
                     615-763-2010
                 </a>
-            </div>
-        </nav>
-    </div>
+            </li>
+        </ul>
+    </nav>
 
     <!-- Hero Section -->
     <section class="hero" id="home">
