@@ -53,47 +53,87 @@ function initializeHeader() {
 
 // ===== HEADER RESPONSIVE Y MENÚ MÓVIL OPTIMIZADO =====
 
-// Mobile Menu Toggle System
+// Professional Mobile Drawer with Focus Trap
 function initializeMobileMenu() {
-    // Nuevo sistema según especificaciones
-    const btn = document.querySelector('.mobile-nav-toggle');
-    const drawer = document.querySelector('#mobile-drawer');
+    const toggleButton = document.querySelector('.mobile-menu-toggle');
+    const drawer = document.getElementById('mobile-drawer');
+    const overlay = document.getElementById('mobile-drawer-overlay');
+    const closeButton = document.querySelector('.mobile-drawer-close');
     
-    if (!btn || !drawer) {
-        console.log('Mobile menu elements not found');
+    if (!toggleButton || !drawer || !overlay) {
+        console.log('Mobile drawer elements not found');
         return;
     }
     
-    console.log('Mobile menu initialized with new system');
+    console.log('Mobile drawer initialized');
     
-    function openMenu(){
-        drawer.classList.add('is-open');
-        btn.setAttribute('aria-expanded', 'true');
-        document.documentElement.style.overflow = 'hidden';   // bloquea scroll fondo
-    }
+    // Focus trap elements
+    let focusableElements = [];
+    let firstFocusableElement = null;
+    let lastFocusableElement = null;
     
-    function closeMenu(){
-        drawer.classList.remove('is-open');
-        btn.setAttribute('aria-expanded', 'false');
-        document.documentElement.style.overflow = '';         // restaura scroll
-    }
-
-    btn.addEventListener('click', () => {
-        const open = btn.getAttribute('aria-expanded') === 'true';
-        open ? closeMenu() : openMenu();
-    });
-
-    // Cierra al navegar
-    drawer.addEventListener('click', (e) => {
-        if (e.target.tagName === 'A') closeMenu();
-    });
-
-    // Cierra con ESC
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closeMenu();
-    });
+    // Update focusable elements
+    const updateFocusableElements = () => {
+        focusableElements = drawer.querySelectorAll(
+            'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        );
+        firstFocusableElement = focusableElements[0];
+        lastFocusableElement = focusableElements[focusableElements.length - 1];
+    };
     
-}
+    // Toggle drawer function
+    const toggleDrawer = (open) => {
+        if (open) {
+            // Open drawer
+            toggleButton.setAttribute('aria-expanded', 'true');
+            drawer.setAttribute('aria-hidden', 'false');
+            overlay.setAttribute('aria-hidden', 'false');
+            
+            drawer.classList.add('open');
+            overlay.classList.add('open');
+            
+            // Lock scroll
+            document.body.style.overflow = 'hidden';
+            
+            // Update focusable elements and focus first element
+            updateFocusableElements();
+            if (firstFocusableElement) {
+                setTimeout(() => firstFocusableElement.focus(), 100);
+            }
+            
+            // Add event listeners
+            document.addEventListener('keydown', handleKeyDown);
+            overlay.addEventListener('click', handleOverlayClick);
+            
+        } else {
+            // Close drawer
+            toggleButton.setAttribute('aria-expanded', 'false');
+            drawer.setAttribute('aria-hidden', 'true');
+            overlay.setAttribute('aria-hidden', 'true');
+            
+            drawer.classList.remove('open');
+            overlay.classList.remove('open');
+            
+            // Unlock scroll
+            document.body.style.overflow = '';
+            
+            // Return focus to toggle button
+            toggleButton.focus();
+            
+            // Remove event listeners
+            document.removeEventListener('keydown', handleKeyDown);
+            overlay.removeEventListener('click', handleOverlayClick);
+        }
+    };
+    
+    // Handle keyboard navigation
+    const handleKeyDown = (e) => {
+        if (e.key === 'Escape') {
+            toggleDrawer(false);
+            return;
+        }
+        
+        if (e.key === 'Tab') {
             // Focus trap
             if (e.shiftKey) {
                 // Shift + Tab
