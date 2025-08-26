@@ -5423,7 +5423,7 @@ header a {
 .site-header .mainbar {
     background: #fff;
     border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-    padding: 8px 0 12px 0; /* Reducido para compensar logo más grande */
+    padding: 6px 0 10px 0; /* Ajustado para mejor centrado visual */
 }
 
 /* Grid 3 columnas: auto | 1fr | auto; todo centrado verticalmente */
@@ -5436,6 +5436,7 @@ header a {
     justify-content: space-between;
     gap: 20px;
     flex-wrap: nowrap;
+    min-height: 80px; /* Altura mínima para mejor alineación */
 }
 
 /* ===== BRAND/LOGO (COLUMNA IZQUIERDA) ===== */
@@ -5444,6 +5445,7 @@ header a {
     align-items: center;
     min-width: 200px; /* Aumentado para acomodar logo de 80px */
     flex: 0 0 auto;
+    justify-content: flex-start; /* Alineación consistente */
 }
 
 /* Logo más grande y elegante para el header */
@@ -5452,7 +5454,8 @@ header a {
     height: 80px; /* Logo agrandado a 80px para mayor visibilidad */
     width: auto;
     object-fit: contain;
-    margin: auto 0; /* Centrado vertical */
+    margin: 0; /* Sin margen para mejor control del posicionamiento */
+    align-self: center; /* Centrado vertical perfecto */
 }
 
 /* ===== PRIMARY NAV (COLUMNA CENTRAL) ===== */
@@ -5461,6 +5464,7 @@ header a {
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100%; /* Asegura altura completa para alineación */
 }
 .main-nav .nav-list-principal {
     display: flex;
@@ -5471,6 +5475,7 @@ header a {
     margin: 0;
     padding: 0;
     white-space: nowrap;
+    height: 100%; /* Asegura altura completa para alineación */
 }
 
 .main-nav a {
@@ -5485,6 +5490,8 @@ header a {
     gap: 12px;
     flex: 0 0 auto;
     white-space: nowrap;
+    height: 100%; /* Asegura altura completa para alineación */
+    justify-content: flex-end; /* Alineación consistente */
 }
 
 .btn {
