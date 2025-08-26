@@ -1416,13 +1416,11 @@ function initializeLightbox() {
     let touchEndX = 0;
     let focusedElement = null;
     
-    // Find all gallery images
+    // Find all gallery images (excluding building style cards to allow proper navigation)
     const gallerySelectors = [
         '.gallery img',
         '.grid img',
         'figure img',
-        '.building-style-card img',
-        '.style-image',
         '.gallery-item img',
         '.product-image img',
         '.benefits-image img',
