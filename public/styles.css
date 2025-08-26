@@ -5487,13 +5487,24 @@ header a {
 }
 
 .btn--black {
-    background: #000;
-    color: #fff;
+    background: var(--light-gray, #F5F5F5);
+    color: var(--black, #000);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
 }
 
 .btn--red {
     background: var(--blue, #DC2626);
     color: #fff;
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+    border: 2px solid var(--blue, #DC2626);
+    transform: translateY(0);
+    transition: all 0.3s ease;
+}
+
+.btn--red:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4);
 }
 
 .icon-search {
@@ -6224,13 +6235,18 @@ header .duplicated, header + .subnav, header + nav {
 
 .btn-contact,
 .btn--black {
-    background: #000;
-    color: #fff;
+    background: var(--light-gray, #F5F5F5);
+    color: var(--black, #000);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
 }
 
 .btn-contact:hover,
 .btn--black:hover {
-    opacity: 0.9;
+    background: var(--secondary-bg, #E8E8E8);
+    border-color: rgba(0, 0, 0, 0.2);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .btn-contact:focus-visible,
@@ -6243,11 +6259,16 @@ header .duplicated, header + .subnav, header + nav {
 .btn--red {
     background: var(--brand-red, #E10600);
     color: #fff;
+    box-shadow: 0 4px 12px rgba(225, 6, 0, 0.3);
+    border: 2px solid var(--brand-red, #E10600);
+    transform: translateY(0);
+    transition: all 0.3s ease;
 }
 
 .btn-design:hover,
 .btn--red:hover {
-    opacity: 0.9;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(225, 6, 0, 0.4);
 }
 
 .btn-design:focus-visible,
