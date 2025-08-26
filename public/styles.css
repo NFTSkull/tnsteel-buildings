@@ -339,37 +339,69 @@ p {
 
 .hero-buttons {
     display: flex;
-    gap: 0.75rem;
+    gap: 1rem; /* Más espacio entre botones */
     justify-content: center;
     flex-wrap: wrap;
+    margin-top: 2rem; /* Más espacio arriba */
 }
 
 .hero-buttons .btn-primary,
 .hero-buttons .btn-outline {
-    height: 44px; /* Un poco más alto para mejor presencia */
-    padding: 0 1.5rem; /* Más padding horizontal */
+    height: 48px; /* Más alto para mejor presencia */
+    padding: 0 1.75rem; /* Más padding horizontal */
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-weight: 600;
-    font-size: 0.875rem;
+    font-weight: 700; /* Más grueso para mejor legibilidad */
+    font-size: 0.9rem; /* Tamaño ligeramente mayor */
     border-radius: 8px;
     transition: all 0.3s ease;
+    min-width: 140px; /* Ancho mínimo para consistencia */
 }
 
-/* Botón Design & Price del HERO debe usar .btn--red */
+/* Botón Contact Us del HERO - Fondo gris claro como el header */
+.hero-buttons .btn-primary {
+    background: var(--light-gray, #F5F5F5);
+    color: var(--black, #000);
+    border: 2px solid var(--light-gray, #F5F5F5);
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.hero-buttons .btn-primary:hover {
+    background: var(--white, #FFFFFF);
+    border-color: var(--white, #FFFFFF);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Botón Design & Price del HERO - Rojo mejorado con mejor contraste */
 .hero-buttons .btn-outline {
     background: var(--blue, #DC2626);
     color: #fff;
-    border: 1px solid var(--blue, #DC2626);
+    border: 2px solid var(--blue, #DC2626);
     transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(220, 38, 38, 0.2);
 }
 
 .hero-buttons .btn-outline:hover {
     background: #B91C1C;
     border-color: #B91C1C;
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+    box-shadow: 0 4px 16px rgba(220, 38, 38, 0.4);
+}
+
+/* Estados activos para mejor feedback */
+.hero-buttons .btn-primary:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.1s ease;
+}
+
+.hero-buttons .btn-outline:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(220, 38, 38, 0.2);
+    transition: all 0.1s ease;
 }
 
 /* Sections - Industrial/Institutional */
