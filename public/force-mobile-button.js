@@ -18,13 +18,14 @@ document.addEventListener('DOMContentLoaded', function() {
             existingButton.style.cssText = `
                 display: block !important;
                 position: fixed !important;
-                top: 20px !important;
-                right: 20px !important;
-                width: 50px !important;
-                height: 50px !important;
-                background: red !important;
-                border: 3px solid yellow !important;
-                z-index: 99999 !important;
+                top: 50% !important;
+                left: 50% !important;
+                transform: translate(-50%, -50%) !important;
+                width: 100px !important;
+                height: 100px !important;
+                background: lime !important;
+                border: 5px solid red !important;
+                z-index: 999999 !important;
                 cursor: pointer !important;
                 opacity: 1 !important;
                 visibility: visible !important;
@@ -61,13 +62,14 @@ document.addEventListener('DOMContentLoaded', function() {
             newButton.style.cssText = `
                 display: block !important;
                 position: fixed !important;
-                top: 20px !important;
-                right: 20px !important;
-                width: 50px !important;
-                height: 50px !important;
-                background: red !important;
-                border: 3px solid yellow !important;
-                z-index: 99999 !important;
+                top: 50% !important;
+                left: 50% !important;
+                transform: translate(-50%, -50%) !important;
+                width: 100px !important;
+                height: 100px !important;
+                background: lime !important;
+                border: 5px solid red !important;
+                z-index: 999999 !important;
                 cursor: pointer !important;
                 opacity: 1 !important;
                 visibility: visible !important;
@@ -78,6 +80,27 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log('Nuevo botón creado y agregado al body');
         }
         
+        // Crear elemento de prueba adicional
+        const testElement = document.createElement('div');
+        testElement.innerHTML = '¡PRUEBA!';
+        testElement.style.cssText = `
+            position: fixed !important;
+            top: 10px !important;
+            left: 10px !important;
+            width: 200px !important;
+            height: 100px !important;
+            background: yellow !important;
+            border: 5px solid blue !important;
+            z-index: 9999999 !important;
+            color: black !important;
+            font-size: 20px !important;
+            font-weight: bold !important;
+            text-align: center !important;
+            line-height: 90px !important;
+        `;
+        document.body.appendChild(testElement);
+        console.log('Elemento de prueba creado');
+
         // Test final
         setTimeout(() => {
             const finalCheck = document.querySelector('.mobile-menu-toggle');
