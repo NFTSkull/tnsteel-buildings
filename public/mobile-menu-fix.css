@@ -1,14 +1,71 @@
-/* ===== MOBILE MENU FIX - SOLO LO ESENCIAL ===== */
+/* ===== MOBILE MENU FIX - SOLUCIÓN PROFESIONAL ===== */
 
-/* Por defecto: ocultar botón hamburguesa */
+/* PROBLEMA IDENTIFICADO: 
+   - El CSS original tiene reglas conflictivas en líneas 6696-6706
+   - El logo se posiciona absolute center, el mainbar-inner se centra
+   - Esto rompe el layout del header en móvil
+*/
+
+/* SOLUCIÓN: Override específico para móvil sin tocar desktop */
+
+/* Por defecto: ocultar botón hamburguesa (desktop) */
 .mobile-menu-toggle {
     display: none;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 8px;
-    z-index: 1001;
 }
+
+/* MÓVIL: Fix completo del header y menú */
+@media (max-width: 768px) {
+    
+    /* PASO 1: Corregir layout del header */
+    .mainbar-inner {
+        justify-content: space-between !important;
+        position: relative !important;
+        display: flex !important;
+        align-items: center !important;
+        padding: 12px 24px !important;
+    }
+    
+    /* PASO 2: Corregir posición del logo */
+    .logo-box {
+        position: relative !important;
+        left: auto !important;
+        top: auto !important;
+        transform: none !important;
+        flex-shrink: 0;
+    }
+    
+    /* PASO 3: Mostrar y posicionar botón hamburguesa */
+    .mobile-menu-toggle {
+        display: flex !important;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 44px;
+        height: 44px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 8px;
+        z-index: 1002;
+        flex-shrink: 0;
+        margin-left: auto;
+    }
+    
+    /* PASO 4: Ocultar navegación desktop */
+    .desktop-nav,
+    .desktop-actions {
+        display: none !important;
+    }
+}
+
+/* DESKTOP: Asegurar que botón esté oculto */
+@media (min-width: 769px) {
+    .mobile-menu-toggle {
+        display: none !important;
+    }
+}
+
+/* ===== ESTILOS DEL BOTÓN HAMBURGUESA ===== */
 
 /* Líneas del hamburguesa */
 .hamburger-line {
@@ -19,35 +76,6 @@
     margin: 3px 0;
     transition: all 0.3s ease;
     border-radius: 1px;
-}
-
-/* MÓVIL: Mostrar botón hamburguesa */
-@media (max-width: 768px) {
-    .mobile-menu-toggle {
-        display: flex !important;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        width: 44px;
-        height: 44px;
-        position: absolute;
-        right: 20px;
-        top: 50%;
-        transform: translateY(-50%);
-    }
-    
-    /* Ocultar navegación desktop en móvil */
-    .desktop-nav,
-    .desktop-actions {
-        display: none !important;
-    }
-}
-
-/* DESKTOP: Ocultar botón hamburguesa */
-@media (min-width: 769px) {
-    .mobile-menu-toggle {
-        display: none !important;
-    }
 }
 
 /* Animación del hamburguesa a X */
