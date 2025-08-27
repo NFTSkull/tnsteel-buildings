@@ -5716,7 +5716,7 @@ header a {
 }
 
 /* ===== DESKTOP: Ocultar elementos móviles ===== */
-@media (min-width: 768px) {
+@media (min-width: 769px) {
     .mobile-menu-toggle {
         display: none !important;
     }
@@ -6919,34 +6919,9 @@ header .duplicated, header + .subnav, header + nav {
     font-size: 14px;
 }
 
-/* Hide drawer on desktop */
-@media (min-width: 1024px) {
-    .mobile-menu-toggle,
-    .mobile-drawer,
-    .mobile-drawer-overlay {
-        display: none !important;
-    }
-}
+/* Eliminado - redundante, ya se oculta en 769px */
 
-/* ASEGURAR QUE DESKTOP NO SE VEA AFECTADO */
-@media (min-width: 769px) {
-    .menu-toggle,
-    .mobile-menu-toggle {
-        display: none !important;
-    }
-    
-    .mobile-nav {
-        display: none !important;
-    }
-    
-    .site-header .desktop-nav {
-        display: flex !important;
-    }
-    
-    .site-header .desktop-actions {
-        display: flex !important;
-    }
-}
+/* CSS limpio - duplicados eliminados */
 
 /* ===== MOBILE MENU - NUEVO Y LIMPIO ===== */
 
