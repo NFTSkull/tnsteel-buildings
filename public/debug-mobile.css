@@ -1,0 +1,46 @@
+/* ===== DEBUG MOBILE MENU - FORZAR VISIBILIDAD ===== */
+
+/* FUERZA BRUTAL: Hacer el botón imposible de ignorar */
+@media (max-width: 768px) {
+    
+    /* DEBUG: Pintar el contenedor de rojo para ver si existe */
+    .mainbar-inner {
+        background: red !important;
+        border: 5px solid yellow !important;
+        min-height: 60px !important;
+    }
+    
+    /* DEBUG: Hacer el botón hamburguesa SUPER VISIBLE */
+    .mobile-menu-toggle {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        position: fixed !important;
+        top: 10px !important;
+        right: 10px !important;
+        width: 60px !important;
+        height: 60px !important;
+        background: lime !important;
+        border: 5px solid red !important;
+        z-index: 9999 !important;
+        cursor: pointer !important;
+    }
+    
+    /* DEBUG: Hacer las líneas SUPER VISIBLES */
+    .hamburger-line {
+        display: block !important;
+        width: 30px !important;
+        height: 4px !important;
+        background: black !important;
+        margin: 4px auto !important;
+        border: 2px solid white !important;
+    }
+    
+    /* DEBUG: Ocultar todo lo demás para test */
+    .desktop-nav,
+    .desktop-actions {
+        display: none !important;
+    }
+}
+
+/* Si este botón no aparece, entonces hay algo MUY roto en el HTML o hay otro CSS sobrescribiendo DESPUÉS de este archivo */
