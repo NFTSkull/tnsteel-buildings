@@ -5737,22 +5737,16 @@ header .duplicated, header + .subnav, header + nav {
 
 /* OCULTAR MENÚ MÓVIL EN DESKTOP */
 .mobile-menu-overlay,
-#mobileNav,
-.mobile-menu-toggle {
-    display: none !important;
-    visibility: hidden !important;
-    opacity: 0 !important;
-    pointer-events: none !important;
-}
+/* Reglas específicas para cada viewport - no ocultar globalmente */
 
 /* Desktop: mostrar mainbar */
 .mainbar {
     display: block;
 }
 
-/* Desktop: ocultar mobile menu toggle */
+/* Mobile menu toggle - hidden by default, shown on mobile */
 .mobile-menu-toggle {
-    display: none !important;
+    display: none;
 }
 
 /* ===== HEADER MÓVIL RESPONSIVE ===== */
