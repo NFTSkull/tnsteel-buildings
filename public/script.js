@@ -53,7 +53,8 @@ function initializeHeader() {
 
 // ===== HEADER RESPONSIVE Y MENÚ MÓVIL OPTIMIZADO =====
 
-// Professional Mobile Drawer with Focus Trap
+// ===== MOBILE MENU - SIMPLE Y FUNCIONAL =====
+
 function initializeMobileMenu() {
     const toggleButton = document.querySelector('.mobile-menu-toggle');
     const drawer = document.getElementById('mobile-drawer');
@@ -61,106 +62,26 @@ function initializeMobileMenu() {
     const closeButton = document.querySelector('.mobile-drawer-close');
     
     if (!toggleButton || !drawer || !overlay) {
-        console.log('Mobile drawer elements not found');
+        console.log('Mobile menu elements not found');
         return;
     }
     
-    console.log('Mobile drawer initialized');
-    
-    // Focus trap elements
-    let focusableElements = [];
-    let firstFocusableElement = null;
-    let lastFocusableElement = null;
-    
-    // Update focusable elements
-    const updateFocusableElements = () => {
-        focusableElements = drawer.querySelectorAll(
-            'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
-        );
-        firstFocusableElement = focusableElements[0];
-        lastFocusableElement = focusableElements[focusableElements.length - 1];
-    };
+    console.log('Mobile menu initialized');
     
     // Toggle drawer function
     const toggleDrawer = (open) => {
         if (open) {
             // Open drawer
             toggleButton.setAttribute('aria-expanded', 'true');
-            drawer.setAttribute('aria-hidden', 'false');
-            overlay.setAttribute('aria-hidden', 'false');
-            
             drawer.classList.add('open');
             overlay.classList.add('open');
-            
-            // Lock scroll
             document.body.style.overflow = 'hidden';
-            
-            // Update focusable elements and focus first element
-            updateFocusableElements();
-            if (firstFocusableElement) {
-                setTimeout(() => firstFocusableElement.focus(), 100);
-            }
-            
-            // Add event listeners
-            document.addEventListener('keydown', handleKeyDown);
-            overlay.addEventListener('click', handleOverlayClick);
-            
         } else {
             // Close drawer
             toggleButton.setAttribute('aria-expanded', 'false');
-            drawer.setAttribute('aria-hidden', 'true');
-            overlay.setAttribute('aria-hidden', 'true');
-            
             drawer.classList.remove('open');
             overlay.classList.remove('open');
-            
-            // Unlock scroll
             document.body.style.overflow = '';
-            
-            // Return focus to toggle button
-            toggleButton.focus();
-            
-            // Remove event listeners
-            document.removeEventListener('keydown', handleKeyDown);
-            overlay.removeEventListener('click', handleOverlayClick);
-        }
-    };
-    
-    // Handle keyboard navigation
-    const handleKeyDown = (e) => {
-        if (e.key === 'Escape') {
-            toggleDrawer(false);
-            return;
-        }
-        
-        if (e.key === 'Tab') {
-            // Focus trap
-            if (e.shiftKey) {
-                // Shift + Tab
-                if (document.activeElement === firstFocusableElement) {
-                    e.preventDefault();
-                    lastFocusableElement.focus();
-                }
-            } else {
-                // Tab
-                if (document.activeElement === lastFocusableElement) {
-                    e.preventDefault();
-                    firstFocusableElement.focus();
-                }
-            }
-        }
-    };
-    
-    // Handle overlay click
-    const handleOverlayClick = () => {
-        toggleDrawer(false);
-    };
-    
-    // Handle link clicks
-    const handleLinkClick = (e) => {
-        const link = e.target.closest('a');
-        if (link && link.getAttribute('href') !== '#') {
-            toggleDrawer(false);
         }
     };
     
@@ -171,20 +92,30 @@ function initializeMobileMenu() {
     });
     
     if (closeButton) {
-        closeButton.addEventListener('click', () => toggleDrawer(false));
+        closeButton.addEventListener('click', () => {
+            toggleDrawer(false);
+        });
     }
     
-    drawer.addEventListener('click', handleLinkClick);
+    // Close drawer when clicking overlay
+    overlay.addEventListener('click', () => {
+        toggleDrawer(false);
+    });
     
-    // Close on window resize to desktop
-    window.addEventListener('resize', () => {
-        if (window.innerWidth >= 1024) {
+    // Close drawer when pressing Escape
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
             toggleDrawer(false);
         }
     });
     
-    // Expose toggleDrawer function globally
-    window.toggleDrawer = toggleDrawer;
+    // Close drawer when clicking on links
+    const drawerLinks = drawer.querySelectorAll('a');
+    drawerLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            toggleDrawer(false);
+        });
+    });
 }
 
 // Review Slider
@@ -1578,266 +1509,11 @@ function initializeLightbox() {
         }
     }
 }
-// ===== DETECCIÓN Y CREACIÓN DE MENÚ MÓVIL MEJORADA =====
-function forceCreateMobileMenu() {
-    // MEJOR detección de móvil real
-    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || 
-                     window.innerWidth <= 768;
-    
-    const isDesktop = window.innerWidth > 768;
-    
-    console.log('📱 Mobile detected:', isMobile);
-    console.log('💻 Desktop detected:', isDesktop);
-    console.log('📏 Screen width:', window.innerWidth);
-    
-    // FORZAR ocultar en desktop
-    if (isDesktop) {
-        const allMobileBtns = document.querySelectorAll('.mobile-menu-toggle, .FORCED-MOBILE-BTN');
-        allMobileBtns.forEach(btn => {
-            btn.style.display = 'none !important';
-            btn.style.visibility = 'hidden !important';
-            btn.style.opacity = '0 !important';
-        });
-        console.log('💻 DESKTOP: Botones móviles ocultados');
-        return; // SALIR si es desktop
-    }
-    
-    // Solo continuar si es MÓVIL REAL
-    if (isMobile) {
-        console.log('🔥 FORZANDO MENÚ MÓVIL...');
-        
-        // Buscar el container del header
-        const header = document.querySelector('.site-header .mainbar-inner') || 
-                      document.querySelector('.mainbar-inner') ||
-                      document.querySelector('.site-header');
-        
-        if (!header) {
-            console.log('❌ No se encontró header');
-            return;
-        }
-        
-        // Verificar si ya existe el botón
-        let existingButton = header.querySelector('.mobile-menu-toggle');
-        
-        if (existingButton) {
-            console.log('🔍 Botón existente encontrado, forzando visibilidad...');
-            // Forzar que sea visible SOLO EN MÓVIL
-            existingButton.style.cssText = `
-                display: flex !important;
-                visibility: visible !important;
-                opacity: 1 !important;
-                position: relative !important;
-                z-index: 99999 !important;
-                width: 50px !important;
-                height: 50px !important;
-                background: #f8f9fa !important;
-                border: 2px solid #333 !important;
-                border-radius: 8px !important;
-                margin-left: auto !important;
-                flex-direction: column !important;
-                justify-content: center !important;
-                align-items: center !important;
-                cursor: pointer !important;
-            `;
-            
-            // Forzar líneas visibles
-            const lines = existingButton.querySelectorAll('.hamburger-line, span');
-            lines.forEach((line, index) => {
-                line.style.cssText = `
-                    display: block !important;
-                    width: 20px !important;
-                    height: 3px !important;
-                    background: #333 !important;
-                    margin: 2px 0 !important;
-                    border-radius: 1px !important;
-                `;
-            });
-        } else {
-            console.log('➕ Creando botón hamburguesa desde cero...');
-            
-            // Crear botón desde cero SOLO para móvil
-            const mobileButton = document.createElement('button');
-            mobileButton.className = 'mobile-menu-toggle FORCED-MOBILE-BTN';
-            mobileButton.setAttribute('aria-label', 'Open menu');
-            mobileButton.setAttribute('aria-expanded', 'false');
-            mobileButton.setAttribute('aria-controls', 'mobile-drawer');
-            
-            // Estilo visible pero no invasivo
-            mobileButton.style.cssText = `
-                display: flex !important;
-                visibility: visible !important;
-                opacity: 1 !important;
-                position: relative !important;
-                z-index: 99999 !important;
-                width: 45px !important;
-                height: 45px !important;
-                background: #ffffff !important;
-                border: 2px solid #333333 !important;
-                border-radius: 8px !important;
-                margin-left: auto !important;
-                flex-direction: column !important;
-                justify-content: center !important;
-                align-items: center !important;
-                cursor: pointer !important;
-                order: 999 !important;
-                box-shadow: 0 2px 8px rgba(0,0,0,0.15) !important;
-            `;
-            
-            // Crear las 3 líneas
-            for (let i = 0; i < 3; i++) {
-                const line = document.createElement('span');
-                line.className = 'hamburger-line';
-                line.style.cssText = `
-                    display: block !important;
-                    width: 22px !important;
-                    height: 2px !important;
-                    background: #333333 !important;
-                    margin: 2.5px 0 !important;
-                    border-radius: 1px !important;
-                    transition: all 0.3s ease !important;
-                `;
-                mobileButton.appendChild(line);
-            }
-            
-            // Agregar al header
-            header.appendChild(mobileButton);
-            console.log('✅ Botón hamburguesa creado y agregado!');
-        }
-        
-        // Ocultar navegación desktop en móvil
-        const desktopNav = document.querySelectorAll('.desktop-nav, .desktop-actions');
-        desktopNav.forEach(nav => {
-            nav.style.display = 'none !important';
-        });
-        
-        // Asegurar que el header sea flex
-        if (header.style) {
-            header.style.display = 'flex !important';
-            header.style.justifyContent = 'space-between !important';
-            header.style.alignItems = 'center !important';
-        }
-        
-        console.log('✅ MENÚ MÓVIL ACTIVADO CORRECTAMENTE');
-    }
-}
+// ===== MOBILE MENU - INICIALIZACIÓN =====
 
-// Ejecutar inmediatamente y en resize
+// ===== MOBILE MENU - INICIALIZACIÓN =====
+
+// Inicializar menú móvil cuando el DOM esté listo
 document.addEventListener('DOMContentLoaded', function() {
-    forceCreateMobileMenu();
+    initializeMobileMenu();
 });
-
-window.addEventListener('resize', function() {
-    forceCreateMobileMenu();
-});
-
-// Ejecutar también inmediatamente por si acaso
-setTimeout(forceCreateMobileMenu, 100);
-setTimeout(forceCreateMobileMenu, 500);
-setTimeout(forceCreateMobileMenu, 1000);
-
-// ===== INYECTAR CSS MÓVIL MEJORADO =====
-function injectMobileCSSForced() {
-    // Solo inyectar CSS si es realmente móvil
-    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || 
-                     window.innerWidth <= 768;
-    
-    console.log('💉 Verificando necesidad de CSS móvil...', { isMobile, width: window.innerWidth });
-    
-    // Crear elemento style si no existe
-    let mobileStyle = document.getElementById('forced-mobile-css');
-    if (!mobileStyle) {
-        mobileStyle = document.createElement('style');
-        mobileStyle.id = 'forced-mobile-css';
-        document.head.appendChild(mobileStyle);
-    }
-    
-    // CSS que SOLO funciona en móvil real
-    mobileStyle.textContent = `
-        /* DESKTOP: ASEGURAR que hamburguesa esté OCULTA */
-        @media screen and (min-width: 769px) {
-            .mobile-menu-toggle,
-            .FORCED-MOBILE-BTN,
-            button.mobile-menu-toggle {
-                display: none !important;
-                visibility: hidden !important;
-                opacity: 0 !important;
-                pointer-events: none !important;
-            }
-        }
-        
-        /* MÓVIL: Mostrar hamburguesa solo en pantallas pequeñas */
-        @media screen and (max-width: 768px) {
-            /* FORZAR BOTÓN HAMBURGUESA - Solo en móvil */
-            .mobile-menu-toggle,
-            .FORCED-MOBILE-BTN,
-            button.mobile-menu-toggle {
-                display: flex !important;
-                visibility: visible !important;
-                opacity: 1 !important;
-                pointer-events: auto !important;
-                position: relative !important;
-                z-index: 999999 !important;
-                width: 44px !important;
-                height: 44px !important;
-                background: #ffffff !important;
-                border: 2px solid #333333 !important;
-                border-radius: 8px !important;
-                margin-left: auto !important;
-                margin-right: 15px !important;
-                flex-direction: column !important;
-                justify-content: center !important;
-                align-items: center !important;
-                cursor: pointer !important;
-                order: 999 !important;
-                flex-shrink: 0 !important;
-                box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
-            }
-            
-            /* LÍNEAS DEL HAMBURGUESA */
-            .mobile-menu-toggle .hamburger-line,
-            .mobile-menu-toggle span,
-            .FORCED-MOBILE-BTN .hamburger-line {
-                display: block !important;
-                visibility: visible !important;
-                opacity: 1 !important;
-                width: 20px !important;
-                height: 2px !important;
-                background: #333333 !important;
-                margin: 2.5px 0 !important;
-                border-radius: 1px !important;
-                transition: all 0.3s ease !important;
-            }
-            
-            /* OCULTAR DESKTOP NAV EN MÓVIL */
-            .desktop-nav,
-            .desktop-actions,
-            .main-nav.desktop-nav,
-            .cta-group.desktop-actions {
-                display: none !important;
-                visibility: hidden !important;
-            }
-            
-            /* HEADER FLEX EN MÓVIL */
-            .mainbar-inner {
-                display: flex !important;
-                justify-content: space-between !important;
-                align-items: center !important;
-                gap: 15px !important;
-                padding: 12px 20px !important;
-            }
-            
-            /* LOGO VISIBLE EN MÓVIL */
-            .logo-box {
-                display: flex !important;
-                align-items: center !important;
-            }
-        }
-    `;
-    
-    console.log('✅ CSS móvil mejorado inyectado!');
-}
-
-// Ejecutar inyección de CSS
-document.addEventListener('DOMContentLoaded', injectMobileCSSForced);
-setTimeout(injectMobileCSSForced, 50);
-setTimeout(injectMobileCSSForced, 200);
