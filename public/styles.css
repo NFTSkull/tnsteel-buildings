@@ -5776,8 +5776,7 @@ header .duplicated, header + .subnav, header + nav {
 
 /* OCULTAR MENÚ MÓVIL EN DESKTOP */
 .mobile-menu-overlay,
-#mobileNav,
-.mobile-menu-toggle {
+#mobileNav {
     display: none !important;
     visibility: hidden !important;
     opacity: 0 !important;
@@ -5789,10 +5788,7 @@ header .duplicated, header + .subnav, header + nav {
     display: block;
 }
 
-/* Desktop: ocultar mobile menu toggle */
-.mobile-menu-toggle {
-    display: none !important;
-}
+/* Desktop: ocultar mobile menu toggle - ELIMINADO PARA PERMITIR MENÚ MÓVIL */
 
 /* ===== HEADER MÓVIL RESPONSIVE ===== */
 @media (max-width: 768px) {
