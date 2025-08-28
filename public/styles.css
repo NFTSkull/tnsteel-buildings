@@ -5716,7 +5716,7 @@ header a {
 }
 
 /* ===== DESKTOP: Ocultar elementos móviles ===== */
-@media (min-width: 769px) {
+@media (min-width: 768px) {
     .mobile-menu-toggle {
         display: none !important;
     }
@@ -5737,16 +5737,22 @@ header .duplicated, header + .subnav, header + nav {
 
 /* OCULTAR MENÚ MÓVIL EN DESKTOP */
 .mobile-menu-overlay,
-/* Reglas específicas para cada viewport - no ocultar globalmente */
+#mobileNav,
+.mobile-menu-toggle {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
 
 /* Desktop: mostrar mainbar */
 .mainbar {
     display: block;
 }
 
-/* Mobile menu toggle - hidden by default, shown on mobile */
+/* Desktop: ocultar mobile menu toggle */
 .mobile-menu-toggle {
-    display: none;
+    display: none !important;
 }
 
 /* ===== HEADER MÓVIL RESPONSIVE ===== */
@@ -6919,9 +6925,34 @@ header .duplicated, header + .subnav, header + nav {
     font-size: 14px;
 }
 
-/* Eliminado - redundante, ya se oculta en 769px */
+/* Hide drawer on desktop */
+@media (min-width: 1024px) {
+    .mobile-menu-toggle,
+    .mobile-drawer,
+    .mobile-drawer-overlay {
+        display: none !important;
+    }
+}
 
-/* CSS limpio - duplicados eliminados */
+/* ASEGURAR QUE DESKTOP NO SE VEA AFECTADO */
+@media (min-width: 769px) {
+    .menu-toggle,
+    .mobile-menu-toggle {
+        display: none !important;
+    }
+    
+    .mobile-nav {
+        display: none !important;
+    }
+    
+    .site-header .desktop-nav {
+        display: flex !important;
+    }
+    
+    .site-header .desktop-actions {
+        display: flex !important;
+    }
+}
 
 /* ===== MOBILE MENU - NUEVO Y LIMPIO ===== */
 
