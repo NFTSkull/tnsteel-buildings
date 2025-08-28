@@ -616,32 +616,43 @@ section:last-child {
 
 .style-content {
     flex: 1;
-    padding: 1.25rem;
+    padding: 1.5rem 1.25rem;
     background: var(--white);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 140px;
 }
 
 .style-title {
-    font-size: 1.25rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-    color: var(--black);
+    font-size: 1.4rem;
+    font-weight: 800;
+    margin-bottom: 0.75rem;
+    color: #000000;
     text-align: center;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    text-transform: none;
+    font-family: inherit;
 }
 
 .style-description {
-    font-size: 0.875rem;
-    line-height: 1.5;
-    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #333333;
     text-align: center;
     margin: 0;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    max-width: 100%;
 }
 
 .style-footer {
     background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
-    padding: 1.25rem 1.5rem;
+    padding: 1.5rem 1.5rem;
     border-top: 1px solid rgba(0, 0, 0, 0.08);
     border-radius: 0 0 8px 8px;
+    margin-top: auto;
 }
 
 .style-cta {
