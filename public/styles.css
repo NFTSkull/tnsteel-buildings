@@ -5655,12 +5655,7 @@ header a {
     }
 }
 
-/* ===== DESKTOP: Ocultar elementos móviles ===== */
-@media (min-width: 768px) {
-    .mobile-menu-toggle {
-        display: none !important;
-    }
-}
+
 
 @media (max-width: 1024px) {
     /* Aquí entra el menú móvil; NO tocarlo ahora */
@@ -6367,19 +6362,7 @@ header .duplicated, header + .subnav, header + nav {
     }
     
     /* Mobile menu toggle styles */
-    .mobile-menu-toggle {
-        height: 44px !important;
-        background: none !important;
-        border: none !important;
-        cursor: pointer !important;
-        padding: 8px !important;
-        border-radius: 6px !important;
-        transition: background-color 0.2s ease !important;
-        position: absolute !important;
-        right: 24px !important;
-        top: 50% !important;
-        transform: translateY(-50%) !important;
-    }
+
     
 
 }
@@ -6789,23 +6772,7 @@ header .duplicated, header + .subnav, header + nav {
     }
 }
 
-/* ===== REGLA DE EMERGENCIA: FORZAR VISIBILIDAD DEL BOTÓN MÓVIL ===== */
-@media (max-width: 768px) {
-    /* REGLA DE EMERGENCIA CON MÁXIMA ESPECIFICIDAD */
-    html body .site-header .mainbar .mainbar-inner button.mobile-menu-toggle {
-        display: flex !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-        pointer-events: auto !important;
-        z-index: 99999 !important;
-    }
-    
-    html body .site-header .mainbar .mainbar-inner button.mobile-menu-toggle .hamburger-line {
-        display: block !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-    }
-}
+
 
 /* ===== MÓVIL: OPTIMIZACIÓN ESPECÍFICA PARA OUR BUILDING STYLES ===== */
 @media (max-width: 768px) {
@@ -6915,40 +6882,7 @@ header .duplicated, header + .subnav, header + nav {
         pointer-events: auto !important;
     }
     
-    .site-header .mainbar .mainbar-inner .mobile-menu-toggle:hover {
-        background: #000000 !important;
-        transform: scale(1.05) !important;
-    }
-    
-    .site-header .mainbar .mainbar-inner .mobile-menu-toggle:hover .hamburger-line {
-        background: #ffffff !important;
-    }
-    
-    /* Líneas del hamburguesa SUPER ESPECÍFICAS */
-    .site-header .mainbar .mainbar-inner .mobile-menu-toggle .hamburger-line {
-        display: block !important;
-        width: 20px !important;
-        height: 2px !important;
-        background: #000000 !important;
-        margin: 3px 0 !important;
-        transition: all 0.3s ease !important;
-        border-radius: 1px !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-    }
-    
-    /* Animación del botón activo SUPER ESPECÍFICA */
-    .site-header .mainbar .mainbar-inner .mobile-menu-toggle[aria-expanded="true"] .hamburger-line:first-child {
-        transform: rotate(45deg) translate(4px, 4px) !important;
-    }
-    
-    .site-header .mainbar .mainbar-inner .mobile-menu-toggle[aria-expanded="true"] .hamburger-line:nth-child(2) {
-        opacity: 0 !important;
-    }
-    
-    .site-header .mainbar .mainbar-inner .mobile-menu-toggle[aria-expanded="true"] .hamburger-line:nth-child(3) {
-        transform: rotate(-45deg) translate(4px, -4px) !important;
-    }
+
     
     /* Drawer móvil */
     .mobile-drawer-overlay {
@@ -7144,39 +7078,4 @@ header .duplicated, header + .subnav, header + nav {
     }
 }
 
-/* ===== FUERZA BRUTA: BOTÓN MÓVIL VISIBLE ===== */
-.mobile-menu-toggle {
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: center !important;
-    align-items: center !important;
-    width: 50px !important;
-    height: 50px !important;
-    background: red !important;
-    border: 3px solid black !important;
-    border-radius: 10px !important;
-    cursor: pointer !important;
-    position: fixed !important;
-    top: 20px !important;
-    right: 20px !important;
-    z-index: 99999 !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    pointer-events: auto !important;
-}
 
-.mobile-menu-toggle .hamburger-line {
-    display: block !important;
-    width: 25px !important;
-    height: 3px !important;
-    background: white !important;
-    margin: 3px 0 !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-}
-
-@media (min-width: 769px) {
-    .mobile-menu-toggle {
-        display: none !important;
-    }
-}
