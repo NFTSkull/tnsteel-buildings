@@ -2284,10 +2284,7 @@ section:last-child {
         display: none;
     }
     
-    /* Show mobile menu toggle */
-    .mobile-menu-toggle {
-        display: block;
-    }
+
     
     /* Hero responsive styles */
     .hero {
