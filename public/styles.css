@@ -7249,6 +7249,24 @@ header .duplicated, header + .subnav, header + nav {
     }
 }
 
+/* ===== REGLA DE EMERGENCIA: FORZAR VISIBILIDAD DEL BOTÓN MÓVIL ===== */
+@media (max-width: 768px) {
+    /* REGLA DE EMERGENCIA CON MÁXIMA ESPECIFICIDAD */
+    html body .site-header .mainbar .mainbar-inner button.mobile-menu-toggle {
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        z-index: 99999 !important;
+    }
+    
+    html body .site-header .mainbar .mainbar-inner button.mobile-menu-toggle .hamburger-line {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+}
+
 /* ===== MÓVIL: OPTIMIZACIÓN ESPECÍFICA PARA OUR BUILDING STYLES ===== */
 @media (max-width: 768px) {
     /* Asegurar que las imágenes se muestren correctamente en móvil */
@@ -7336,8 +7354,8 @@ header .duplicated, header + .subnav, header + nav {
         display: none !important;
     }
     
-    /* Mostrar botón hamburguesa */
-    .mobile-menu-toggle {
+    /* REGLA SUPER ESPECÍFICA PARA FORZAR VISIBILIDAD DEL BOTÓN MÓVIL */
+    .site-header .mainbar .mainbar-inner .mobile-menu-toggle {
         display: flex !important;
         flex-direction: column !important;
         justify-content: center !important;
@@ -7350,23 +7368,24 @@ header .duplicated, header + .subnav, header + nav {
         cursor: pointer !important;
         transition: all 0.3s ease !important;
         margin-left: auto !important;
-        z-index: 1002 !important;
+        z-index: 9999 !important;
         position: relative !important;
         visibility: visible !important;
         opacity: 1 !important;
+        pointer-events: auto !important;
     }
     
-    .mobile-menu-toggle:hover {
+    .site-header .mainbar .mainbar-inner .mobile-menu-toggle:hover {
         background: #000000 !important;
         transform: scale(1.05) !important;
     }
     
-    .mobile-menu-toggle:hover .hamburger-line {
+    .site-header .mainbar .mainbar-inner .mobile-menu-toggle:hover .hamburger-line {
         background: #ffffff !important;
     }
     
-    /* Líneas del hamburguesa */
-    .hamburger-line {
+    /* Líneas del hamburguesa SUPER ESPECÍFICAS */
+    .site-header .mainbar .mainbar-inner .mobile-menu-toggle .hamburger-line {
         display: block !important;
         width: 20px !important;
         height: 2px !important;
@@ -7374,18 +7393,20 @@ header .duplicated, header + .subnav, header + nav {
         margin: 3px 0 !important;
         transition: all 0.3s ease !important;
         border-radius: 1px !important;
+        visibility: visible !important;
+        opacity: 1 !important;
     }
     
-    /* Animación del botón activo */
-    .mobile-menu-toggle[aria-expanded="true"] .hamburger-line:first-child {
+    /* Animación del botón activo SUPER ESPECÍFICA */
+    .site-header .mainbar .mainbar-inner .mobile-menu-toggle[aria-expanded="true"] .hamburger-line:first-child {
         transform: rotate(45deg) translate(4px, 4px) !important;
     }
     
-    .mobile-menu-toggle[aria-expanded="true"] .hamburger-line:nth-child(2) {
+    .site-header .mainbar .mainbar-inner .mobile-menu-toggle[aria-expanded="true"] .hamburger-line:nth-child(2) {
         opacity: 0 !important;
     }
     
-    .mobile-menu-toggle[aria-expanded="true"] .hamburger-line:nth-child(3) {
+    .site-header .mainbar .mainbar-inner .mobile-menu-toggle[aria-expanded="true"] .hamburger-line:nth-child(3) {
         transform: rotate(-45deg) translate(4px, -4px) !important;
     }
     
