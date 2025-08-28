@@ -1517,9 +1517,79 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeMobileMenu();
 });
 
-// ===== DIAGNÓSTICO AUTOMÁTICO + HARDENING JS PARA BOTÓN MÓVIL =====
+// ===== MOBILE MENU HARDENING - DIAGNÓSTICO Y FALLBACK ROBUSTO =====
 
 document.addEventListener('DOMContentLoaded', () => {
+  // Inyectar CSS de hardening en <head>
+  const injectHardeningCSS = () => {
+    if (document.getElementById('mobile-menu-hardening')) return;
+    const style = document.createElement('style');
+    style.id = 'mobile-menu-hardening';
+    style.textContent = `
+      /* === Mobile Menu Hardening (no tocar escritorio) === */
+      @media (max-width: 1024px) {
+        .mobile-menu-toggle {
+          position: fixed !important;
+          top: 14px !important;
+          right: 14px !important;
+          width: 48px !important;
+          height: 48px !important;
+          display: flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+          background: #fff !important;
+          border-radius: 12px !important;
+          box-shadow: 0 6px 18px rgba(0,0,0,.18) !important;
+          z-index: 2147483647 !important;
+          opacity: 1 !important;
+          visibility: visible !important;
+          transform: none !important;
+          pointer-events: auto !important;
+          mix-blend-mode: normal !important;
+          filter: none !important;
+          -webkit-tap-highlight-color: transparent !important;
+          border: none !important;
+          cursor: pointer !important;
+        }
+        .mobile-menu-toggle svg,
+        .mobile-menu-toggle svg * {
+          stroke: #111 !important;
+          fill: none !important;
+          stroke-width: 2.2 !important;
+        }
+        .mobile-menu-toggle .sr-only {
+          position: absolute !important;
+          width: 1px !important;
+          height: 1px !important;
+          padding: 0 !important;
+          margin: -1px !important;
+          overflow: hidden !important;
+          clip: rect(0, 0, 0, 0) !important;
+          white-space: nowrap !important;
+          border: 0 !important;
+        }
+        /* Drawer visible cuando aria-hidden=false */
+        .mobile-drawer[aria-hidden="false"],
+        #mobile-drawer[aria-hidden="false"] {
+          display: block !important;
+          opacity: 1 !important;
+          visibility: visible !important;
+        }
+        .mobile-drawer-overlay[aria-hidden="false"],
+        #mobile-drawer-overlay[aria-hidden="false"] {
+          display: block !important;
+          opacity: .6 !important;
+          visibility: visible !important;
+        }
+      }
+      @media (min-width: 1025px) {
+        .mobile-menu-toggle { display: none !important; }
+      }
+    `;
+    document.head.appendChild(style);
+  };
+
+  // Diagnóstico y fallback del toggle
   const ensureToggle = () => {
     let btn = document.querySelector('button.mobile-menu-toggle');
     if (!btn) {
@@ -1537,31 +1607,37 @@ document.addEventListener('DOMContentLoaded', () => {
         <span class="sr-only">Open menu</span>
       `;
       document.body.appendChild(btn);
+      console.log('[MOBILE MENU] Toggle button created dynamically');
     }
     return btn;
   };
 
+  // Inyectar CSS antes de crear/modificar elementos
+  injectHardeningCSS();
+  
   const toggleButton = ensureToggle();
   const drawer = document.getElementById('mobile-drawer');
   const overlay = document.getElementById('mobile-drawer-overlay');
   const closeButton = document.querySelector('.mobile-drawer-close');
 
-  // Debug visible
+  // Diagnóstico y rescate visual
   const cs = getComputedStyle(toggleButton);
   const rect = toggleButton.getBoundingClientRect();
-  console.log('[MOBILE MENU] styles:', {
-    display: cs.display, visibility: cs.visibility, opacity: cs.opacity,
-    position: cs.position, zIndex: cs.zIndex, top: cs.top, right: cs.right,
-    width: cs.width, height: cs.height, rect
-  });
-
-  // Hardening si algo lo oculta
-  if (
+  const hiddenByStyles = 
     cs.display === 'none' ||
     cs.visibility === 'hidden' ||
-    parseFloat(cs.opacity) === 0 ||
-    rect.right < 0 || rect.bottom < 0 || rect.left > innerWidth || rect.top > innerHeight
-  ) {
+    parseFloat(cs.opacity) === 0;
+  const offscreen = 
+    rect.right < 0 || rect.bottom < 0 || rect.left > innerWidth || rect.top > innerHeight;
+
+  console.log('[MOBILE MENU] Diagnosis:', {
+    display: cs.display, visibility: cs.visibility, opacity: cs.opacity,
+    position: cs.position, zIndex: cs.zIndex, 
+    hiddenByStyles, offscreen, rect
+  });
+
+  if (hiddenByStyles || offscreen) {
+    console.log('[MOBILE MENU] Applying emergency inline styles');
     Object.assign(toggleButton.style, {
       position: 'fixed', top: '14px', right: '14px',
       width: '48px', height: '48px',
@@ -1572,39 +1648,50 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // JS robusto de control ARIA/scroll
   const setOpen = (open) => {
     if (!drawer || !overlay) return;
     drawer.setAttribute('aria-hidden', String(!open));
     overlay.setAttribute('aria-hidden', String(!open));
     toggleButton.setAttribute('aria-expanded', String(open));
+    
     if (open) {
       document.documentElement.style.overflow = 'hidden';
       document.body.style.overflow = 'hidden';
       document.body.style.touchAction = 'none';
+      console.log('[MOBILE MENU] Opened');
     } else {
       document.documentElement.style.overflow = '';
       document.body.style.overflow = '';
       document.body.style.touchAction = '';
+      console.log('[MOBILE MENU] Closed');
     }
   };
 
-  const openMenu = () => setOpen(true);
-  const closeMenu = () => setOpen(false);
-
-  toggleButton.addEventListener('click', () => {
+  const toggleMenu = () => {
     const isOpen = toggleButton.getAttribute('aria-expanded') === 'true';
     setOpen(!isOpen);
-  });
-  overlay?.addEventListener('click', closeMenu);
-  closeButton?.addEventListener('click', closeMenu);
+  };
+
+  // Eventos
+  toggleButton.addEventListener('click', toggleMenu);
+  overlay?.addEventListener('click', () => setOpen(false));
+  closeButton?.addEventListener('click', () => setOpen(false));
 
   // Solo visible en móvil
   const mq = window.matchMedia('(max-width: 1024px)');
-  const sync = () => { toggleButton.hidden = !mq.matches; };
+  const sync = () => { 
+    toggleButton.hidden = !mq.matches;
+    if (mq.matches) {
+      console.log('[MOBILE MENU] Mobile viewport detected');
+    }
+  };
   mq.addEventListener?.('change', sync);
   sync();
 
-  // Helper de prueba manual en consola
-  window.__openMobileMenu = openMenu;
-  window.__closeMobileMenu = closeMenu;
+  // Helpers de prueba en consola
+  window.__openMobileMenu = () => setOpen(true);
+  window.__closeMobileMenu = () => setOpen(false);
+  
+  console.log('[MOBILE MENU] Hardening complete. Test with __openMobileMenu() and __closeMobileMenu()');
 });
