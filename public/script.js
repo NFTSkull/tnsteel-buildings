@@ -1802,8 +1802,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Control de apertura/cierre
     const setOpen = (open) => {
-      if (drawer) drawer.setAttribute('aria-hidden', String(!open));
-      if (overlay) overlay.setAttribute('aria-hidden', String(!open));
+      console.log(`[MOBILE MENU] Setting open: ${open}`);
+      if (drawer) {
+        drawer.setAttribute('aria-hidden', String(!open));
+        if (open) {
+          drawer.classList.add('open');
+          drawer.style.cssText = 'display: block !important; right: 0 !important; opacity: 1 !important; visibility: visible !important;';
+        } else {
+          drawer.classList.remove('open');
+          drawer.style.cssText = '';
+        }
+      }
+      if (overlay) {
+        overlay.setAttribute('aria-hidden', String(!open));
+        if (open) {
+          overlay.classList.add('open');
+          overlay.style.cssText = 'display: block !important; opacity: 0.6 !important; visibility: visible !important;';
+        } else {
+          overlay.classList.remove('open');
+          overlay.style.cssText = '';
+        }
+      }
       btn.setAttribute('aria-expanded', String(open));
       if (open) {
         document.documentElement.style.overflow = 'hidden';
@@ -1816,12 +1835,41 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     };
 
-    btn.addEventListener('click', () => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
       const open = btn.getAttribute('aria-expanded') === 'true';
+      console.log(`[MOBILE MENU] Button clicked, current state: ${open ? 'open' : 'closed'}`);
       setOpen(!open);
     });
-    overlay?.addEventListener('click', () => setOpen(false));
-    closeButton?.addEventListener('click', () => setOpen(false));
+    overlay?.addEventListener('click', (e) => {
+      if (e.target === overlay) {
+        console.log('[MOBILE MENU] Overlay clicked');
+        setOpen(false);
+      }
+    });
+    closeButton?.addEventListener('click', (e) => {
+      e.preventDefault();
+      console.log('[MOBILE MENU] Close button clicked');
+      setOpen(false);
+    });
+    
+    // Cerrar con Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && btn.getAttribute('aria-expanded') === 'true') {
+        console.log('[MOBILE MENU] Escape pressed');
+        setOpen(false);
+      }
+    });
+    
+    // Cerrar al hacer click en links del drawer
+    const drawerLinks = drawer?.querySelectorAll('a');
+    drawerLinks?.forEach(link => {
+      link.addEventListener('click', () => {
+        console.log('[MOBILE MENU] Drawer link clicked, closing drawer');
+        setTimeout(() => setOpen(false), 100);
+      });
+    });
 
     // Solo en móvil
     const mq = window.matchMedia('(max-width: 1024px)');
@@ -1830,15 +1878,6 @@ document.addEventListener('DOMContentLoaded', () => {
     else mq.addListener && mq.addListener(sync);
     sync();
 
-    // Beacon visible para confirmar capa
-    const beacon = document.createElement('div');
-    beacon.id = 'mobile-menu-beacon';
-    Object.assign(beacon.style, {
-      position: 'fixed', top: '10px', right: '70px',
-      width: '16px', height: '16px', borderRadius: '50%',
-      background: '#00e676', zIndex: '2147483647'
-    });
-    document.body.appendChild(beacon);
 
     // Exponer helpers
     window.__mm = {
