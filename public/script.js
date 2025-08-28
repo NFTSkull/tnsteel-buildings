@@ -1902,3 +1902,88 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   window.addEventListener('load', () => console.log('[MOBILE MENU] Window loaded.'));
 })();
+
+// ===== MOBILE MENU PATCH ÚNICO =====
+(function(){
+  // Evitar doble inicialización
+  if (window.__MOBILE_MENU_PATCHED__) return;
+  window.__MOBILE_MENU_PATCHED__ = true;
+
+  const q = sel => document.querySelector(sel);
+  const btn = q('button.mobile-menu-toggle');
+  const drawer = q('#mobile-drawer');
+  const overlay = q('#mobile-drawer-overlay');
+  const closeBtn = q('.mobile-drawer-close');
+
+  if (!btn || !drawer || !overlay) {
+    console.warn('[MOBILE MENU] Falta algún elemento esencial (btn/drawer/overlay).');
+    return;
+  }
+
+  // Fuente de verdad = clase .is-open y ARIA
+  const isOpen = () => drawer.classList.contains('is-open');
+
+  const applyState = (open) => {
+    drawer.classList.toggle('is-open', open);
+    overlay.classList.toggle('is-open', open);
+    drawer.setAttribute('aria-hidden', String(!open));
+    overlay.setAttribute('aria-hidden', String(!open));
+    btn.setAttribute('aria-expanded', String(open));
+
+    // Quitar bloqueos típicos
+    drawer.removeAttribute('hidden');
+    overlay.removeAttribute('hidden');
+    if (open) {
+      // Quitar inline styles que oculten
+      drawer.style.display = '';
+      overlay.style.display = '';
+      document.documentElement.style.overflow = 'hidden';
+      document.body.style.overflow = 'hidden';
+      document.body.style.touchAction = 'none';
+    } else {
+      document.documentElement.style.overflow = '';
+      document.body.style.overflow = '';
+      document.body.style.touchAction = '';
+    }
+  };
+
+  // Limpieza de listeners previos: sustituir nodo por clon (truco para remover handlers viejos)
+  function stripListeners(el){
+    const clone = el.cloneNode(true);
+    el.parentNode.replaceChild(clone, el);
+    return clone;
+  }
+
+  const btnClean   = stripListeners(btn);
+  const overlayClean = stripListeners(overlay);
+  const closeClean   = closeBtn ? stripListeners(closeBtn) : null;
+
+  // Estado inicial: cerrado
+  applyState(false);
+
+  // ÚNICO listener de toggle
+  btnClean.addEventListener('click', (ev) => {
+    ev.preventDefault();
+    ev.stopPropagation();
+    const next = !isOpen();
+    console.log('[MOBILE MENU] Toggle click. Setting open =', next);
+    applyState(next);
+  });
+
+  // Cerrar en overlay/close
+  overlayClean.addEventListener('click', () => {
+    if (isOpen()) applyState(false);
+  });
+  closeClean && closeClean.addEventListener('click', () => {
+    if (isOpen()) applyState(false);
+  });
+
+  // Helpers de prueba
+  window.__menu = {
+    open(){ applyState(true); },
+    close(){ applyState(false); },
+    state(){ console.log('isOpen =', isOpen()); return isOpen(); }
+  };
+
+  console.log('[MOBILE MENU] Patch aplicado. Usa __menu.open(), __menu.close(), __menu.state().');
+})();

@@ -7844,4 +7844,36 @@ html body .site-header .mainbar .mainbar-inner button[aria-controls*="drawer"] .
   }
 }
 
+/* ===== Mobile drawer mapping (solo móvil) ===== */
+@media (max-width: 1024px){
+  /* Estado base: drawer fuera de pantalla */
+  #mobile-drawer.mobile-drawer {
+    position: fixed;
+    inset: 0 0 0 auto;
+    width: 100%;
+    height: 100dvh;
+    background: #fff;
+    transform: translateX(100%);
+    transition: transform .28s ease;
+    z-index: 9999;
+    overflow-y: auto;
+    display: block;           /* que nunca sea none */
+    visibility: visible;      /* visible; controlamos con transform */
+  }
+  #mobile-drawer.mobile-drawer.is-open {
+    transform: translateX(0);
+  }
+
+  /* Overlay */
+  #mobile-drawer-overlay.mobile-drawer-overlay {
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,.5);
+    z-index: 9998;
+    display: none;
+  }
+  #mobile-drawer-overlay.mobile-drawer-overlay.is-open {
+    display: block;
+  }
+}
+
 
