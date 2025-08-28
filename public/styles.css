@@ -616,12 +616,12 @@ section:last-child {
 
 .style-content {
     flex: 1;
-    padding: 1.5rem 1.25rem;
+    padding: 1.25rem 1.25rem;
     background: var(--white);
     display: flex;
     flex-direction: column;
     justify-content: center;
-    min-height: 140px;
+    min-height: 120px;
 }
 
 .style-title {
@@ -637,13 +637,13 @@ section:last-child {
 }
 
 .style-description {
-    font-size: 0.95rem;
-    line-height: 1.6;
+    font-size: 0.9rem;
+    line-height: 1.3;
     color: #333333;
     text-align: center;
     margin: 0;
-    font-weight: 400;
-    letter-spacing: 0.01em;
+    font-weight: 600;
+    letter-spacing: 0.02em;
     max-width: 100%;
 }
 
