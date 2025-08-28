@@ -56,17 +56,35 @@ function initializeHeader() {
 // ===== MOBILE MENU - SIMPLE Y FUNCIONAL =====
 
 function initializeMobileMenu() {
+    console.log('=== DEBUGGING MENÚ MÓVIL ===');
+    
     const toggleButton = document.querySelector('.mobile-menu-toggle');
     const drawer = document.getElementById('mobile-drawer');
     const overlay = document.getElementById('mobile-drawer-overlay');
     const closeButton = document.querySelector('.mobile-drawer-close');
     
+    console.log('toggleButton:', toggleButton);
+    console.log('drawer:', drawer);
+    console.log('overlay:', overlay);
+    console.log('closeButton:', closeButton);
+    
     if (!toggleButton || !drawer || !overlay) {
-        console.log('Mobile menu elements not found');
+        console.log('❌ ERROR: Elementos del menú móvil no encontrados');
         return;
     }
     
-    console.log('Mobile menu initialized');
+    // Verificar estilos CSS del botón
+    const computedStyle = window.getComputedStyle(toggleButton);
+    console.log('=== ESTILOS CSS DEL BOTÓN ===');
+    console.log('display:', computedStyle.display);
+    console.log('visibility:', computedStyle.visibility);
+    console.log('opacity:', computedStyle.opacity);
+    console.log('z-index:', computedStyle.zIndex);
+    console.log('position:', computedStyle.position);
+    console.log('width:', computedStyle.width);
+    console.log('height:', computedStyle.height);
+    
+    console.log('✅ Mobile menu initialized');
     
     // Toggle drawer function
     const toggleDrawer = (open) => {
@@ -86,8 +104,11 @@ function initializeMobileMenu() {
     };
     
     // Event listeners
-    toggleButton.addEventListener('click', () => {
+    toggleButton.addEventListener('click', (e) => {
+        console.log('🎯 CLICK EN BOTÓN MÓVIL DETECTADO!');
+        console.log('Evento:', e);
         const isOpen = toggleButton.getAttribute('aria-expanded') === 'true';
+        console.log('Estado actual:', isOpen ? 'abierto' : 'cerrado');
         toggleDrawer(!isOpen);
     });
     
