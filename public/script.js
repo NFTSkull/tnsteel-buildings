@@ -1517,54 +1517,94 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeMobileMenu();
 });
 
-// ===== HOTFIX PARA BOTÓN MÓVIL - ASEGURAR FUNCIONALIDAD =====
+// ===== DIAGNÓSTICO AUTOMÁTICO + HARDENING JS PARA BOTÓN MÓVIL =====
 
 document.addEventListener('DOMContentLoaded', () => {
-  let toggle = document.querySelector('button.mobile-menu-toggle');
+  const ensureToggle = () => {
+    let btn = document.querySelector('button.mobile-menu-toggle');
+    if (!btn) {
+      btn = document.createElement('button');
+      btn.className = 'mobile-menu-toggle';
+      btn.type = 'button';
+      btn.setAttribute('aria-controls', 'mobile-drawer');
+      btn.setAttribute('aria-expanded', 'false');
+      btn.innerHTML = `
+        <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+        <span class="sr-only">Open menu</span>
+      `;
+      document.body.appendChild(btn);
+    }
+    return btn;
+  };
 
-  // Si no existe, lo creamos y lo agregamos directo al <body>
-  if (!toggle) {
-    toggle = document.createElement('button');
-    toggle.className = 'mobile-menu-toggle';
-    toggle.setAttribute('aria-controls', 'mobile-drawer');
-    toggle.setAttribute('aria-expanded', 'false');
-    toggle.setAttribute('type', 'button');
-    toggle.innerHTML = `
-      <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
-        <line x1="3" y1="6" x2="21" y2="6"></line>
-        <line x1="3" y1="12" x2="21" y2="12"></line>
-        <line x1="3" y1="18" x2="21" y2="18"></line>
-      </svg>
-      <span class="sr-only">Open menu</span>
-    `;
-    document.body.appendChild(toggle);
-  }
+  const toggleButton = ensureToggle();
+  const drawer = document.getElementById('mobile-drawer');
+  const overlay = document.getElementById('mobile-drawer-overlay');
+  const closeButton = document.querySelector('.mobile-drawer-close');
 
-  // Forzamos estilos críticos por si hay reglas que lo ocultan
-  Object.assign(toggle.style, {
-    position: 'fixed',
-    top: '14px',
-    right: '14px',
-    width: '48px',
-    height: '48px',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    background: '#fff',
-    borderRadius: '12px',
-    boxShadow: '0 6px 18px rgba(0,0,0,.18)',
-    zIndex: '2147483647',
-    opacity: '1',
-    visibility: 'visible',
-    transform: 'none',
-    pointerEvents: 'auto'
+  // Debug visible
+  const cs = getComputedStyle(toggleButton);
+  const rect = toggleButton.getBoundingClientRect();
+  console.log('[MOBILE MENU] styles:', {
+    display: cs.display, visibility: cs.visibility, opacity: cs.opacity,
+    position: cs.position, zIndex: cs.zIndex, top: cs.top, right: cs.right,
+    width: cs.width, height: cs.height, rect
   });
 
-  // Mostrar solo en móvil
-  const mq = window.matchMedia('(max-width: 1024px)');
-  const sync = () => {
-    toggle.hidden = !mq.matches;
+  // Hardening si algo lo oculta
+  if (
+    cs.display === 'none' ||
+    cs.visibility === 'hidden' ||
+    parseFloat(cs.opacity) === 0 ||
+    rect.right < 0 || rect.bottom < 0 || rect.left > innerWidth || rect.top > innerHeight
+  ) {
+    Object.assign(toggleButton.style, {
+      position: 'fixed', top: '14px', right: '14px',
+      width: '48px', height: '48px',
+      display: 'flex', alignItems: 'center', justifyContent: 'center',
+      background: '#fff', borderRadius: '12px',
+      boxShadow: '0 6px 18px rgba(0,0,0,.18)', zIndex: '2147483647',
+      opacity: '1', visibility: 'visible', transform: 'none', pointerEvents: 'auto'
+    });
+  }
+
+  const setOpen = (open) => {
+    if (!drawer || !overlay) return;
+    drawer.setAttribute('aria-hidden', String(!open));
+    overlay.setAttribute('aria-hidden', String(!open));
+    toggleButton.setAttribute('aria-expanded', String(open));
+    if (open) {
+      document.documentElement.style.overflow = 'hidden';
+      document.body.style.overflow = 'hidden';
+      document.body.style.touchAction = 'none';
+    } else {
+      document.documentElement.style.overflow = '';
+      document.body.style.overflow = '';
+      document.body.style.touchAction = '';
+    }
   };
+
+  const openMenu = () => setOpen(true);
+  const closeMenu = () => setOpen(false);
+
+  toggleButton.addEventListener('click', () => {
+    const isOpen = toggleButton.getAttribute('aria-expanded') === 'true';
+    setOpen(!isOpen);
+  });
+  overlay?.addEventListener('click', closeMenu);
+  closeButton?.addEventListener('click', closeMenu);
+
+  // Solo visible en móvil
+  const mq = window.matchMedia('(max-width: 1024px)');
+  const sync = () => { toggleButton.hidden = !mq.matches; };
   mq.addEventListener?.('change', sync);
   sync();
+
+  // Helper de prueba manual en consola
+  window.__openMobileMenu = openMenu;
+  window.__closeMobileMenu = closeMenu;
 });
