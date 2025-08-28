@@ -1516,3 +1516,55 @@ function initializeLightbox() {
 document.addEventListener('DOMContentLoaded', function() {
     initializeMobileMenu();
 });
+
+// ===== HOTFIX PARA BOTÓN MÓVIL - ASEGURAR FUNCIONALIDAD =====
+
+document.addEventListener('DOMContentLoaded', () => {
+  let toggle = document.querySelector('button.mobile-menu-toggle');
+
+  // Si no existe, lo creamos y lo agregamos directo al <body>
+  if (!toggle) {
+    toggle = document.createElement('button');
+    toggle.className = 'mobile-menu-toggle';
+    toggle.setAttribute('aria-controls', 'mobile-drawer');
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.setAttribute('type', 'button');
+    toggle.innerHTML = `
+      <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+      <span class="sr-only">Open menu</span>
+    `;
+    document.body.appendChild(toggle);
+  }
+
+  // Forzamos estilos críticos por si hay reglas que lo ocultan
+  Object.assign(toggle.style, {
+    position: 'fixed',
+    top: '14px',
+    right: '14px',
+    width: '48px',
+    height: '48px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    background: '#fff',
+    borderRadius: '12px',
+    boxShadow: '0 6px 18px rgba(0,0,0,.18)',
+    zIndex: '2147483647',
+    opacity: '1',
+    visibility: 'visible',
+    transform: 'none',
+    pointerEvents: 'auto'
+  });
+
+  // Mostrar solo en móvil
+  const mq = window.matchMedia('(max-width: 1024px)');
+  const sync = () => {
+    toggle.hidden = !mq.matches;
+  };
+  mq.addEventListener?.('change', sync);
+  sync();
+});
