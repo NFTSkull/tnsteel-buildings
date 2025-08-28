@@ -2687,7 +2687,21 @@ section:last-child {
     }
     
     .building-style-card {
-        height: 350px;
+        height: auto;
+        min-height: 350px;
+    }
+    
+    .style-image-container {
+        height: 200px;
+        min-height: 200px;
+        aspect-ratio: 16/9;
+    }
+    
+    .style-image {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
     }
     
     .style-title {
@@ -3170,7 +3184,21 @@ section:last-child {
     }
     
     .building-style-card {
-        height: 300px;
+        height: auto;
+        min-height: 300px;
+    }
+    
+    .style-image-container {
+        height: 180px;
+        min-height: 180px;
+        aspect-ratio: 16/9;
+    }
+    
+    .style-image {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
     }
     
     .style-title {
@@ -7222,5 +7250,84 @@ header .duplicated, header + .subnav, header + nav {
     .mobile-drawer,
     .mobile-drawer-overlay {
         display: none !important;
+    }
+}
+
+/* ===== MÓVIL: OPTIMIZACIÓN ESPECÍFICA PARA OUR BUILDING STYLES ===== */
+@media (max-width: 768px) {
+    /* Asegurar que las imágenes se muestren correctamente en móvil */
+    .building-styles-new .style-image-container {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        height: 200px !important;
+        min-height: 200px !important;
+        width: 100% !important;
+        overflow: hidden !important;
+        border-radius: 8px 8px 0 0 !important;
+    }
+    
+    .building-styles-new .style-image {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        position: relative !important;
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        border-radius: 8px 8px 0 0 !important;
+    }
+    
+    /* Optimizar el grid para móvil */
+    .building-styles-new .building-styles-grid {
+        grid-template-columns: 1fr !important;
+        gap: var(--spacing-md) !important;
+        padding: 0 var(--spacing-sm) !important;
+    }
+    
+    .building-styles-new .building-style-card {
+        height: auto !important;
+        min-height: 320px !important;
+        background: var(--white) !important;
+        border: 1px solid #e5e5e5 !important;
+        border-radius: 8px !important;
+        overflow: hidden !important;
+    }
+    
+    /* Asegurar que el contenido se muestre correctamente */
+    .building-styles-new .style-content {
+        padding: 1.25rem !important;
+        background: var(--white) !important;
+        flex: 1 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+    }
+    
+    .building-styles-new .style-footer {
+        background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%) !important;
+        padding: 1.25rem 1.5rem !important;
+        border-top: 1px solid rgba(0, 0, 0, 0.08) !important;
+        border-radius: 0 0 8px 8px !important;
+    }
+}
+
+/* ===== MÓVIL PEQUEÑO: OPTIMIZACIÓN ADICIONAL ===== */
+@media (max-width: 480px) {
+    .building-styles-new .style-image-container {
+        height: 160px !important;
+        min-height: 160px !important;
+    }
+    
+    .building-styles-new .building-style-card {
+        min-height: 280px !important;
+    }
+    
+    .building-styles-new .style-content {
+        padding: 1rem !important;
+    }
+    
+    .building-styles-new .style-footer {
+        padding: 1rem 1.25rem !important;
     }
 }
