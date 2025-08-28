@@ -1987,3 +1987,121 @@ document.addEventListener('DOMContentLoaded', () => {
 
   console.log('[MOBILE MENU] Patch aplicado. Usa __menu.open(), __menu.close(), __menu.state().');
 })();
+
+// ===== MOBILE MENU STABLE (ANTIRREBOTE + MUTATIONOBSERVER) =====
+(function(){
+  if (window.__MOBILE_MENU_STABLE__) return;
+  window.__MOBILE_MENU_STABLE__ = true;
+
+  const $ = (s)=>document.querySelector(s);
+  const btn     = $('button.mobile-menu-toggle');
+  const drawer  = $('#mobile-drawer');
+  const overlay = $('#mobile-drawer-overlay');
+  const closeBtn= $('.mobile-drawer-close');
+
+  if (!btn || !drawer || !overlay){
+    console.warn('[MOBILE MENU] Falta btn/drawer/overlay');
+    return;
+  }
+
+  // -------- Instrumentación: descubre quién cierra ----------
+  const mo = new MutationObserver((muts)=>{
+    for (const m of muts){
+      if (m.type === 'attributes' && (m.attributeName === 'class' || m.attributeName === 'aria-hidden')){
+        const t = m.target;
+        if (t === drawer || t === overlay){
+          console.warn('[MOBILE MENU] Cambio detectado en', t.id || t.className, 
+            'class=', t.className, 'aria-hidden=', t.getAttribute('aria-hidden'),
+            '\nTRACE:\n', new Error().stack);
+        }
+      }
+    }
+  });
+  mo.observe(drawer, {attributes:true, attributeFilter:['class','aria-hidden']});
+  mo.observe(overlay,{attributes:true, attributeFilter:['class','aria-hidden']});
+
+  // -------- Fuente de verdad del estado ----------
+  const isOpen = () => drawer.classList.contains('is-open');
+  let lockUntil = 0; // antirrebote (ms)
+
+  const applyState = (open, reason='manual')=>{
+    const now = performance.now();
+    if (!open && now < lockUntil){
+      console.log('[MOBILE MENU] Close ignored by lock. reason=', reason);
+      return;
+    }
+    drawer.classList.toggle('is-open', open);
+    overlay.classList.toggle('is-open', open);
+    drawer.setAttribute('aria-hidden', String(!open));
+    overlay.setAttribute('aria-hidden', String(!open));
+    btn.setAttribute('aria-expanded', String(open));
+    drawer.removeAttribute('hidden'); overlay.removeAttribute('hidden');
+    if (open){
+      document.documentElement.style.overflow='hidden';
+      document.body.style.overflow='hidden';
+      document.body.style.touchAction='none';
+      lockUntil = now + 300; // ventana anti-cierre inmediato
+    }else{
+      document.documentElement.style.overflow='';
+      document.body.style.overflow='';
+      document.body.style.touchAction='';
+    }
+    console.log('[MOBILE MENU] applyState =>', open, 'reason=', reason);
+  };
+
+  // -------- Eliminar listeners duplicados existentes ----------
+  function strip(el){
+    const clone = el.cloneNode(true);
+    el.parentNode.replaceChild(clone, el);
+    return clone;
+  }
+  const btnClean = strip(btn);
+  const overlayClean = strip(overlay);
+  const closeClean = closeBtn ? strip(closeBtn) : null;
+
+  // -------- Bloquea cierres delegados en el mismo tick ----------
+  // Captura en fase de captura y frena bubbling en móvil
+  function swallow(e){
+    // ignora eventos si estamos en móvil
+    if (window.matchMedia('(max-width:1024px)').matches){
+      e.stopImmediatePropagation();
+    }
+  }
+  ['click','pointerdown','mouseup','touchend'].forEach(type=>{
+    document.addEventListener(type, (e)=>{
+      // si acabamos de abrir, ignorar cualquier handler ajeno ese tick
+      if (performance.now() < lockUntil){
+        e.stopImmediatePropagation();
+      }
+    }, true); // captura
+  });
+
+  // -------- Listeners propios (únicos) ----------
+  btnClean.addEventListener('click', (ev)=>{
+    ev.preventDefault(); ev.stopImmediatePropagation();
+    const next = !isOpen();
+    applyState(next, 'toggle-button');
+  });
+
+  overlayClean.addEventListener('click', (ev)=>{
+    ev.preventDefault(); ev.stopImmediatePropagation();
+    if (isOpen()) applyState(false, 'overlay');
+  });
+
+  closeClean && closeClean.addEventListener('click', (ev)=>{
+    ev.preventDefault(); ev.stopImmediatePropagation();
+    if (isOpen()) applyState(false, 'close-btn');
+  });
+
+  // Estado inicial cerrado y seguro
+  applyState(false, 'init');
+
+  // Helpers para probar desde consola
+  window.__menu = {
+    open(){ applyState(true, 'console-open'); },
+    close(){ applyState(false, 'console-close'); },
+    state(){ console.log('isOpen=', isOpen()); return isOpen(); }
+  };
+
+  console.log('[MOBILE MENU] Patch estable cargado. Usa __menu.open()/close().');
+})();
