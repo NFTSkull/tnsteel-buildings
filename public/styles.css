@@ -7520,4 +7520,237 @@ html body .site-header .mainbar .mainbar-inner *[class*="toggle"] .hamburger-lin
     }
 }
 
+/* ===== EMERGENCIA ABSOLUTA: REGLA CSS IMPOSIBLE DE SOBRESCRIBIR ===== */
+/* Esta regla usa selectores de máxima especificidad y propiedades críticas */
+html body .site-header .mainbar .mainbar-inner button.mobile-menu-toggle,
+html body .site-header .mainbar .mainbar-inner .mobile-menu-toggle,
+html body .site-header .mainbar .mainbar-inner *[class*="mobile-menu-toggle"],
+html body .site-header .mainbar .mainbar-inner *[class*="mobile"],
+html body .site-header .mainbar .mainbar-inner *[class*="toggle"],
+html body .site-header .mainbar .mainbar-inner button[class*="mobile"],
+html body .site-header .mainbar .mainbar-inner button[class*="toggle"],
+html body .site-header .mainbar .mainbar-inner button[aria-label*="menu"],
+html body .site-header .mainbar .mainbar-inner button[aria-label*="Menu"],
+html body .site-header .mainbar .mainbar-inner button[aria-controls*="mobile"],
+html body .site-header .mainbar .mainbar-inner button[aria-controls*="drawer"] {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 80px !important;
+    height: 80px !important;
+    background: #ff00ff !important;
+    border: 6px solid #000000 !important;
+    border-radius: 20px !important;
+    cursor: pointer !important;
+    position: fixed !important;
+    top: 40px !important;
+    right: 40px !important;
+    z-index: 9999999 !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    transform: none !important;
+    clip: auto !important;
+    overflow: visible !important;
+    min-width: 80px !important;
+    min-height: 80px !important;
+    max-width: none !important;
+    max-height: none !important;
+    /* Propiedades adicionales para forzar visibilidad */
+    box-sizing: border-box !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 16px !important;
+    line-height: 1 !important;
+    text-align: center !important;
+    vertical-align: middle !important;
+    white-space: nowrap !important;
+    text-decoration: none !important;
+    text-transform: none !important;
+    letter-spacing: normal !important;
+    word-spacing: normal !important;
+    font-family: inherit !important;
+    font-weight: normal !important;
+    font-style: normal !important;
+    color: #000000 !important;
+    background-color: #ff00ff !important;
+    background-image: none !important;
+    background-repeat: repeat !important;
+    background-position: 0 0 !important;
+    background-attachment: scroll !important;
+    border-style: solid !important;
+    border-width: 6px !important;
+    border-color: #000000 !important;
+    border-radius: 20px !important;
+    box-shadow: none !important;
+    outline: none !important;
+    resize: none !important;
+    transition: none !important;
+    animation: none !important;
+    /* Forzar que no esté oculto */
+    clip-path: none !important;
+    mask: none !important;
+    filter: none !important;
+    backdrop-filter: none !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    appearance: none !important;
+    -webkit-transform: none !important;
+    -moz-transform: none !important;
+    -ms-transform: none !important;
+    transform: none !important;
+    -webkit-transition: none !important;
+    -moz-transition: none !important;
+    -o-transition: none !important;
+    transition: none !important;
+}
+
+/* Líneas del hamburguesa con máxima prioridad */
+html body .site-header .mainbar .mainbar-inner button.mobile-menu-toggle .hamburger-line,
+html body .site-header .mainbar .mainbar-inner .mobile-menu-toggle .hamburger-line,
+html body .site-header .mainbar .mainbar-inner *[class*="mobile-menu-toggle"] .hamburger-line,
+html body .site-header .mainbar .mainbar-inner *[class*="mobile"] .hamburger-line,
+html body .site-header .mainbar .mainbar-inner *[class*="toggle"] .hamburger-line,
+html body .site-header .mainbar .mainbar-inner button[class*="mobile"] .hamburger-line,
+html body .site-header .mainbar .mainbar-inner button[class*="toggle"] .hamburger-line,
+html body .site-header .mainbar .mainbar-inner button[aria-label*="menu"] .hamburger-line,
+html body .site-header .mainbar .mainbar-inner button[aria-label*="Menu"] .hamburger-line,
+html body .site-header .mainbar .mainbar-inner button[aria-controls*="mobile"] .hamburger-line,
+html body .site-header .mainbar .mainbar-inner button[aria-controls*="drawer"] .hamburger-line {
+    display: block !important;
+    width: 40px !important;
+    height: 6px !important;
+    background: #ffffff !important;
+    margin: 4px 0 !important;
+    border-radius: 3px !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    transform: none !important;
+    clip: auto !important;
+    overflow: visible !important;
+    /* Propiedades adicionales para forzar visibilidad */
+    box-sizing: border-box !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    transition: none !important;
+    animation: none !important;
+    clip-path: none !important;
+    mask: none !important;
+    filter: none !important;
+    -webkit-transform: none !important;
+    -moz-transform: none !important;
+    -ms-transform: none !important;
+    transform: none !important;
+    -webkit-transition: none !important;
+    -moz-transition: none !important;
+    -o-transition: none !important;
+    transition: none !important;
+}
+
+/* Regla de emergencia para móvil con máxima especificidad */
+@media (max-width: 768px) {
+    html body .site-header .mainbar .mainbar-inner button.mobile-menu-toggle,
+    html body .site-header .mainbar .mainbar-inner .mobile-menu-toggle,
+    html body .site-header .mainbar .mainbar-inner *[class*="mobile-menu-toggle"],
+    html body .site-header .mainbar .mainbar-inner *[class*="mobile"],
+    html body .site-header .mainbar .mainbar-inner *[class*="toggle"],
+    html body .site-header .mainbar .mainbar-inner button[class*="mobile"],
+    html body .site-header .mainbar .mainbar-inner button[class*="toggle"],
+    html body .site-header .mainbar .mainbar-inner button[aria-label*="menu"],
+    html body .site-header .mainbar .mainbar-inner button[aria-label*="Menu"],
+    html body .site-header .mainbar .mainbar-inner button[aria-controls*="mobile"],
+    html body .site-header .mainbar .mainbar-inner button[aria-controls*="drawer"] {
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+        width: 100px !important;
+        height: 100px !important;
+        background: #00ffff !important;
+        border: 8px solid #000000 !important;
+        border-radius: 25px !important;
+        cursor: pointer !important;
+        position: fixed !important;
+        top: 50px !important;
+        right: 50px !important;
+        z-index: 9999999 !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        transform: none !important;
+        clip: auto !important;
+        overflow: visible !important;
+        min-width: 100px !important;
+        min-height: 100px !important;
+        max-width: none !important;
+        max-height: none !important;
+        /* Propiedades adicionales para forzar visibilidad */
+        box-sizing: border-box !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        font-size: 16px !important;
+        line-height: 1 !important;
+        text-align: center !important;
+        vertical-align: middle !important;
+        white-space: nowrap !important;
+        text-decoration: none !important;
+        text-transform: none !important;
+        letter-spacing: normal !important;
+        word-spacing: normal !important;
+        font-family: inherit !important;
+        font-weight: normal !important;
+        font-style: normal !important;
+        color: #000000 !important;
+        background-color: #00ffff !important;
+        background-image: none !important;
+        background-repeat: repeat !important;
+        background-position: 0 0 !important;
+        background-attachment: scroll !important;
+        border-style: solid !important;
+        border-width: 8px !important;
+        border-color: #000000 !important;
+        border-radius: 25px !important;
+        box-shadow: none !important;
+        outline: none !important;
+        resize: none !important;
+        transition: none !important;
+        animation: none !important;
+        /* Forzar que no esté oculto */
+        clip-path: none !important;
+        mask: none !important;
+        filter: none !important;
+        backdrop-filter: none !important;
+        -webkit-appearance: none !important;
+        -moz-appearance: none !important;
+        appearance: none !important;
+        -webkit-transform: none !important;
+        -moz-transform: none !important;
+        -ms-transform: none !important;
+        transform: none !important;
+        -webkit-transition: none !important;
+        -moz-transition: none !important;
+        -o-transition: none !important;
+        transition: none !important;
+    }
+}
+
+/* Regla de emergencia para desktop */
+@media (min-width: 769px) {
+    html body .site-header .mainbar .mainbar-inner button.mobile-menu-toggle,
+    html body .site-header .mainbar .mainbar-inner .mobile-menu-toggle,
+    html body .site-header .mainbar .mainbar-inner *[class*="mobile-menu-toggle"],
+    html body .site-header .mainbar .mainbar-inner *[class*="mobile"],
+    html body .site-header .mainbar .mainbar-inner *[class*="toggle"],
+    html body .site-header .mainbar .mainbar-inner button[class*="mobile"],
+    html body .site-header .mainbar .mainbar-inner button[class*="toggle"],
+    html body .site-header .mainbar .mainbar-inner button[aria-label*="menu"],
+    html body .site-header .mainbar .mainbar-inner button[aria-label*="Menu"],
+    html body .site-header .mainbar .mainbar-inner button[aria-controls*="mobile"],
+    html body .site-header .mainbar .mainbar-inner button[aria-controls*="drawer"] {
+        display: none !important;
+    }
+}
+
 
