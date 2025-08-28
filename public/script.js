@@ -56,35 +56,14 @@ function initializeHeader() {
 // ===== MOBILE MENU - SIMPLE Y FUNCIONAL =====
 
 function initializeMobileMenu() {
-    console.log('=== DEBUGGING MENÚ MÓVIL ===');
-    
     const toggleButton = document.querySelector('.mobile-menu-toggle');
     const drawer = document.getElementById('mobile-drawer');
     const overlay = document.getElementById('mobile-drawer-overlay');
     const closeButton = document.querySelector('.mobile-drawer-close');
     
-    console.log('toggleButton:', toggleButton);
-    console.log('drawer:', drawer);
-    console.log('overlay:', overlay);
-    console.log('closeButton:', closeButton);
-    
     if (!toggleButton || !drawer || !overlay) {
-        console.log('❌ ERROR: Elementos del menú móvil no encontrados');
         return;
     }
-    
-    // Verificar estilos CSS del botón
-    const computedStyle = window.getComputedStyle(toggleButton);
-    console.log('=== ESTILOS CSS DEL BOTÓN ===');
-    console.log('display:', computedStyle.display);
-    console.log('visibility:', computedStyle.visibility);
-    console.log('opacity:', computedStyle.opacity);
-    console.log('z-index:', computedStyle.zIndex);
-    console.log('position:', computedStyle.position);
-    console.log('width:', computedStyle.width);
-    console.log('height:', computedStyle.height);
-    
-    console.log('✅ Mobile menu initialized');
     
     // Toggle drawer function
     const toggleDrawer = (open) => {
@@ -104,11 +83,8 @@ function initializeMobileMenu() {
     };
     
     // Event listeners
-    toggleButton.addEventListener('click', (e) => {
-        console.log('🎯 CLICK EN BOTÓN MÓVIL DETECTADO!');
-        console.log('Evento:', e);
+    toggleButton.addEventListener('click', () => {
         const isOpen = toggleButton.getAttribute('aria-expanded') === 'true';
-        console.log('Estado actual:', isOpen ? 'abierto' : 'cerrado');
         toggleDrawer(!isOpen);
     });
     
@@ -138,89 +114,7 @@ function initializeMobileMenu() {
         });
     });
 
-    console.log('=== FIN DEBUGGING MENÚ MÓVIL ===');
-    
-    // DEBUGGING ADICIONAL: Verificar si el botón realmente existe en el DOM
-    console.log('=== VERIFICACIÓN DE EXISTENCIA EN DOM ===');
-    
-    // Verificar si el botón está en el DOM
-    const buttonInDOM = document.body.contains(toggleButton);
-    console.log('¿Botón está en DOM?', buttonInDOM);
-    
-    // Verificar si el botón está en el viewport
-    const rect = toggleButton.getBoundingClientRect();
-    console.log('Posición del botón:', rect);
-    console.log('¿Está en viewport?', rect.top >= 0 && rect.left >= 0 && rect.bottom <= window.innerHeight && rect.right <= window.innerWidth);
-    
-    // Verificar si el botón tiene contenido
-    console.log('Contenido del botón:', toggleButton.innerHTML);
-    console.log('Texto del botón:', toggleButton.textContent);
-    
-    // Verificar si el botón tiene las líneas del hamburguesa
-    const hamburgerLines = toggleButton.querySelectorAll('.hamburger-line');
-    console.log('Líneas del hamburguesa encontradas:', hamburgerLines.length);
-    hamburgerLines.forEach((line, index) => {
-        console.log(`Línea ${index + 1}:`, line);
-        console.log(`Línea ${index + 1} display:`, window.getComputedStyle(line).display);
-        console.log(`Línea ${index + 1} visibility:`, window.getComputedStyle(line).visibility);
-    });
-    
-    // Verificar si el botón está siendo cubierto por otros elementos
-    const elementsAtPoint = document.elementsFromPoint(rect.left + rect.width/2, rect.top + rect.height/2);
-    console.log('Elementos en la posición del botón:', elementsAtPoint);
-    
-    // Verificar si el botón está siendo cubierto
-    if (elementsAtPoint[0] !== toggleButton) {
-        console.log('⚠️ ADVERTENCIA: El botón está siendo cubierto por:', elementsAtPoint[0]);
-    }
-    
-    // Verificar si el botón tiene el evento click registrado
-    console.log('Event listeners del botón:', toggleButton.onclick);
-    
-    // Verificar si el botón es clickeable
-    console.log('¿Botón es clickeable?', toggleButton.style.pointerEvents !== 'none' && window.getComputedStyle(toggleButton).pointerEvents !== 'none');
-    
-    // Verificar si el botón está oculto por CSS
-    const computedStyleButton = window.getComputedStyle(toggleButton);
-    console.log('=== VERIFICACIÓN CSS COMPLETA ===');
-    console.log('display:', computedStyleButton.display);
-    console.log('visibility:', computedStyleButton.visibility);
-    console.log('opacity:', computedStyleButton.opacity);
-    console.log('z-index:', computedStyleButton.zIndex);
-    console.log('position:', computedStyleButton.position);
-    console.log('width:', computedStyleButton.width);
-    console.log('height:', computedStyleButton.height);
-    console.log('top:', computedStyleButton.top);
-    console.log('right:', computedStyleButton.right);
-    console.log('left:', computedStyleButton.left);
-    console.log('bottom:', computedStyleButton.bottom);
-    console.log('transform:', computedStyleButton.transform);
-    console.log('clip:', computedStyleButton.clip);
-    console.log('overflow:', computedStyleButton.overflow);
-    console.log('pointer-events:', computedStyleButton.pointerEvents);
-    
-    // Verificar si hay algún elemento padre que esté ocultando el botón
-    let parent = toggleButton.parentElement;
-    let level = 0;
-    while (parent && level < 10) {
-        const parentStyle = window.getComputedStyle(parent);
-        console.log(`Padre nivel ${level}:`, parent.tagName, parent.className);
-        console.log(`  display:`, parentStyle.display);
-        console.log(`  visibility:`, parentStyle.visibility);
-        console.log(`  opacity:`, parentStyle.opacity);
-        console.log(`  overflow:`, parentStyle.overflow);
-        console.log(`  position:`, parentStyle.position);
-        console.log(`  z-index:`, parentStyle.zIndex);
-        
-        if (parentStyle.display === 'none' || parentStyle.visibility === 'hidden' || parentStyle.opacity === '0') {
-            console.log(`⚠️ PROBLEMA ENCONTRADO: Padre nivel ${level} está ocultando el botón!`);
-        }
-        
-        parent = parent.parentElement;
-        level++;
-    }
-    
-    console.log('=== FIN VERIFICACIÓN DE EXISTENCIA EN DOM ===');
+
 }
 
 // Review Slider
