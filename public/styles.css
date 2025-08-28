@@ -7802,4 +7802,46 @@ html body .site-header .mainbar .mainbar-inner button[aria-controls*="drawer"] .
   .mobile-menu-toggle { display: none !important; }
 }
 
+/* === MOBILE MENU HARDENING === */
+@media (max-width: 1024px) {
+  .mobile-menu-toggle {
+    position: fixed !important;
+    top: 14px !important;
+    right: 14px !important;
+    width: 48px !important;
+    height: 48px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: #fff !important;
+    border-radius: 12px !important;
+    box-shadow: 0 6px 18px rgba(0,0,0,.18) !important;
+    z-index: 2147483647 !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    pointer-events: auto !important;
+    mix-blend-mode: normal !important;
+    filter: none !important;
+  }
+  .mobile-menu-toggle svg, .mobile-menu-toggle svg * {
+    stroke: #111 !important;
+    fill: none !important;
+    stroke-width: 2.2 !important;
+  }
+  /* Drawer visible cuando aria-hidden=false */
+  .mobile-drawer[aria-hidden="false"],
+  #mobile-drawer[aria-hidden="false"] {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+  .mobile-drawer-overlay[aria-hidden="false"],
+  #mobile-drawer-overlay[aria-hidden="false"] {
+    display: block !important;
+    opacity: .6 !important;
+    visibility: visible !important;
+  }
+}
+
 

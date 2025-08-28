@@ -1695,3 +1695,171 @@ document.addEventListener('DOMContentLoaded', () => {
   
   console.log('[MOBILE MENU] Hardening complete. Test with __openMobileMenu() and __closeMobileMenu()');
 });
+
+// === MOBILE MENU DIAGNOSTIC & HARDENING (FINAL SOLUTION) ===
+(function(){
+  function getChain(el){
+    const chain = [];
+    let n = el;
+    while (n && n !== document.documentElement) {
+      const cs = getComputedStyle(n);
+      chain.push({
+        tag: n.tagName.toLowerCase(),
+        id: n.id || null,
+        cls: n.className || null,
+        display: cs.display,
+        visibility: cs.visibility,
+        opacity: cs.opacity,
+        position: cs.position,
+        overflow: `${cs.overflow} / ${cs.overflowX} / ${cs.overflowY}`,
+        transform: cs.transform,
+        clip: cs.clip,
+        clipPath: cs.clipPath,
+        contentVisibility: cs.contentVisibility,
+        height: cs.height,
+        zIndex: cs.zIndex
+      });
+      n = n.parentElement;
+    }
+    return chain;
+  }
+
+  function ensureToggle(){
+    let btn = document.querySelector('button.mobile-menu-toggle');
+    if (!btn) {
+      btn = document.createElement('button');
+      btn.className = 'mobile-menu-toggle';
+      btn.type = 'button';
+      btn.setAttribute('aria-controls', 'mobile-drawer');
+      btn.setAttribute('aria-expanded', 'false');
+      btn.innerHTML = `
+        <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+        <span class="sr-only">Open menu</span>
+      `;
+      document.body.appendChild(btn);
+    }
+    return btn;
+  }
+
+  function hardenToggle(btn){
+    // eliminar atributos que lo oculten
+    if (btn.hasAttribute('hidden')) btn.removeAttribute('hidden');
+    // forzar estilos críticos
+    Object.assign(btn.style, {
+      position: 'fixed', top: '14px', right: '14px',
+      width: '48px', height: '48px',
+      display: 'flex', alignItems: 'center', justifyContent: 'center',
+      background: '#fff', borderRadius: '12px',
+      boxShadow: '0 6px 18px rgba(0,0,0,.18)',
+      zIndex: '2147483647', opacity: '1', visibility: 'visible',
+      transform: 'none', pointerEvents: 'auto'
+    });
+    // si algún ancestro lo oculta, muévelo al final del <body>
+    const chain = getChain(btn);
+    const culprit = chain.find(x =>
+      x.display === 'none' ||
+      x.visibility === 'hidden' ||
+      x.contentVisibility === 'hidden' ||
+      (x.clip && x.clip !== 'auto') ||
+      (x.clipPath && x.clipPath !== 'none') ||
+      (x.transform && x.transform.includes('matrix(0')) ||
+      parseFloat(x.opacity) === 0 ||
+      x.height === '0px'
+    );
+    if (culprit) {
+      if (btn.parentElement !== document.body) {
+        document.body.appendChild(btn);
+      }
+    }
+  }
+
+  function setupMenu(){
+    const btn = ensureToggle();
+    const drawer = document.getElementById('mobile-drawer');
+    const overlay = document.getElementById('mobile-drawer-overlay');
+    const closeButton = document.querySelector('.mobile-drawer-close');
+
+    // Diagnóstico
+    const cs = getComputedStyle(btn);
+    const rect = btn.getBoundingClientRect();
+    const hiddenByStyles =
+      cs.display === 'none' || cs.visibility === 'hidden' || parseFloat(cs.opacity) === 0;
+    const offscreen =
+      rect.right < 0 || rect.bottom < 0 || rect.left > innerWidth || rect.top > innerHeight;
+
+    console.log('[MOBILE MENU] Diagnosis:', {
+      display: cs.display, visibility: cs.visibility, opacity: cs.opacity,
+      position: cs.position, zIndex: cs.zIndex, rect,
+      hiddenByStyles, offscreen
+    });
+
+    // Hardening + mover a body si hace falta
+    hardenToggle(btn);
+
+    // Control de apertura/cierre
+    const setOpen = (open) => {
+      if (drawer) drawer.setAttribute('aria-hidden', String(!open));
+      if (overlay) overlay.setAttribute('aria-hidden', String(!open));
+      btn.setAttribute('aria-expanded', String(open));
+      if (open) {
+        document.documentElement.style.overflow = 'hidden';
+        document.body.style.overflow = 'hidden';
+        document.body.style.touchAction = 'none';
+      } else {
+        document.documentElement.style.overflow = '';
+        document.body.style.overflow = '';
+        document.body.style.touchAction = '';
+      }
+    };
+
+    btn.addEventListener('click', () => {
+      const open = btn.getAttribute('aria-expanded') === 'true';
+      setOpen(!open);
+    });
+    overlay?.addEventListener('click', () => setOpen(false));
+    closeButton?.addEventListener('click', () => setOpen(false));
+
+    // Solo en móvil
+    const mq = window.matchMedia('(max-width: 1024px)');
+    const sync = () => { btn.hidden = !mq.matches; };
+    if (mq.addEventListener) mq.addEventListener('change', sync);
+    else mq.addListener && mq.addListener(sync);
+    sync();
+
+    // Beacon visible para confirmar capa
+    const beacon = document.createElement('div');
+    beacon.id = 'mobile-menu-beacon';
+    Object.assign(beacon.style, {
+      position: 'fixed', top: '10px', right: '70px',
+      width: '16px', height: '16px', borderRadius: '50%',
+      background: '#00e676', zIndex: '2147483647'
+    });
+    document.body.appendChild(beacon);
+
+    // Exponer helpers
+    window.__mm = {
+      debug(){
+        console.table(getChain(btn));
+        console.log('btn rect', btn.getBoundingClientRect());
+      },
+      forceShow(){
+        if (btn.hasAttribute('hidden')) btn.removeAttribute('hidden');
+        hardenToggle(btn);
+      },
+      open(){ setOpen(true); },
+      close(){ setOpen(false); }
+    };
+  }
+
+  // Asegurar que corra cuando todo está listo
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupMenu);
+  } else {
+    setupMenu();
+  }
+  window.addEventListener('load', () => console.log('[MOBILE MENU] Window loaded.'));
+})();
